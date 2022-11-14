@@ -41,10 +41,10 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 30);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 38);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1284, 420);
+            this.dataGridView1.Size = new System.Drawing.Size(1284, 412);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -58,18 +58,19 @@
             this.tStBtnUpdate});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1284, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1284, 35);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // tStBtnUpdate
             // 
             this.tStBtnUpdate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tStBtnUpdate.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tStBtnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("tStBtnUpdate.Image")));
             this.tStBtnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tStBtnUpdate.Name = "tStBtnUpdate";
-            this.tStBtnUpdate.Size = new System.Drawing.Size(86, 24);
-            this.tStBtnUpdate.Text = "Обновить ";
+            this.tStBtnUpdate.Size = new System.Drawing.Size(37, 32);
+            this.tStBtnUpdate.Text = "🗘";
             this.tStBtnUpdate.Click += new System.EventHandler(this.tStBtnUpdate_Click);
             // 
             // AbonentForm

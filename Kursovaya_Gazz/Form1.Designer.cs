@@ -41,6 +41,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelID = new System.Windows.Forms.Label();
+            this.checkPass = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -80,8 +81,10 @@
             this.Password.Location = new System.Drawing.Point(249, 260);
             this.Password.Multiline = true;
             this.Password.Name = "Password";
+            this.Password.PasswordChar = '*';
             this.Password.Size = new System.Drawing.Size(284, 48);
             this.Password.TabIndex = 2;
+            this.Password.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -179,12 +182,24 @@
             this.labelID.Text = "ID:";
             this.labelID.Click += new System.EventHandler(this.labelID_Click);
             // 
+            // checkPass
+            // 
+            this.checkPass.AutoSize = true;
+            this.checkPass.Location = new System.Drawing.Point(539, 287);
+            this.checkPass.Name = "checkPass";
+            this.checkPass.Size = new System.Drawing.Size(141, 21);
+            this.checkPass.TabIndex = 10;
+            this.checkPass.Text = "показать пароль";
+            this.checkPass.UseVisualStyleBackColor = true;
+            this.checkPass.CheckedChanged += new System.EventHandler(this.checkPass_CheckedChanged);
+            // 
             // AuthorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(752, 414);
+            this.Controls.Add(this.checkPass);
             this.Controls.Add(this.labelID);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -223,6 +238,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label labelID;
+        private System.Windows.Forms.CheckBox checkPass;
     }
 }
 

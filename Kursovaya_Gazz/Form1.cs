@@ -18,12 +18,25 @@ namespace Kursovaya_Gazz
         public AuthorizationForm()
         {
             InitializeComponent();
+
+            Password.UseSystemPasswordChar = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             String loginUser = Login.Text;
             String passUser = Password.Text;
+
+            if (Login.Text == "")
+            {
+                MessageBox.Show("Введите логин!");
+                return;
+            }
+            if (Password.Text == "")
+            {
+                MessageBox.Show("Введите пароль!");
+                return;
+            }
 
             DataBase db = new DataBase();
 
@@ -104,6 +117,18 @@ namespace Kursovaya_Gazz
                 MessageBox.Show("Failed!"); //иначе ошибка
 
             db.closeConnection();
+        }
+
+        private void checkPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkPass.Checked)
+            {
+                Password.UseSystemPasswordChar = true;
+            }
+            else
+            {
+                Password.UseSystemPasswordChar = false;
+            }
         }
     }
 }
