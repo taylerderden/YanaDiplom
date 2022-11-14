@@ -64,5 +64,46 @@ namespace Kursovaya_Gazz
             }
         }
 
+        private void labelID_Click(object sender, EventArgs e)
+        {
+            String loginUser = Login.Text; // запись логина
+            String passUser = Password.Text; // запись пароля
+
+            if (Login.Text == "")
+            {
+                MessageBox.Show("Введите логин!");
+                return;
+            }
+            if (Password.Text == "")
+            {
+                MessageBox.Show("Введите пароль!");
+                return;
+            }
+
+            DataBase db = new DataBase();
+
+            DataTable table = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand commandID = new MySqlCommand("SELECT `Abonent_idAbonent` FROM `Authorization` WHERE `Authorization_Login` = @uL AND `Authorization_Password` = @uP", db.GetConnection()); //авторизация администратора
+            commandID.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
+            commandID.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
+
+            adapter.SelectCommand = commandID;
+            adapter.Fill(table);
+
+            db.openConnection();
+
+            if (table.Rows.Count > 0) //поиск записей
+            {
+                string id = commandID.ExecuteScalar().ToString();   // извлекаем id
+                labelID.Text = "ID:" + ' ' + id;
+            }
+            else
+                MessageBox.Show("Failed!"); //иначе ошибка
+
+            db.closeConnection();
+        }
     }
 }

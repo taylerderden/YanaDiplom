@@ -40,6 +40,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.labelID = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -89,7 +90,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.label1.Location = new System.Drawing.Point(246, 165);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 18);
+            this.label1.Size = new System.Drawing.Size(51, 19);
             this.label1.TabIndex = 3;
             this.label1.Text = "Логин";
             // 
@@ -100,7 +101,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.label2.Location = new System.Drawing.Point(246, 237);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 18);
+            this.label2.Size = new System.Drawing.Size(58, 19);
             this.label2.TabIndex = 4;
             this.label2.Text = "Пароль";
             // 
@@ -166,12 +167,25 @@
             this.pictureBox4.TabIndex = 8;
             this.pictureBox4.TabStop = false;
             // 
+            // labelID
+            // 
+            this.labelID.AutoSize = true;
+            this.labelID.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.labelID.Location = new System.Drawing.Point(12, 378);
+            this.labelID.Name = "labelID";
+            this.labelID.Size = new System.Drawing.Size(42, 27);
+            this.labelID.TabIndex = 9;
+            this.labelID.Text = "ID:";
+            this.labelID.Click += new System.EventHandler(this.labelID_Click);
+            // 
             // AuthorizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(752, 414);
+            this.Controls.Add(this.labelID);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -208,6 +222,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label labelID;
     }
 }
 
