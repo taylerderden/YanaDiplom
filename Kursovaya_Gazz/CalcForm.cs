@@ -25,13 +25,16 @@ namespace Kursovaya_Gazz
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            String Tarif;
-            String Lgota;
-            String Abonent;
-
-
+            String Tarif, Lgota, Abonent;
+            
             MySqlCommand commandT = new MySqlCommand("SELECT `Tarif_idTarif` FROM `Abonent` WHERE `Abonent_FIO` = @AF;", db.GetConnection());
             commandT.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
+
+            MySqlCommand commandL = new MySqlCommand("SELECT `Lgota_idLgota` FROM `Abonent` WHERE `Abonent_FIO` = @AF;", db.GetConnection());
+            commandL.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
+
+            MySqlCommand commandA = new MySqlCommand("SELECT `idAbonent` FROM `Abonent` WHERE `Abonent_FIO` = @AF;", db.GetConnection());
+            commandA.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
 
             adapter.SelectCommand = commandT;
             adapter.Fill(table);
@@ -41,112 +44,64 @@ namespace Kursovaya_Gazz
             if (table.Rows.Count > 0) //поиск записей
             {
                 Tarif = commandT.ExecuteScalar().ToString();  // извлекаем 
-                labelTar.Text = Tarif;
-            }
-            else
-
-            {
-                MessageBox.Show("Failed!"); //иначе ошибка
-            }
-
-            db.closeConnection();
-
-
-            MySqlCommand commandL = new MySqlCommand("SELECT `Lgota_idLgota` FROM `Abonent` WHERE `Abonent_FIO` = @AF;", db.GetConnection());
-            commandL.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
-
-            adapter.SelectCommand = commandL;
-            adapter.Fill(table);
-
-            db.openConnection();
-
-            if (table.Rows.Count > 0) //поиск записей
-            {
                 Lgota = commandL.ExecuteScalar().ToString();
-                labelLg.Text = Lgota;
+                Abonent = commandA.ExecuteScalar().ToString();
+                
+                MySqlCommand commandPL = new MySqlCommand("SELECT (`Pokazanie_Calc` * `Tarif_Price`) * `Lgota_Koefficent` AS `Platezh` FROM `Pokazanie`, `Tarif`, `Lgota`, `Abonent`  WHERE `Abonent_FIO` = @AF and `idTarif` = @Tid and `idLgota` = @Lid and `Abonent_idAbonent` = @Aid and `Pokazanie_Data` = @PD;", db.GetConnection());
+
+                commandPL.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
+                commandPL.Parameters.Add("@PD", MySqlDbType.VarChar).Value = textBoxDate.Text;
+                commandPL.Parameters.Add("@Tid", MySqlDbType.VarChar).Value = Tarif;
+                commandPL.Parameters.Add("@Lid", MySqlDbType.VarChar).Value = Lgota;
+                commandPL.Parameters.Add("@Aid", MySqlDbType.VarChar).Value = Abonent;
+
+                adapter.SelectCommand = commandPL;
+                adapter.Fill(table);
+
+                db.openConnection();
+
+                if (table.Rows.Count > 0) //поиск записей
+                {
+                    System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");// смена на точку
+
+                    var bezDlg = commandPL.ExecuteScalar().ToString();
+                    textBoxBezDolga.Text = bezDlg;
+
+                    MySqlCommand commandS = new MySqlCommand("SELECT `Dolg_Summa` FROM Dolg WHERE `Abonent_idAbonent` = @Aid;", db.GetConnection());
+
+                    commandS.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
+                    commandS.Parameters.Add("@bDlg", MySqlDbType.VarChar).Value = textBoxBezDolga.Text;
+                    commandS.Parameters.Add("@Aid", MySqlDbType.VarChar).Value = Abonent;
+
+                    adapter.SelectCommand = commandS;
+                    adapter.Fill(table);
+
+                    db.openConnection();
+
+                    if (table.Rows.Count > 0) //поиск записей
+                    {
+                        var Dlg = commandS.ExecuteScalar().ToString();  // извлекаем 
+                        textBoxDlg.Text = Dlg;
+                        double res = double.Parse(textBoxDlg.Text) + double.Parse(textBoxBezDolga.Text);// конвертируем тбоксы в дабл
+                        textBoxSDolgom.Text = Convert.ToString(res);
+                    }
+                    else                 
+                        MessageBox.Show("Failed!"); //иначе ошибка
+                    
+                    db.closeConnection();
+                }
+                else
+                    MessageBox.Show("Failed!"); //иначе ошибка
+
+                db.closeConnection();
             }
-            else
+            else         
                 MessageBox.Show("Failed!"); //иначе ошибка
-
-            db.closeConnection();
-
-            MySqlCommand commandA = new MySqlCommand("SELECT `idAbonent` FROM `Abonent` WHERE `Abonent_FIO` = @AF;", db.GetConnection());
-            commandA.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
-
-            adapter.SelectCommand = commandA;
-            adapter.Fill(table);
-
-            db.openConnection();
-
-            if (table.Rows.Count > 0) //поиск записей
-            {
-                Abonent = commandA.ExecuteScalar().ToString();   // извлекаем
-                labelAb.Text = Abonent;
-            }
-            else
-                MessageBox.Show("Failed!"); //иначе ошибка
-
-            db.closeConnection();
-
-            MySqlCommand commandPL = new MySqlCommand("SELECT (`Pokazanie_Calc` * `Tarif_Price`) * `Lgota_Koefficent` AS `Platezh` FROM `Pokazanie`, `Tarif`, `Lgota`, `Abonent`  WHERE `Abonent_FIO` = @AF and `idTarif` = @Tid and `idLgota` = @Lid and `Abonent_idAbonent` = @Aid and `Pokazanie_Data` = @PD;", db.GetConnection());
-
-            commandPL.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
-            commandPL.Parameters.Add("@PD", MySqlDbType.VarChar).Value = textBoxDate.Text;
-            commandPL.Parameters.Add("@Tid", MySqlDbType.VarChar).Value = labelTar.Text;
-            commandPL.Parameters.Add("@Lid", MySqlDbType.VarChar).Value = labelLg.Text;
-            commandPL.Parameters.Add("@Aid", MySqlDbType.VarChar).Value = labelAb.Text;
-
-            adapter.SelectCommand = commandPL;
-            adapter.Fill(table);
-
-            db.openConnection();
-
-            if (table.Rows.Count > 0) //поиск записей
-            {
-                string Platezh = commandPL.ExecuteScalar().ToString();
-                textBoxBezDolga.Text = Platezh;
-            }
-            else
-                MessageBox.Show("Failed!"); //иначе ошибка
-
-            db.closeConnection();
-
+            
+            db.closeConnection();                     
         }
 
-        private void btnSDolgom_Click(object sender, EventArgs e)
-        {
-            DataBase db = new DataBase();
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-            MySqlCommand commandT = new MySqlCommand("SELECT `Dolg_Summa` FROM Dolg WHERE `Abonent_idAbonent` = @Aid;", db.GetConnection());
-            commandT.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
-            commandT.Parameters.Add("@bDlg", MySqlDbType.VarChar).Value = textBoxBezDolga.Text;
-            commandT.Parameters.Add("@Aid", MySqlDbType.VarChar).Value = labelAb.Text;
-
-            adapter.SelectCommand = commandT;
-            adapter.Fill(table);
-
-            double bd = Convert.ToDouble(textBoxBezDolga.Text);
-
-            db.openConnection();
-
-            if (table.Rows.Count > 0) //поиск записей
-            {
-                string sDlg = commandT.ExecuteScalar().ToString();  // извлекаем 
-                textBoxSDolgom.Text = Convert.ToDouble(sDlg);
-            }
-            else
-
-            {
-                MessageBox.Show("Failed!"); //иначе ошибка
-            }
-
-            db.closeConnection();
-
-        }
-
-        private void btnBezDolga_Click_1(object sender, EventArgs e)
+        private void btnCalc_Click(object sender, EventArgs e)
         {
             DataBase db = new DataBase();
             DataTable table = new DataTable();
@@ -168,7 +123,7 @@ namespace Kursovaya_Gazz
             if (table.Rows.Count > 0) //поиск записей
             {
                 Tarif = commandT.ExecuteScalar().ToString();  // извлекаем 
-                labelTar.Text = Tarif;
+                //labelTar.Text = Tarif;
             }
             else
 
@@ -190,7 +145,7 @@ namespace Kursovaya_Gazz
             if (table.Rows.Count > 0) //поиск записей
             {
                 Lgota = commandL.ExecuteScalar().ToString();
-                labelLg.Text = Lgota;
+                //labelLg.Text = Lgota;
             }
             else
                 MessageBox.Show("Failed!"); //иначе ошибка
@@ -208,7 +163,7 @@ namespace Kursovaya_Gazz
             if (table.Rows.Count > 0) //поиск записей
             {
                 Abonent = commandA.ExecuteScalar().ToString();   // извлекаем
-                labelAb.Text = Abonent;
+                //labelAb.Text = Abonent;
             }
             else
                 MessageBox.Show("Failed!"); //иначе ошибка
@@ -219,9 +174,9 @@ namespace Kursovaya_Gazz
 
             commandPL.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
             commandPL.Parameters.Add("@PD", MySqlDbType.VarChar).Value = textBoxDate.Text;
-            commandPL.Parameters.Add("@Tid", MySqlDbType.VarChar).Value = labelTar.Text;
-            commandPL.Parameters.Add("@Lid", MySqlDbType.VarChar).Value = labelLg.Text;
-            commandPL.Parameters.Add("@Aid", MySqlDbType.VarChar).Value = labelAb.Text;
+            commandPL.Parameters.Add("@Tid", MySqlDbType.VarChar).Value = //labelTar.Text;
+            commandPL.Parameters.Add("@Lid", MySqlDbType.VarChar).Value = //labelLg.Text;
+            commandPL.Parameters.Add("@Aid", MySqlDbType.VarChar).Value = //labelAb.Text;
 
             adapter.SelectCommand = commandPL;
             adapter.Fill(table);
@@ -230,8 +185,35 @@ namespace Kursovaya_Gazz
 
             if (table.Rows.Count > 0) //поиск записей
             {
-                string Platezh = commandPL.ExecuteScalar().ToString();
-                textBoxBezDolga.Text = Platezh;
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");// смена на точку
+                var bezDlg = commandPL.ExecuteScalar().ToString();
+                textBoxBezDolga.Text = bezDlg;
+
+                MySqlCommand commandS = new MySqlCommand("SELECT `Dolg_Summa` FROM Dolg WHERE `Abonent_idAbonent` = @Aid;", db.GetConnection());
+                commandS.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
+                commandS.Parameters.Add("@bDlg", MySqlDbType.VarChar).Value = textBoxBezDolga.Text;
+                commandS.Parameters.Add("@Aid", MySqlDbType.VarChar).Value = //labelAb.Text;
+
+                adapter.SelectCommand = commandS;
+                adapter.Fill(table);
+
+
+                db.openConnection();
+
+                if (table.Rows.Count > 0) //поиск записей
+                {
+                    var Dlg = commandS.ExecuteScalar().ToString();  // извлекаем 
+                    textBoxDlg.Text = Dlg;
+                    double res = double.Parse(textBoxDlg.Text) + double.Parse(textBoxBezDolga.Text);
+                    textBoxSDolgom.Text = Convert.ToString(res);
+                }
+                else
+
+                {
+                    MessageBox.Show("Failed!"); //иначе ошибка
+                }
+
+                db.closeConnection();
             }
             else
                 MessageBox.Show("Failed!"); //иначе ошибка

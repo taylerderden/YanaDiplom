@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labelAb = new System.Windows.Forms.Label();
-            this.labelLg = new System.Windows.Forms.Label();
-            this.labelTar = new System.Windows.Forms.Label();
-            this.btnSDolgom = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxDlg = new System.Windows.Forms.TextBox();
+            this.btnCalc = new System.Windows.Forms.Button();
             this.btnBezDolga = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,10 +46,9 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.labelAb);
-            this.panel1.Controls.Add(this.labelLg);
-            this.panel1.Controls.Add(this.labelTar);
-            this.panel1.Controls.Add(this.btnSDolgom);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.textBoxDlg);
+            this.panel1.Controls.Add(this.btnCalc);
             this.panel1.Controls.Add(this.btnBezDolga);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
@@ -66,115 +64,116 @@
             this.panel1.Size = new System.Drawing.Size(800, 450);
             this.panel1.TabIndex = 30;
             // 
-            // labelAb
+            // label5
             // 
-            this.labelAb.AutoSize = true;
-            this.labelAb.Location = new System.Drawing.Point(419, 217);
-            this.labelAb.Name = "labelAb";
-            this.labelAb.Size = new System.Drawing.Size(24, 16);
-            this.labelAb.TabIndex = 59;
-            this.labelAb.Text = "Ab";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(324, 133);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(139, 27);
+            this.label5.TabIndex = 62;
+            this.label5.Text = "Сумма долга";
             // 
-            // labelLg
+            // textBoxDlg
             // 
-            this.labelLg.AutoSize = true;
-            this.labelLg.Location = new System.Drawing.Point(391, 217);
-            this.labelLg.Name = "labelLg";
-            this.labelLg.Size = new System.Drawing.Size(22, 16);
-            this.labelLg.TabIndex = 58;
-            this.labelLg.Text = "Lg";
+            this.textBoxDlg.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxDlg.Location = new System.Drawing.Point(329, 166);
+            this.textBoxDlg.Multiline = true;
+            this.textBoxDlg.Name = "textBoxDlg";
+            this.textBoxDlg.Size = new System.Drawing.Size(131, 34);
+            this.textBoxDlg.TabIndex = 61;
             // 
-            // labelTar
+            // btnCalc
             // 
-            this.labelTar.AutoSize = true;
-            this.labelTar.Location = new System.Drawing.Point(357, 217);
-            this.labelTar.Name = "labelTar";
-            this.labelTar.Size = new System.Drawing.Size(28, 16);
-            this.labelTar.TabIndex = 57;
-            this.labelTar.Text = "Tar";
-            // 
-            // btnSDolgom
-            // 
-            this.btnSDolgom.Location = new System.Drawing.Point(490, 292);
-            this.btnSDolgom.Name = "btnSDolgom";
-            this.btnSDolgom.Size = new System.Drawing.Size(75, 23);
-            this.btnSDolgom.TabIndex = 56;
-            this.btnSDolgom.Text = "OK";
-            this.btnSDolgom.UseVisualStyleBackColor = true;
-            this.btnSDolgom.Click += new System.EventHandler(this.btnSDolgom_Click);
+            this.btnCalc.Location = new System.Drawing.Point(342, 263);
+            this.btnCalc.Name = "btnCalc";
+            this.btnCalc.Size = new System.Drawing.Size(75, 37);
+            this.btnCalc.TabIndex = 56;
+            this.btnCalc.Text = "Расчет";
+            this.btnCalc.UseVisualStyleBackColor = true;
+            this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
             // 
             // btnBezDolga
             // 
-            this.btnBezDolga.Location = new System.Drawing.Point(236, 292);
+            this.btnBezDolga.Location = new System.Drawing.Point(684, 197);
             this.btnBezDolga.Name = "btnBezDolga";
             this.btnBezDolga.Size = new System.Drawing.Size(75, 23);
             this.btnBezDolga.TabIndex = 55;
             this.btnBezDolga.Text = "OK";
             this.btnBezDolga.UseVisualStyleBackColor = true;
-            this.btnBezDolga.Click += new System.EventHandler(this.btnBezDolga_Click_1);
+            this.btnBezDolga.Click += new System.EventHandler(this.btnBezDolga_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(221, 227);
+            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(144, 173);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 16);
+            this.label4.Size = new System.Drawing.Size(169, 27);
             this.label4.TabIndex = 54;
             this.label4.Text = "Без учёта долга";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(477, 227);
+            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(479, 173);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 16);
+            this.label3.Size = new System.Drawing.Size(102, 27);
             this.label3.TabIndex = 53;
             this.label3.Text = "К оплате";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(477, 135);
+            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(479, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 16);
+            this.label2.Size = new System.Drawing.Size(61, 27);
             this.label2.TabIndex = 52;
             this.label2.Text = "Дата";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(221, 135);
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(144, 76);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 16);
+            this.label1.Size = new System.Drawing.Size(64, 27);
             this.label1.TabIndex = 51;
             this.label1.Text = "ФИО";
             // 
             // textBoxDate
             // 
-            this.textBoxDate.Location = new System.Drawing.Point(480, 165);
+            this.textBoxDate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxDate.Location = new System.Drawing.Point(484, 106);
             this.textBoxDate.Name = "textBoxDate";
-            this.textBoxDate.Size = new System.Drawing.Size(100, 22);
+            this.textBoxDate.Size = new System.Drawing.Size(100, 34);
             this.textBoxDate.TabIndex = 50;
             // 
             // textBoxSDolgom
             // 
-            this.textBoxSDolgom.Location = new System.Drawing.Point(480, 246);
+            this.textBoxSDolgom.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxSDolgom.Location = new System.Drawing.Point(484, 209);
             this.textBoxSDolgom.Name = "textBoxSDolgom";
-            this.textBoxSDolgom.Size = new System.Drawing.Size(100, 22);
+            this.textBoxSDolgom.Size = new System.Drawing.Size(100, 34);
             this.textBoxSDolgom.TabIndex = 49;
             // 
             // textBoxBezDolga
             // 
-            this.textBoxBezDolga.Location = new System.Drawing.Point(224, 246);
+            this.textBoxBezDolga.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxBezDolga.Location = new System.Drawing.Point(149, 209);
+            this.textBoxBezDolga.Multiline = true;
             this.textBoxBezDolga.Name = "textBoxBezDolga";
-            this.textBoxBezDolga.Size = new System.Drawing.Size(100, 22);
+            this.textBoxBezDolga.Size = new System.Drawing.Size(164, 34);
             this.textBoxBezDolga.TabIndex = 48;
             // 
             // textBoxFIO
             // 
-            this.textBoxFIO.Location = new System.Drawing.Point(224, 165);
+            this.textBoxFIO.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxFIO.Location = new System.Drawing.Point(149, 106);
             this.textBoxFIO.Name = "textBoxFIO";
-            this.textBoxFIO.Size = new System.Drawing.Size(100, 22);
+            this.textBoxFIO.Size = new System.Drawing.Size(164, 34);
             this.textBoxFIO.TabIndex = 47;
             // 
             // CalcForm
@@ -193,7 +192,7 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnSDolgom;
+        private System.Windows.Forms.Button btnCalc;
         private System.Windows.Forms.Button btnBezDolga;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -203,8 +202,7 @@
         private System.Windows.Forms.TextBox textBoxSDolgom;
         private System.Windows.Forms.TextBox textBoxBezDolga;
         private System.Windows.Forms.TextBox textBoxFIO;
-        private System.Windows.Forms.Label labelAb;
-        private System.Windows.Forms.Label labelLg;
-        private System.Windows.Forms.Label labelTar;
+        private System.Windows.Forms.TextBox textBoxDlg;
+        private System.Windows.Forms.Label label5;
     }
 }
