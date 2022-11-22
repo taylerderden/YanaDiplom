@@ -22,12 +22,13 @@ namespace Kursovaya_Gazz
         private void button1_Click(object sender, EventArgs e)
         {
             DataBase db = new DataBase();
-            MySqlCommand command = new MySqlCommand("INSERT INTO `Pokazanie` (`Pokazanie_Previous`,`Pokazanie_Current`, `Pokazanie_Data`, `Pokazanie_SchetchikNomer`) VALUES(@PP, @PC, @PD, @PSN); ", db.GetConnection());
+            MySqlCommand command = new MySqlCommand("INSERT INTO `Pokazanie` (`Pokazanie_Previous`,`Pokazanie_Current`, `Pokazanie_Data`, `Pokazanie_SchetchikNomer`, `Abonent_idAbonent`, `Pokazanie_Calc`) VALUES(@PP, @PC, @PD, @PSN, @AA, (`Pokazanie_Current`-`Pokazanie_Previous`)); ", db.GetConnection());
 
             command.Parameters.Add("@PP", MySqlDbType.VarChar).Value = tBPrevious.Text;
             command.Parameters.Add("@PC", MySqlDbType.VarChar).Value = tBCurrent.Text;
             command.Parameters.Add("@PD", MySqlDbType.VarChar).Value = tBDate.Text;
             command.Parameters.Add("@PSN", MySqlDbType.VarChar).Value = tBSchetchik.Text;
+            command.Parameters.Add("@AA", MySqlDbType.VarChar).Value = tBid.Text;
 
             db.openConnection();
             if (command.ExecuteNonQuery() == 1)

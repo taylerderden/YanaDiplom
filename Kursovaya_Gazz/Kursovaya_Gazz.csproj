@@ -90,6 +90,12 @@
     <Compile Include="AbonentForm.Designer.cs">
       <DependentUpon>AbonentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CalcForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalcForm.Designer.cs">
+      <DependentUpon>CalcForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataBase.cs" />
     <Compile Include="DolgForm.cs">
       <SubType>Form</SubType>
@@ -137,6 +143,9 @@
     </Compile>
     <EmbeddedResource Include="AbonentForm.resx">
       <DependentUpon>AbonentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CalcForm.resx">
+      <DependentUpon>CalcForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DolgForm.resx">
       <DependentUpon>DolgForm.cs</DependentUpon>

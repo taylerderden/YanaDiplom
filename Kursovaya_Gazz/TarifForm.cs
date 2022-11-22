@@ -33,6 +33,9 @@ namespace Kursovaya_Gazz
             dGVTarif.DataSource = table;
 
             dGVTarif.Columns[0].HeaderText = "код_Тарифа";
+            dGVTarif.Columns[1].HeaderText = "Название_Тарифа";
+            dGVTarif.Columns[2].HeaderText = "Прайс_Тарифа";
         }
+
     }
 }

@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -21,41 +23,53 @@ namespace Kursovaya_Gazz
             InitializeComponent();
         }
 
+        AbonentForm abonentForm = new AbonentForm();
+        TarifForm tarifForm = new TarifForm();
+        LgotaForm lgotaForm = new LgotaForm();
+        PokazanieForm pokazanieForm = new PokazanieForm();
+        DolgForm dolgForm = new DolgForm();
+        AuthorizationForm fForm = new AuthorizationForm();
+        CalcForm calcForm = new CalcForm();
+
         private void tSBtnAbonent_Click(object sender, EventArgs e)
         {
-            AbonentForm abonentForm = new AbonentForm();
             abonentForm.Show();
         }
 
         private void tSBtnTarif_Click(object sender, EventArgs e)
         {
-            TarifForm tarifForm = new TarifForm();
             tarifForm.Show();
         }
 
         private void tSBtnLgota_Click(object sender, EventArgs e)
         {
-            LgotaForm lgotaForm = new LgotaForm();
             lgotaForm.Show();
         }
 
         private void tSBtnPokazanie_Click(object sender, EventArgs e)
         {
-            PokazanieForm pokazanieForm = new PokazanieForm();
             pokazanieForm.Show();
         }
 
         private void tSBtnDolg_Click(object sender, EventArgs e)
         {
-            DolgForm dolgForm = new DolgForm();
             dolgForm.Show();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
-            AuthorizationForm fForm = new AuthorizationForm();
+            abonentForm.Hide();
+            tarifForm.Hide();
+            lgotaForm.Hide();
+            pokazanieForm.Hide();
+            dolgForm.Hide();
             fForm.Show();
+        }
+            
+        private void toolStripBtnCalc_Click(object sender, EventArgs e)
+        {
+            calcForm.Show();
         }
     }
 }

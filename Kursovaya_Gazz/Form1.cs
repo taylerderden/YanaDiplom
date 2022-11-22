@@ -119,16 +119,23 @@ namespace Kursovaya_Gazz
             db.closeConnection();
         }
 
-        private void checkPass_CheckedChanged(object sender, EventArgs e)
+        private void labelPass_Click(object sender, EventArgs e)
         {
-            if(checkPass.Checked)
+            if (labelPass.Text == "🗙")
             {
                 Password.UseSystemPasswordChar = true;
+                labelPass.Text = "👁";
             }
             else
             {
                 Password.UseSystemPasswordChar = false;
+                labelPass.Text = "🗙";
             }
+        }
+
+        private void AuthorizationForm_Load(object sender, EventArgs e)
+        {
+            labelPass.Text = "🗙";
         }
     }
 }

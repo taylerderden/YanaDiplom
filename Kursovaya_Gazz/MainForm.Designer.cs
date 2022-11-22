@@ -35,6 +35,7 @@
             this.tSBtnLgota = new System.Windows.Forms.ToolStripButton();
             this.tSBtnPokazanie = new System.Windows.Forms.ToolStripButton();
             this.tSBtnDolg = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnCalc = new System.Windows.Forms.ToolStripButton();
             this.btnExit = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -49,10 +50,11 @@
             this.tSBtnTarif,
             this.tSBtnLgota,
             this.tSBtnPokazanie,
-            this.tSBtnDolg});
+            this.tSBtnDolg,
+            this.toolStripBtnCalc});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(970, 57);
+            this.toolStrip1.Size = new System.Drawing.Size(1062, 57);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -121,9 +123,22 @@
             this.tSBtnDolg.Text = "Долг";
             this.tSBtnDolg.Click += new System.EventHandler(this.tSBtnDolg_Click);
             // 
+            // toolStripBtnCalc
+            // 
+            this.toolStripBtnCalc.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripBtnCalc.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripBtnCalc.ForeColor = System.Drawing.Color.White;
+            this.toolStripBtnCalc.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBtnCalc.Image")));
+            this.toolStripBtnCalc.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnCalc.Margin = new System.Windows.Forms.Padding(40, 1, 10, 2);
+            this.toolStripBtnCalc.Name = "toolStripBtnCalc";
+            this.toolStripBtnCalc.Size = new System.Drawing.Size(95, 54);
+            this.toolStripBtnCalc.Text = "Расчёт";
+            this.toolStripBtnCalc.Click += new System.EventHandler(this.toolStripBtnCalc_Click);
+            // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(883, 415);
+            this.btnExit.Location = new System.Drawing.Point(966, 415);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 3;
@@ -137,7 +152,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
-            this.ClientSize = new System.Drawing.Size(970, 450);
+            this.ClientSize = new System.Drawing.Size(1062, 450);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.toolStrip1);
             this.Name = "MainForm";
@@ -157,5 +172,6 @@
         private System.Windows.Forms.ToolStripButton tSBtnPokazanie;
         private System.Windows.Forms.ToolStripButton tSBtnDolg;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.ToolStripButton toolStripBtnCalc;
     }
 }

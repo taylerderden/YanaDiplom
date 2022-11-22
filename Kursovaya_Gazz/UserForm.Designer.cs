@@ -39,6 +39,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.tBid = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // tBDate
@@ -148,12 +149,20 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // tBid
+            // 
+            this.tBid.Location = new System.Drawing.Point(12, 416);
+            this.tBid.Name = "tBid";
+            this.tBid.Size = new System.Drawing.Size(39, 22);
+            this.tBid.TabIndex = 11;
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tBid);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -187,5 +196,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.TextBox tBid;
     }
 }

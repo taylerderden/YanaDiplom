@@ -41,7 +41,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.labelID = new System.Windows.Forms.Label();
-            this.checkPass = new System.Windows.Forms.CheckBox();
+            this.labelPass = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -82,7 +82,7 @@
             this.Password.Multiline = true;
             this.Password.Name = "Password";
             this.Password.PasswordChar = '*';
-            this.Password.Size = new System.Drawing.Size(284, 48);
+            this.Password.Size = new System.Drawing.Size(284, 47);
             this.Password.TabIndex = 2;
             this.Password.UseSystemPasswordChar = true;
             // 
@@ -93,7 +93,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.label1.Location = new System.Drawing.Point(246, 165);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 19);
+            this.label1.Size = new System.Drawing.Size(47, 18);
             this.label1.TabIndex = 3;
             this.label1.Text = "Логин";
             // 
@@ -104,7 +104,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.label2.Location = new System.Drawing.Point(246, 237);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 19);
+            this.label2.Size = new System.Drawing.Size(54, 18);
             this.label2.TabIndex = 4;
             this.label2.Text = "Пароль";
             // 
@@ -182,16 +182,17 @@
             this.labelID.Text = "ID:";
             this.labelID.Click += new System.EventHandler(this.labelID_Click);
             // 
-            // checkPass
+            // labelPass
             // 
-            this.checkPass.AutoSize = true;
-            this.checkPass.Location = new System.Drawing.Point(539, 287);
-            this.checkPass.Name = "checkPass";
-            this.checkPass.Size = new System.Drawing.Size(141, 21);
-            this.checkPass.TabIndex = 10;
-            this.checkPass.Text = "показать пароль";
-            this.checkPass.UseVisualStyleBackColor = true;
-            this.checkPass.CheckedChanged += new System.EventHandler(this.checkPass_CheckedChanged);
+            this.labelPass.AutoSize = true;
+            this.labelPass.BackColor = System.Drawing.Color.White;
+            this.labelPass.Font = new System.Drawing.Font("Impact", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPass.Location = new System.Drawing.Point(484, 268);
+            this.labelPass.Name = "labelPass";
+            this.labelPass.Size = new System.Drawing.Size(39, 27);
+            this.labelPass.TabIndex = 11;
+            this.labelPass.Text = "👁";
+            this.labelPass.Click += new System.EventHandler(this.labelPass_Click);
             // 
             // AuthorizationForm
             // 
@@ -199,7 +200,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(752, 414);
-            this.Controls.Add(this.checkPass);
+            this.Controls.Add(this.labelPass);
             this.Controls.Add(this.labelID);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -213,6 +214,7 @@
             this.Name = "AuthorizationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
+            this.Load += new System.EventHandler(this.AuthorizationForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -238,7 +240,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label labelID;
-        private System.Windows.Forms.CheckBox checkPass;
+        private System.Windows.Forms.Label labelPass;
     }
 }
 
