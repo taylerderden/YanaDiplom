@@ -33,26 +33,31 @@ namespace Kursovaya_Gazz
 
         private void tSBtnAbonent_Click(object sender, EventArgs e)
         {
+            AbonentForm abonentForm = new AbonentForm();
             abonentForm.Show();
         }
 
         private void tSBtnTarif_Click(object sender, EventArgs e)
         {
+            TarifForm tarifForm = new TarifForm();
             tarifForm.Show();
         }
 
         private void tSBtnLgota_Click(object sender, EventArgs e)
         {
+            LgotaForm lgotaForm = new LgotaForm();
             lgotaForm.Show();
         }
 
         private void tSBtnPokazanie_Click(object sender, EventArgs e)
         {
+            PokazanieForm pokazanieForm = new PokazanieForm();
             pokazanieForm.Show();
         }
 
         private void tSBtnDolg_Click(object sender, EventArgs e)
         {
+            DolgForm dolgForm = new DolgForm();
             dolgForm.Show();
         }
 
@@ -69,7 +74,50 @@ namespace Kursovaya_Gazz
             
         private void toolStripBtnCalc_Click(object sender, EventArgs e)
         {
+            CalcForm calcForm = new CalcForm();
             calcForm.Show();
+        }
+
+        Point lastPoint;
+
+        private void panel2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void labelClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void labelOpen_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                this.TopMost = true;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.TopMost = true;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void labelColla_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

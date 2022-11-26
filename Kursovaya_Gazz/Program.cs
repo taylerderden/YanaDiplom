@@ -16,7 +16,7 @@ namespace Kursovaya_Gazz
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CalcForm());
+            Application.Run(new AuthorizationForm());
         }
     }
 }

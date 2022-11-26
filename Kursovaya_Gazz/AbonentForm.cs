@@ -14,7 +14,6 @@ namespace Kursovaya_Gazz
 {
     public partial class AbonentForm : Form
     {
-        private MySqlConnection sqlConnection = null;
 
         private MySqlCommandBuilder sqlBuilder = null;
 
@@ -98,11 +97,6 @@ namespace Kursovaya_Gazz
             dataGridView1.Columns[5].HeaderText = "Проживающие";
             dataGridView1.Columns[6].HeaderText = "код_Тарифа";
             dataGridView1.Columns[7].HeaderText = "код_Льготы";
-        }
-
-        private void tStBtnUpdate_Click(object sender, EventArgs e)
-        {
-            ReloadData();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -258,6 +252,79 @@ namespace Kursovaya_Gazz
             {
                 e.Handled = true;
             }
+        }
+
+        private void labelUpdate_MouseClick(object sender, MouseEventArgs e)
+        {
+            ReloadData();
+        }
+
+        private void labelClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void labelOpen_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                this.TopMost = true;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                this.TopMost = true;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void labelColla_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        Point lastPoint;
+
+        private void panel2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            DataBase db = new DataBase();
+
+            DataTable table = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand command = new MySqlCommand("SELECT * FROM Abonent WHERE CONCAT(`idAbonent`, `Abonent_Schet`, `Abonent_FIO`, `Abonent_Adress`, `Abonent_Square`, `Abonent_People`, `Tarif_idTarif`, `Lgota_idLgota`)like'%"+textBoxSearch.Text+"%';", db.GetConnection());
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            dataGridView1.DataSource = table;
+
+            dataGridView1.Columns[0].HeaderText = "код_Абонента";
+            dataGridView1.Columns[1].HeaderText = "Счет";
+            dataGridView1.Columns[2].HeaderText = "ФИО";
+            dataGridView1.Columns[3].HeaderText = "Адрес";
+            dataGridView1.Columns[4].HeaderText = "Жилая площадь";
+            dataGridView1.Columns[5].HeaderText = "Проживающие";
+            dataGridView1.Columns[6].HeaderText = "код_Тарифа";
+            dataGridView1.Columns[7].HeaderText = "код_Льготы";
         }
     }
 }
