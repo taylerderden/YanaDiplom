@@ -228,18 +228,7 @@ namespace Kursovaya_Gazz
 
         private void labelOpen_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
-            {
-                this.TopMost = true;
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.TopMost = true;
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Normal;
-            }
+
         }
 
         private void labelColla_Click(object sender, EventArgs e)
@@ -249,7 +238,7 @@ namespace Kursovaya_Gazz
 
         Point lastPoint;
 
-        private void labelColla_MouseMove(object sender, MouseEventArgs e)
+        private void panel2_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -258,7 +247,7 @@ namespace Kursovaya_Gazz
             }
         }
 
-        private void labelColla_MouseDown(object sender, MouseEventArgs e)
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
         }

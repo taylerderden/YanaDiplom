@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tBDate = new System.Windows.Forms.TextBox();
             this.tBSchetchik = new System.Windows.Forms.TextBox();
             this.tBCurrent = new System.Windows.Forms.TextBox();
             this.tBPrevious = new System.Windows.Forms.TextBox();
@@ -45,27 +44,22 @@
             this.labelOpen = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
             this.labelID = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tBDate
-            // 
-            this.tBDate.Location = new System.Drawing.Point(104, 296);
-            this.tBDate.Multiline = true;
-            this.tBDate.Name = "tBDate";
-            this.tBDate.Size = new System.Drawing.Size(234, 44);
-            this.tBDate.TabIndex = 0;
-            // 
             // tBSchetchik
             // 
-            this.tBSchetchik.Location = new System.Drawing.Point(445, 296);
+            this.tBSchetchik.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tBSchetchik.Location = new System.Drawing.Point(445, 300);
             this.tBSchetchik.Multiline = true;
             this.tBSchetchik.Name = "tBSchetchik";
-            this.tBSchetchik.Size = new System.Drawing.Size(233, 44);
+            this.tBSchetchik.Size = new System.Drawing.Size(233, 45);
             this.tBSchetchik.TabIndex = 1;
             // 
             // tBCurrent
             // 
+            this.tBCurrent.Font = new System.Drawing.Font("Palatino Linotype", 16.2F);
             this.tBCurrent.Location = new System.Drawing.Point(444, 204);
             this.tBCurrent.Multiline = true;
             this.tBCurrent.Name = "tBCurrent";
@@ -74,6 +68,7 @@
             // 
             // tBPrevious
             // 
+            this.tBPrevious.Font = new System.Drawing.Font("Palatino Linotype", 16.2F);
             this.tBPrevious.Location = new System.Drawing.Point(104, 204);
             this.tBPrevious.Multiline = true;
             this.tBPrevious.Name = "tBPrevious";
@@ -162,6 +157,7 @@
             // 
             // tBid
             // 
+            this.tBid.Enabled = false;
             this.tBid.Location = new System.Drawing.Point(12, 416);
             this.tBid.Name = "tBid";
             this.tBid.Size = new System.Drawing.Size(39, 22);
@@ -209,7 +205,6 @@
             this.labelOpen.Size = new System.Drawing.Size(28, 25);
             this.labelOpen.TabIndex = 50;
             this.labelOpen.Text = "⧉";
-            this.labelOpen.Click += new System.EventHandler(this.labelOpen_Click);
             // 
             // labelClose
             // 
@@ -236,12 +231,24 @@
             this.labelID.TabIndex = 50;
             this.labelID.Text = "ID";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "dd.MM.yyyy";
+            this.dateTimePicker1.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(104, 301);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 44);
+            this.dateTimePicker1.TabIndex = 51;
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.labelID);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.tBid);
@@ -255,7 +262,6 @@
             this.Controls.Add(this.tBPrevious);
             this.Controls.Add(this.tBCurrent);
             this.Controls.Add(this.tBSchetchik);
-            this.Controls.Add(this.tBDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -269,8 +275,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox tBDate;
         private System.Windows.Forms.TextBox tBSchetchik;
         private System.Windows.Forms.TextBox tBCurrent;
         private System.Windows.Forms.TextBox tBPrevious;
@@ -287,5 +291,6 @@
         private System.Windows.Forms.Label labelOpen;
         private System.Windows.Forms.Label labelClose;
         private System.Windows.Forms.Label labelID;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

@@ -26,7 +26,7 @@ namespace Kursovaya_Gazz
 
             command.Parameters.Add("@PP", MySqlDbType.VarChar).Value = tBPrevious.Text;
             command.Parameters.Add("@PC", MySqlDbType.VarChar).Value = tBCurrent.Text;
-            command.Parameters.Add("@PD", MySqlDbType.VarChar).Value = tBDate.Text;
+            command.Parameters.Add("@PD", MySqlDbType.VarChar).Value = dateTimePicker1.Text;
             command.Parameters.Add("@PSN", MySqlDbType.VarChar).Value = tBSchetchik.Text;
             command.Parameters.Add("@AA", MySqlDbType.VarChar).Value = tBid.Text;
 
@@ -41,7 +41,7 @@ namespace Kursovaya_Gazz
 
         private void UserForm_Load(object sender, EventArgs e)
         {
-
+            tBid.Text = Global.GlobalVar;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -53,23 +53,12 @@ namespace Kursovaya_Gazz
 
         private void labelClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void labelOpen_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
-            {
-                this.TopMost = true;
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.TopMost = true;
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Normal;
-            }
+
         }
 
         private void labelColla_Click(object sender, EventArgs e)
@@ -92,5 +81,7 @@ namespace Kursovaya_Gazz
         {
             lastPoint = new Point(e.X, e.Y);
         }
+
+        
     }
 }

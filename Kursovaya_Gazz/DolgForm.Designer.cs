@@ -65,7 +65,7 @@
             // 
             this.labelidAb.AutoSize = true;
             this.labelidAb.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold);
-            this.labelidAb.Location = new System.Drawing.Point(582, 64);
+            this.labelidAb.Location = new System.Drawing.Point(457, 65);
             this.labelidAb.Name = "labelidAb";
             this.labelidAb.Size = new System.Drawing.Size(127, 24);
             this.labelidAb.TabIndex = 23;
@@ -75,7 +75,7 @@
             // 
             this.labelSumma.AutoSize = true;
             this.labelSumma.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold);
-            this.labelSumma.Location = new System.Drawing.Point(310, 64);
+            this.labelSumma.Location = new System.Drawing.Point(248, 65);
             this.labelSumma.Name = "labelSumma";
             this.labelSumma.Size = new System.Drawing.Size(126, 24);
             this.labelSumma.TabIndex = 22;
@@ -101,7 +101,7 @@
             // 
             // tBSumma
             // 
-            this.tBSumma.Location = new System.Drawing.Point(310, 110);
+            this.tBSumma.Location = new System.Drawing.Point(252, 110);
             this.tBSumma.Multiline = true;
             this.tBSumma.Name = "tBSumma";
             this.tBSumma.Size = new System.Drawing.Size(162, 34);
@@ -109,7 +109,7 @@
             // 
             // tBidAb
             // 
-            this.tBidAb.Location = new System.Drawing.Point(582, 110);
+            this.tBidAb.Location = new System.Drawing.Point(461, 108);
             this.tBidAb.Multiline = true;
             this.tBidAb.Name = "tBidAb";
             this.tBidAb.Size = new System.Drawing.Size(162, 36);
@@ -118,6 +118,7 @@
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Location = new System.Drawing.Point(772, 525);
@@ -131,6 +132,7 @@
             // btnDel
             // 
             this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.btnDel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDel.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
             this.btnDel.Location = new System.Drawing.Point(772, 472);
@@ -144,6 +146,7 @@
             // btnUpd
             // 
             this.btnUpd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.btnUpd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpd.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnUpd.ForeColor = System.Drawing.Color.White;
             this.btnUpd.Location = new System.Drawing.Point(772, 419);
@@ -157,6 +160,7 @@
             // btnIns
             // 
             this.btnIns.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.btnIns.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIns.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnIns.ForeColor = System.Drawing.Color.White;
             this.btnIns.Location = new System.Drawing.Point(772, 362);
@@ -179,6 +183,8 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1002, 35);
             this.panel2.TabIndex = 57;
+            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
+            this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             // 
             // labelName
             // 
@@ -204,8 +210,6 @@
             this.labelColla.TabIndex = 51;
             this.labelColla.Text = "➖";
             this.labelColla.Click += new System.EventHandler(this.labelColla_Click);
-            this.labelColla.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelColla_MouseDown);
-            this.labelColla.MouseMove += new System.Windows.Forms.MouseEventHandler(this.labelColla_MouseMove);
             // 
             // labelOpen
             // 
@@ -219,7 +223,6 @@
             this.labelOpen.Size = new System.Drawing.Size(28, 25);
             this.labelOpen.TabIndex = 50;
             this.labelOpen.Text = "⧉";
-            this.labelOpen.Click += new System.EventHandler(this.labelOpen_Click);
             // 
             // labelClose
             // 
@@ -239,6 +242,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(999, 571);
             this.Controls.Add(this.panel2);

@@ -197,7 +197,6 @@
             this.labelOpen.Size = new System.Drawing.Size(28, 25);
             this.labelOpen.TabIndex = 50;
             this.labelOpen.Text = "⧉";
-            this.labelOpen.Click += new System.EventHandler(this.labelOpen_Click);
             // 
             // labelClose
             // 
@@ -218,6 +217,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1092, 450);
             this.Controls.Add(this.panel2);

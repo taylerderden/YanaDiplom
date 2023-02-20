@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -20,6 +21,9 @@ namespace Kursovaya_Gazz
             InitializeComponent();
 
             Password.UseSystemPasswordChar = false;
+
+            Login.MaxLength = 10;
+            Password.MaxLength = 10;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -50,6 +54,7 @@ namespace Kursovaya_Gazz
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
+            
 
             if (table.Rows.Count > 0) //поиск записей
             {
@@ -68,55 +73,37 @@ namespace Kursovaya_Gazz
 
                 if (table.Rows.Count > 0)
                 {
+                    DataTable tableID = new DataTable();
+
+                    MySqlDataAdapter adapterID = new MySqlDataAdapter();
+
+                    MySqlCommand commandID = new MySqlCommand("SELECT `Abonent_idAbonent` FROM `Authorization` WHERE `Authorization_Login` = @uL AND `Authorization_Password` = @uP", db.GetConnection()); //авторизация администратора
+                    commandID.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
+                    commandID.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
+
+                    adapterID.SelectCommand = commandID;
+                    adapterID.Fill(tableID);
+
+                    db.openConnection();
+
+                    if (tableID.Rows.Count > 0) //поиск записей
+                    {
+                        string id = commandID.ExecuteScalar().ToString();   // извлекаем id
+                        Global.GlobalVar = id;
+                    }
+                    else
+                        MessageBox.Show("Failed!"); //иначе ошибка
+
+                    db.closeConnection();
+
                     this.Hide();
                     UserForm userForm = new UserForm(); //если успешна то открытие формы для админа
                     userForm.Show();
                 }
                 else
-                    MessageBox.Show("Failed!"); //иначе ошибка
+                    MessageBox.Show("Failed!"); //иначе ошибкаЫ
+
             }
-        }
-
-        private void labelID_Click(object sender, EventArgs e)
-        {
-            String loginUser = Login.Text; // запись логина
-            String passUser = Password.Text; // запись пароля
-
-            if (Login.Text == "")
-            {
-                MessageBox.Show("Введите логин!");
-                return;
-            }
-            if (Password.Text == "")
-            {
-                MessageBox.Show("Введите пароль!");
-                return;
-            }
-
-            DataBase db = new DataBase();
-
-            DataTable table = new DataTable();
-
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-            MySqlCommand commandID = new MySqlCommand("SELECT `Abonent_idAbonent` FROM `Authorization` WHERE `Authorization_Login` = @uL AND `Authorization_Password` = @uP", db.GetConnection()); //авторизация администратора
-            commandID.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
-            commandID.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
-
-            adapter.SelectCommand = commandID;
-            adapter.Fill(table);
-
-            db.openConnection();
-
-            if (table.Rows.Count > 0) //поиск записей
-            {
-                string id = commandID.ExecuteScalar().ToString();   // извлекаем id
-                labelID.Text = "ID:" + ' ' + id;
-            }
-            else
-                MessageBox.Show("Failed!"); //иначе ошибка
-
-            db.closeConnection();
         }
 
         private void labelPass_Click(object sender, EventArgs e)
@@ -145,18 +132,7 @@ namespace Kursovaya_Gazz
 
         private void labelOpen_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
-            {
-                this.TopMost = true;
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.TopMost = true;
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Normal;
-            }
+
         }
 
         private void labelColla_Click(object sender, EventArgs e)

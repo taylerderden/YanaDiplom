@@ -97,6 +97,9 @@ namespace Kursovaya_Gazz
             dataGridView1.Columns[5].HeaderText = "Проживающие";
             dataGridView1.Columns[6].HeaderText = "код_Тарифа";
             dataGridView1.Columns[7].HeaderText = "код_Льготы";
+
+             
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -109,14 +112,21 @@ namespace Kursovaya_Gazz
 
                     if (task == "Delete")
                     {
-                        if (MessageBox.Show("Удалить эту строку?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        try
                         {
-                            int rowIndex = e.RowIndex;
+                            if(MessageBox.Show("Удалить эту строку?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                                int rowIndex = e.RowIndex;
 
-                            dataGridView1.Rows.RemoveAt(rowIndex);
-                            dataSet.Tables["Abonent"].Rows[rowIndex].Delete();
+                                dataGridView1.Rows.RemoveAt(rowIndex);
+                                dataSet.Tables["Abonent"].Rows[rowIndex].Delete();
 
-                            adapter.Update(dataSet, "Abonent");
+                                adapter.Update(dataSet, "Abonent");
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Удалите данные из дочерних таблиц!");
                         }
                     }
                     else if (task == "Insert")
@@ -233,6 +243,8 @@ namespace Kursovaya_Gazz
                 if (textBox != null)
                 {
                     textBox.KeyPress += new KeyPressEventHandler(Column_KeyPress);
+
+
                 }
             }
 
@@ -242,13 +254,33 @@ namespace Kursovaya_Gazz
                 if (textBox != null)
                 {
                     textBox.KeyPress += new KeyPressEventHandler(Column_KeyPress);
+
+                    textBox.MaxLength = 1;
+                }
+            }
+            if (dataGridView1.CurrentCell.ColumnIndex == 7)         //на месте _7_ ставим индекс колонки который валидируем
+            {
+                TextBox textBox = e.Control as TextBox;
+                if (textBox != null)
+                {
+                    textBox.KeyPress += new KeyPressEventHandler(Column_KeyPress1);
+
+                    textBox.MaxLength = 1;
                 }
             }
         }
 
-        private void Column_KeyPress(object sender, KeyPressEventArgs e)        //метод на проверку можно ли в ячейку писать цифру(букву)
+        private void Column_KeyPress(object sender, KeyPressEventArgs e)        //метод на проверку можно ли в ячейку писать цифру(1-5)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            if ((e.KeyChar <= 48 || e.KeyChar >= 54) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Column_KeyPress1(object sender, KeyPressEventArgs e)        //метод на проверку можно ли в ячейку писать цифру(1-3)
+        {
+            if ((e.KeyChar <= 48 || e.KeyChar >= 52) && e.KeyChar != 8)
             {
                 e.Handled = true;
             }
@@ -266,18 +298,7 @@ namespace Kursovaya_Gazz
 
         private void labelOpen_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
-            {
-                this.TopMost = true;
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.TopMost = true;
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Normal;
-            }
+
         }
 
         private void labelColla_Click(object sender, EventArgs e)

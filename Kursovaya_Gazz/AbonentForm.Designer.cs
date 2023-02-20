@@ -30,13 +30,13 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.labelUpdate = new System.Windows.Forms.Label();
             this.labelColla = new System.Windows.Forms.Label();
             this.labelOpen = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
-            this.labelName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -76,12 +76,23 @@
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             // 
+            // labelName
+            // 
+            this.labelName.AutoSize = true;
+            this.labelName.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelName.Location = new System.Drawing.Point(14, 9);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(100, 27);
+            this.labelName.TabIndex = 55;
+            this.labelName.Text = "Абонент";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(466, 12);
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(466, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 18);
+            this.label1.Size = new System.Drawing.Size(33, 23);
             this.label1.TabIndex = 54;
             this.label1.Text = "🔍";
             // 
@@ -96,6 +107,7 @@
             // labelUpdate
             // 
             this.labelUpdate.AutoSize = true;
+            this.labelUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelUpdate.ForeColor = System.Drawing.Color.Black;
             this.labelUpdate.Location = new System.Drawing.Point(155, 5);
@@ -133,7 +145,6 @@
             this.labelOpen.Size = new System.Drawing.Size(28, 25);
             this.labelOpen.TabIndex = 50;
             this.labelOpen.Text = "⧉";
-            this.labelOpen.Click += new System.EventHandler(this.labelOpen_Click);
             // 
             // labelClose
             // 
@@ -149,21 +160,12 @@
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
             // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelName.Location = new System.Drawing.Point(14, 9);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(100, 27);
-            this.labelName.TabIndex = 55;
-            this.labelName.Text = "Абонент";
-            // 
             // AbonentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1284, 507);
             this.Controls.Add(this.panel2);

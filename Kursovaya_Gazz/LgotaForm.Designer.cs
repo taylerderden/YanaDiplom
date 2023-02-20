@@ -64,6 +64,7 @@
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Location = new System.Drawing.Point(840, 497);
@@ -77,6 +78,7 @@
             // btnDel
             // 
             this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.btnDel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDel.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
             this.btnDel.Location = new System.Drawing.Point(840, 444);
@@ -90,6 +92,7 @@
             // btnUpd
             // 
             this.btnUpd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.btnUpd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpd.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnUpd.ForeColor = System.Drawing.Color.White;
             this.btnUpd.Location = new System.Drawing.Point(840, 391);
@@ -103,6 +106,7 @@
             // btnIns
             // 
             this.btnIns.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.btnIns.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIns.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnIns.ForeColor = System.Drawing.Color.White;
             this.btnIns.Location = new System.Drawing.Point(840, 334);
@@ -116,30 +120,30 @@
             // labelKoeff
             // 
             this.labelKoeff.AutoSize = true;
-            this.labelKoeff.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
-            this.labelKoeff.Location = new System.Drawing.Point(576, 47);
+            this.labelKoeff.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelKoeff.Location = new System.Drawing.Point(462, 48);
             this.labelKoeff.Name = "labelKoeff";
-            this.labelKoeff.Size = new System.Drawing.Size(131, 23);
+            this.labelKoeff.Size = new System.Drawing.Size(155, 27);
             this.labelKoeff.TabIndex = 17;
             this.labelKoeff.Text = "Коэффициент";
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
-            this.labelName.Location = new System.Drawing.Point(304, 47);
+            this.labelName.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelName.Location = new System.Drawing.Point(239, 48);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(89, 23);
+            this.labelName.Size = new System.Drawing.Size(107, 27);
             this.labelName.TabIndex = 16;
             this.labelName.Text = "Название";
             // 
             // labelId
             // 
             this.labelId.AutoSize = true;
-            this.labelId.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
+            this.labelId.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelId.Location = new System.Drawing.Point(40, 48);
             this.labelId.Name = "labelId";
-            this.labelId.Size = new System.Drawing.Size(30, 23);
+            this.labelId.Size = new System.Drawing.Size(37, 27);
             this.labelId.TabIndex = 15;
             this.labelId.Text = "ID";
             // 
@@ -153,7 +157,7 @@
             // 
             // tBName
             // 
-            this.tBName.Location = new System.Drawing.Point(304, 93);
+            this.tBName.Location = new System.Drawing.Point(244, 93);
             this.tBName.Multiline = true;
             this.tBName.Name = "tBName";
             this.tBName.Size = new System.Drawing.Size(162, 34);
@@ -161,7 +165,7 @@
             // 
             // tBKoeff
             // 
-            this.tBKoeff.Location = new System.Drawing.Point(576, 93);
+            this.tBKoeff.Location = new System.Drawing.Point(467, 91);
             this.tBKoeff.Multiline = true;
             this.tBKoeff.Name = "tBKoeff";
             this.tBKoeff.Size = new System.Drawing.Size(162, 36);
@@ -219,7 +223,6 @@
             this.labelOpen.Size = new System.Drawing.Size(28, 25);
             this.labelOpen.TabIndex = 50;
             this.labelOpen.Text = "⧉";
-            this.labelOpen.Click += new System.EventHandler(this.labelOpen_Click);
             // 
             // labelClose
             // 
@@ -239,6 +242,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1051, 543);
             this.Controls.Add(this.panel2);

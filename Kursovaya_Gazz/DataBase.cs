@@ -12,15 +12,16 @@ namespace Kursovaya_Gazz
 {
     class DataBase
     {
-        MySqlConnection connection = new MySqlConnection("Server=cfif31.ru;User ID=ISPr23-35_RogozhnikovaYO;Password=ISPr23-35_RogozhnikovaYO;Character Set=utf8; Port=3306; DataBase=ISPr23-35_RogozhnikovaYO_uchet_gaza");
+        MySqlConnection connection = new MySqlConnection("Server=cfif31.ru;User ID=ISPr23-35_RogozhnikovaYO;Password=ISPr23-35_RogozhnikovaYO;Character Set=utf8; Port=3306;" 
+            + " DataBase=ISPr23-35_RogozhnikovaYO_uchet_gaza");
 
-        public void openConnection()
+        public void openConnection() // открытие подключения к БД
         {
             if (connection.State == System.Data.ConnectionState.Closed)
                 connection.Open();
         }
 
-        public void closeConnection()
+        public void closeConnection() // закрытие подключения к БД
         {
             if (connection.State == System.Data.ConnectionState.Open)
                 connection.Close();

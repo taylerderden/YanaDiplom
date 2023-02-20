@@ -51,7 +51,7 @@ namespace Kursovaya_Gazz
                 MySqlCommand commandPL = new MySqlCommand("SELECT (`Pokazanie_Calc` * `Tarif_Price`) * `Lgota_Koefficent` AS `Platezh` FROM `Pokazanie`, `Tarif`, `Lgota`, `Abonent`  WHERE `Abonent_FIO` = @AF and `idTarif` = @Tid and `idLgota` = @Lid and `Abonent_idAbonent` = @Aid and `Pokazanie_Data` = @PD;", db.GetConnection());
 
                 commandPL.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
-                commandPL.Parameters.Add("@PD", MySqlDbType.VarChar).Value = textBoxDate.Text;
+                commandPL.Parameters.Add("@PD", MySqlDbType.VarChar).Value = dateTimePicker1.Text;
                 commandPL.Parameters.Add("@Tid", MySqlDbType.VarChar).Value = Tarif;
                 commandPL.Parameters.Add("@Lid", MySqlDbType.VarChar).Value = Lgota;
                 commandPL.Parameters.Add("@Aid", MySqlDbType.VarChar).Value = Abonent;
@@ -108,18 +108,7 @@ namespace Kursovaya_Gazz
 
         private void labelOpen_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
-            {
-                this.TopMost = true;
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.TopMost = true;
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.WindowState = FormWindowState.Normal;
-            }
+
         }
 
         private void labelColla_Click(object sender, EventArgs e)
