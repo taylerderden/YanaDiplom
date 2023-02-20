@@ -347,5 +347,10 @@ namespace Kursovaya_Gazz
             dataGridView1.Columns[6].HeaderText = "код_Тарифа";
             dataGridView1.Columns[7].HeaderText = "код_Льготы";
         }
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
     }
 }

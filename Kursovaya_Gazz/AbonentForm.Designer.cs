@@ -55,6 +55,7 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_UserAddedRow);
             // 
@@ -113,7 +114,7 @@
             this.labelUpdate.Location = new System.Drawing.Point(155, 5);
             this.labelUpdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelUpdate.Name = "labelUpdate";
-            this.labelUpdate.Size = new System.Drawing.Size(36, 32);
+            this.labelUpdate.Size = new System.Drawing.Size(37, 32);
             this.labelUpdate.TabIndex = 52;
             this.labelUpdate.Text = "🗘";
             this.labelUpdate.MouseClick += new System.Windows.Forms.MouseEventHandler(this.labelUpdate_MouseClick);
@@ -155,7 +156,7 @@
             this.labelClose.Location = new System.Drawing.Point(1248, 11);
             this.labelClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(23, 22);
+            this.labelClose.Size = new System.Drawing.Size(25, 24);
             this.labelClose.TabIndex = 49;
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);

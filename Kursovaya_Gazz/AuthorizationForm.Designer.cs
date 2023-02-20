@@ -45,15 +45,13 @@
             this.labelColla = new System.Windows.Forms.Label();
             this.labelOpen = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelRegistration = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -65,7 +63,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(283, 346);
+            this.button1.Location = new System.Drawing.Point(279, 350);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(194, 33);
             this.button1.TabIndex = 0;
@@ -100,7 +98,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.label1.Location = new System.Drawing.Point(246, 175);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 18);
+            this.label1.Size = new System.Drawing.Size(51, 19);
             this.label1.TabIndex = 3;
             this.label1.Text = "Логин";
             // 
@@ -111,7 +109,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.label2.Location = new System.Drawing.Point(246, 256);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 18);
+            this.label2.Size = new System.Drawing.Size(58, 19);
             this.label2.TabIndex = 4;
             this.label2.Text = "Пароль";
             // 
@@ -240,27 +238,23 @@
             this.labelClose.Location = new System.Drawing.Point(721, 8);
             this.labelClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(23, 22);
+            this.labelClose.Size = new System.Drawing.Size(25, 24);
             this.labelClose.TabIndex = 49;
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
             // 
-            // dataGridView1
+            // labelRegistration
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(467, 356);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(10, 10);
-            this.dataGridView1.TabIndex = 49;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(408, 353);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(10, 22);
-            this.textBox1.TabIndex = 50;
+            this.labelRegistration.AutoSize = true;
+            this.labelRegistration.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelRegistration.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelRegistration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.labelRegistration.Location = new System.Drawing.Point(12, 386);
+            this.labelRegistration.Name = "labelRegistration";
+            this.labelRegistration.Size = new System.Drawing.Size(111, 19);
+            this.labelRegistration.TabIndex = 49;
+            this.labelRegistration.Text = "Нет аккаунта?";
+            this.labelRegistration.Click += new System.EventHandler(this.labelRegistration_Click);
             // 
             // AuthorizationForm
             // 
@@ -269,9 +263,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(752, 414);
+            this.Controls.Add(this.labelRegistration);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.labelPass);
             this.Controls.Add(this.pictureBox4);
@@ -295,7 +288,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,8 +311,7 @@
         private System.Windows.Forms.Label labelColla;
         private System.Windows.Forms.Label labelOpen;
         private System.Windows.Forms.Label labelClose;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelRegistration;
     }
 }
 

@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,7 +28,7 @@ namespace Kursovaya_Gazz
 
             command.Parameters.Add("@PP", MySqlDbType.VarChar).Value = tBPrevious.Text;
             command.Parameters.Add("@PC", MySqlDbType.VarChar).Value = tBCurrent.Text;
-            command.Parameters.Add("@PD", MySqlDbType.VarChar).Value = dateTimePicker1.Text;
+            command.Parameters.Add("@PD", MySqlDbType.VarChar).Value = tbDate.Text;
             command.Parameters.Add("@PSN", MySqlDbType.VarChar).Value = tBSchetchik.Text;
             command.Parameters.Add("@AA", MySqlDbType.VarChar).Value = tBid.Text;
 
@@ -36,12 +38,71 @@ namespace Kursovaya_Gazz
             else
                 MessageBox.Show("Ошибка!");
             
-            db.closeConnection();
+            db.closeConnection();           
         }
+        public static DateTime GetNetworkTime()  //получение времени из сети
+        {
+            const string ntpServer = "time.windows.com";
+            var ntpData = new byte[48];
+            ntpData[0] = 0x1B;
 
+            var addresses = Dns.GetHostEntry(ntpServer).AddressList;
+            var ipEndPoint = new IPEndPoint(addresses[0], 123);
+
+            using (var socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp))
+            {
+                socket.Connect(ipEndPoint);
+                socket.Send(ntpData);
+                socket.Receive(ntpData);
+                socket.Close();
+            }
+
+            var intPart = (ulong)ntpData[40] << 24 | (ulong)ntpData[41] << 16 | (ulong)ntpData[42] << 8 | ntpData[43];
+            var fractPart = (ulong)ntpData[44] << 24 | (ulong)ntpData[45] << 16 | (ulong)ntpData[46] << 8 | ntpData[47];
+
+            var milliseconds = (intPart * 1000) + ((fractPart * 1000) / 0x100000000L);
+            var networkDateTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds((long)milliseconds);
+
+            return networkDateTime.ToLocalTime();
+        }
         private void UserForm_Load(object sender, EventArgs e)
         {
-            tBid.Text = Global.GlobalVar;
+            //tBid.Text = Global.GlobalVar;
+
+            tbDate.Text = Convert.ToString(GetNetworkTime().ToShortDateString());
+
+            DataBase db = new DataBase();
+            DataTable tablePP = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand commandPP = new MySqlCommand("SELECT max(Pokazanie_Current) FROM Pokazanie WHERE Abonent_idAbonent = @ID", db.GetConnection());
+            commandPP.Parameters.Add("@ID", MySqlDbType.VarChar).Value = Global.GlobalVar;
+
+            adapter.SelectCommand = commandPP;
+            adapter.Fill(tablePP);
+
+            db.openConnection();
+            if (tablePP.Rows.Count > 0) //поиск записей
+            {
+                tBPrevious.Text = commandPP.ExecuteScalar().ToString();
+            }
+            db.closeConnection();
+
+            DataTable tableS = new DataTable();
+            MySqlDataAdapter adapterS = new MySqlDataAdapter();
+
+            MySqlCommand commandS = new MySqlCommand("SELECT Pokazanie_SchetchikNomer FROM Pokazanie WHERE Abonent_idAbonent = @ID", db.GetConnection());
+            commandS.Parameters.Add("@ID", MySqlDbType.VarChar).Value = Global.GlobalVar;
+
+            adapter.SelectCommand = commandS;
+            adapter.Fill(tableS);
+
+            db.openConnection();
+            if (tableS.Rows.Count > 0) //поиск записей
+            {
+                tBSchetchik.Text = commandS.ExecuteScalar().ToString();
+            }
+            db.closeConnection();
         }
 
         private void btnExit_Click(object sender, EventArgs e)

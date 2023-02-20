@@ -44,12 +44,13 @@
             this.labelOpen = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
             this.labelID = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.tbDate = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tBSchetchik
             // 
+            this.tBSchetchik.Enabled = false;
             this.tBSchetchik.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tBSchetchik.Location = new System.Drawing.Point(445, 300);
             this.tBSchetchik.Multiline = true;
@@ -68,6 +69,7 @@
             // 
             // tBPrevious
             // 
+            this.tBPrevious.Enabled = false;
             this.tBPrevious.Font = new System.Drawing.Font("Palatino Linotype", 16.2F);
             this.tBPrevious.Location = new System.Drawing.Point(104, 204);
             this.tBPrevious.Multiline = true;
@@ -95,7 +97,7 @@
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 10.8F);
             this.label1.Location = new System.Drawing.Point(100, 177);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(218, 24);
+            this.label1.Size = new System.Drawing.Size(232, 26);
             this.label1.TabIndex = 5;
             this.label1.Text = "Предыдущие показания ";
             // 
@@ -105,7 +107,7 @@
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 10.8F);
             this.label2.Location = new System.Drawing.Point(100, 269);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 24);
+            this.label2.Size = new System.Drawing.Size(53, 26);
             this.label2.TabIndex = 6;
             this.label2.Text = "Дата";
             // 
@@ -115,7 +117,7 @@
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 10.8F);
             this.label3.Location = new System.Drawing.Point(441, 177);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(197, 24);
+            this.label3.Size = new System.Drawing.Size(209, 26);
             this.label3.TabIndex = 7;
             this.label3.Text = "Последние показания ";
             // 
@@ -125,7 +127,7 @@
             this.label4.Font = new System.Drawing.Font("Palatino Linotype", 10.8F);
             this.label4.Location = new System.Drawing.Point(441, 269);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(144, 24);
+            this.label4.Size = new System.Drawing.Size(154, 26);
             this.label4.TabIndex = 8;
             this.label4.Text = "Номер счётчика";
             // 
@@ -216,7 +218,7 @@
             this.labelClose.Location = new System.Drawing.Point(772, 6);
             this.labelClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(23, 22);
+            this.labelClose.Size = new System.Drawing.Size(25, 24);
             this.labelClose.TabIndex = 49;
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
@@ -227,19 +229,19 @@
             this.labelID.Font = new System.Drawing.Font("Palatino Linotype", 10.8F);
             this.labelID.Location = new System.Drawing.Point(12, 389);
             this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(31, 24);
+            this.labelID.Size = new System.Drawing.Size(34, 26);
             this.labelID.TabIndex = 50;
             this.labelID.Text = "ID";
             // 
-            // dateTimePicker1
+            // tbDate
             // 
-            this.dateTimePicker1.CustomFormat = "dd.MM.yyyy";
-            this.dateTimePicker1.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(104, 301);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 44);
-            this.dateTimePicker1.TabIndex = 51;
+            this.tbDate.Enabled = false;
+            this.tbDate.Font = new System.Drawing.Font("Palatino Linotype", 16.2F);
+            this.tbDate.Location = new System.Drawing.Point(105, 300);
+            this.tbDate.Multiline = true;
+            this.tbDate.Name = "tbDate";
+            this.tbDate.Size = new System.Drawing.Size(234, 45);
+            this.tbDate.TabIndex = 51;
             // 
             // UserForm
             // 
@@ -248,7 +250,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.tbDate);
             this.Controls.Add(this.labelID);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.tBid);
@@ -291,6 +293,6 @@
         private System.Windows.Forms.Label labelOpen;
         private System.Windows.Forms.Label labelClose;
         private System.Windows.Forms.Label labelID;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox tbDate;
     }
 }

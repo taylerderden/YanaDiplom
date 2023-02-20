@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,11 +26,17 @@ namespace Kursovaya_Gazz
             Login.MaxLength = 10;
             Password.MaxLength = 10;
         }
+        private string GetHash(string input)    // хеширование
+        {
+            var md5 = MD5.Create();
+            var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
 
+            return Convert.ToBase64String(hash);
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            String loginUser = Login.Text;
-            String passUser = Password.Text;
+            String loginUser = GetHash(Login.Text);
+            String passUser = GetHash(Password.Text);
 
             if (Login.Text == "")
             {
@@ -48,7 +55,7 @@ namespace Kursovaya_Gazz
             
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            MySqlCommand command = new MySqlCommand("Select * from `Authorization` WHERE `Authorization_Login` = @uL AND `Authorization_Password` = @uP AND `Authorization_Category`= 'Admin'", db.GetConnection());
+            MySqlCommand command = new MySqlCommand("Select * from `Authorization` WHERE `Authorization_Login` = @uL AND `Authorization_Password` = @uP AND `Authorization_Category`= 'Admin' AND `Authorization_Verify` = '+'", db.GetConnection());
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
@@ -64,7 +71,7 @@ namespace Kursovaya_Gazz
             }
             else //иначе ищет запись пользователя 
             {
-                MySqlCommand commandUser = new MySqlCommand("SELECT * FROM `Authorization` WHERE `Authorization_Login` = @uL AND `Authorization_Password` = @uP", db.GetConnection()); //авторизация пользователя
+                MySqlCommand commandUser = new MySqlCommand("SELECT * FROM `Authorization` WHERE `Authorization_Login` = @uL AND `Authorization_Password` = @uP AND `Authorization_Verify` = '+'", db.GetConnection()); //авторизация пользователя
                 commandUser.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
                 commandUser.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
@@ -101,7 +108,7 @@ namespace Kursovaya_Gazz
                     userForm.Show();
                 }
                 else
-                    MessageBox.Show("Failed!"); //иначе ошибкаЫ
+                    MessageBox.Show("Вы не зарегистрированы!"); //иначе ошибкаЫ
 
             }
         }
@@ -154,6 +161,13 @@ namespace Kursovaya_Gazz
         private void panel2_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void labelRegistration_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegistrationForm rForm = new RegistrationForm(); //
+            rForm.Show();
         }
     }
 }
