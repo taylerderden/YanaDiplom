@@ -41,6 +41,7 @@
             this.labelColla = new System.Windows.Forms.Label();
             this.labelOpen = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
+            this.tSBtnPodtv = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -57,10 +58,11 @@
             this.tSBtnLgota,
             this.tSBtnPokazanie,
             this.tSBtnDolg,
-            this.toolStripBtnCalc});
+            this.toolStripBtnCalc,
+            this.tSBtnPodtv});
             this.toolStrip1.Location = new System.Drawing.Point(0, 29);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1091, 55);
+            this.toolStrip1.Size = new System.Drawing.Size(1105, 55);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -165,7 +167,7 @@
             this.panel2.Location = new System.Drawing.Point(0, -4);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1091, 36);
+            this.panel2.Size = new System.Drawing.Size(1105, 36);
             this.panel2.TabIndex = 50;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
@@ -177,7 +179,7 @@
             this.labelColla.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelColla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelColla.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelColla.Location = new System.Drawing.Point(994, 13);
+            this.labelColla.Location = new System.Drawing.Point(1010, 13);
             this.labelColla.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelColla.Name = "labelColla";
             this.labelColla.Size = new System.Drawing.Size(25, 20);
@@ -191,7 +193,7 @@
             this.labelOpen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelOpen.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelOpen.Location = new System.Drawing.Point(1027, 8);
+            this.labelOpen.Location = new System.Drawing.Point(1043, 8);
             this.labelOpen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelOpen.Name = "labelOpen";
             this.labelOpen.Size = new System.Drawing.Size(28, 25);
@@ -204,13 +206,26 @@
             this.labelClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelClose.Location = new System.Drawing.Point(1063, 11);
+            this.labelClose.Location = new System.Drawing.Point(1079, 11);
             this.labelClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelClose.Name = "labelClose";
             this.labelClose.Size = new System.Drawing.Size(23, 22);
             this.labelClose.TabIndex = 49;
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
+            // 
+            // tSBtnPodtv
+            // 
+            this.tSBtnPodtv.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tSBtnPodtv.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold);
+            this.tSBtnPodtv.ForeColor = System.Drawing.Color.Black;
+            this.tSBtnPodtv.Image = ((System.Drawing.Image)(resources.GetObject("tSBtnPodtv.Image")));
+            this.tSBtnPodtv.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBtnPodtv.Name = "tSBtnPodtv";
+            this.tSBtnPodtv.Size = new System.Drawing.Size(178, 52);
+            this.tSBtnPodtv.Text = "Верификация";
+            this.tSBtnPodtv.ToolTipText = "Верификация";
+            this.tSBtnPodtv.Click += new System.EventHandler(this.tSBtnPodtv_Click);
             // 
             // MainForm
             // 
@@ -219,7 +234,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
-            this.ClientSize = new System.Drawing.Size(1092, 450);
+            this.ClientSize = new System.Drawing.Size(1105, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.toolStrip1);
@@ -248,5 +263,6 @@
         private System.Windows.Forms.Label labelColla;
         private System.Windows.Forms.Label labelOpen;
         private System.Windows.Forms.Label labelClose;
+        private System.Windows.Forms.ToolStripButton tSBtnPodtv;
     }
 }

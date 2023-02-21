@@ -108,5 +108,11 @@ namespace Kursovaya_Gazz
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void tSBtnPodtv_Click(object sender, EventArgs e)
+        {
+            VerifForm verifForm = new VerifForm();
+            verifForm.Show();
+        }
     }
 }

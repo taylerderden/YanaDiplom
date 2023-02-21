@@ -59,7 +59,7 @@ namespace Kursovaya_Gazz
             this.labelSchet.AutoSize = true;
             this.labelSchet.Location = new System.Drawing.Point(8, 10);
             this.labelSchet.Name = "labelSchet";
-            this.labelSchet.Size = new System.Drawing.Size(156, 19);
+            this.labelSchet.Size = new System.Drawing.Size(143, 18);
             this.labelSchet.TabIndex = 1;
             this.labelSchet.Text = "Номер лицевого счета";
             // 
@@ -68,7 +68,7 @@ namespace Kursovaya_Gazz
             this.labelFIO.AutoSize = true;
             this.labelFIO.Location = new System.Drawing.Point(8, 60);
             this.labelFIO.Name = "labelFIO";
-            this.labelFIO.Size = new System.Drawing.Size(105, 19);
+            this.labelFIO.Size = new System.Drawing.Size(95, 18);
             this.labelFIO.TabIndex = 3;
             this.labelFIO.Text = "Фамилия И.О.";
             // 
@@ -84,7 +84,7 @@ namespace Kursovaya_Gazz
             this.labelAdress.AutoSize = true;
             this.labelAdress.Location = new System.Drawing.Point(8, 115);
             this.labelAdress.Name = "labelAdress";
-            this.labelAdress.Size = new System.Drawing.Size(48, 19);
+            this.labelAdress.Size = new System.Drawing.Size(46, 18);
             this.labelAdress.TabIndex = 5;
             this.labelAdress.Text = "Адрес";
             // 
@@ -100,7 +100,7 @@ namespace Kursovaya_Gazz
             this.labelSq.AutoSize = true;
             this.labelSq.Location = new System.Drawing.Point(8, 171);
             this.labelSq.Name = "labelSq";
-            this.labelSq.Size = new System.Drawing.Size(210, 19);
+            this.labelSq.Size = new System.Drawing.Size(194, 18);
             this.labelSq.TabIndex = 7;
             this.labelSq.Text = "Отапливаемая площадь (кв.м)";
             // 
@@ -116,7 +116,7 @@ namespace Kursovaya_Gazz
             this.labelPeople.AutoSize = true;
             this.labelPeople.Location = new System.Drawing.Point(8, 221);
             this.labelPeople.Name = "labelPeople";
-            this.labelPeople.Size = new System.Drawing.Size(190, 19);
+            this.labelPeople.Size = new System.Drawing.Size(172, 18);
             this.labelPeople.TabIndex = 9;
             this.labelPeople.Text = "Количество проживающих";
             // 
@@ -176,7 +176,7 @@ namespace Kursovaya_Gazz
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(282, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 19);
+            this.label1.Size = new System.Drawing.Size(49, 18);
             this.label1.TabIndex = 13;
             this.label1.Text = "Тариф";
             // 
@@ -185,7 +185,7 @@ namespace Kursovaya_Gazz
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(282, 108);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 19);
+            this.label2.Size = new System.Drawing.Size(50, 18);
             this.label2.TabIndex = 14;
             this.label2.Text = "Льгота";
             // 
