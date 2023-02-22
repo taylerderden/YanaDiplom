@@ -98,7 +98,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.label1.Location = new System.Drawing.Point(246, 175);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 19);
+            this.label1.Size = new System.Drawing.Size(47, 18);
             this.label1.TabIndex = 3;
             this.label1.Text = "Логин";
             // 
@@ -109,7 +109,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.label2.Location = new System.Drawing.Point(246, 256);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 19);
+            this.label2.Size = new System.Drawing.Size(54, 18);
             this.label2.TabIndex = 4;
             this.label2.Text = "Пароль";
             // 
@@ -238,7 +238,7 @@
             this.labelClose.Location = new System.Drawing.Point(721, 8);
             this.labelClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(25, 24);
+            this.labelClose.Size = new System.Drawing.Size(23, 22);
             this.labelClose.TabIndex = 49;
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
@@ -249,9 +249,9 @@
             this.labelRegistration.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelRegistration.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelRegistration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
-            this.labelRegistration.Location = new System.Drawing.Point(12, 386);
+            this.labelRegistration.Location = new System.Drawing.Point(326, 387);
             this.labelRegistration.Name = "labelRegistration";
-            this.labelRegistration.Size = new System.Drawing.Size(111, 19);
+            this.labelRegistration.Size = new System.Drawing.Size(101, 18);
             this.labelRegistration.TabIndex = 49;
             this.labelRegistration.Text = "Нет аккаунта?";
             this.labelRegistration.Click += new System.EventHandler(this.labelRegistration_Click);

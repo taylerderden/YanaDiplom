@@ -36,6 +36,60 @@ namespace Kursovaya_Gazz
             dGVTarif.Columns[0].HeaderText = "код_Тарифа";
             dGVTarif.Columns[1].HeaderText = "Название_Тарифа";
             dGVTarif.Columns[2].HeaderText = "Прайс_Тарифа";
+
+            tBID.Text = "ID";                //подсказка
+            tBID.ForeColor = Color.Purple;
+
+            tBName.Text = "Название";                //подсказка
+            tBName.ForeColor = Color.Purple;
+
+            tBPrice.Text = "Стоимость";                //подсказка
+            tBPrice.ForeColor = Color.Purple;
+        }
+
+        private void tbID_Enter(object sender, EventArgs e)//происходит когда элемент стает активным
+        {
+            tBID.Text = null;
+            tBID.ForeColor = Color.Black;
+        }
+
+        private void tbName_Enter(object sender, EventArgs e)//происходит когда элемент стает активным
+        {
+            tBName.Text = null;
+            tBName.ForeColor = Color.Black;
+        }
+
+        private void tbPrice_Enter(object sender, EventArgs e)//происходит когда элемент стает активным
+        {
+            tBPrice.Text = null;
+            tBPrice.ForeColor = Color.Black;
+        }
+
+        private void tbID_Leave(object sender, EventArgs e) // происходит когда элемент перестаёт быть активным
+        {
+            if (tBID.Text == "")
+            {
+                tBID.Text = "ID";
+                tBID.ForeColor = Color.Purple;
+            }
+        }
+
+        private void tbName_Leave(object sender, EventArgs e) //происходит когда элемент перестаёт быть активным
+        {
+            if (tBName.Text == "")
+            {
+                tBName.Text = "Название";
+                tBName.ForeColor = Color.Purple;
+            }
+        }
+
+        private void tbPrice_Leave(object sender, EventArgs e) //происходит когда элемент перестаёт быть активным
+        {
+            if (tBPrice.Text == "")
+            {
+                tBPrice.Text = "Стоимость";
+                tBPrice.ForeColor = Color.Purple;
+            }
         }
 
         private void btnIns_Click(object sender, EventArgs e)
@@ -196,30 +250,7 @@ namespace Kursovaya_Gazz
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (tBID.Text != "" || tBName.Text != "" || tBPrice.Text != "")
-            {
-                DataBase db = new DataBase();
-
-                DataTable table = new DataTable();
-
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-                MySqlCommand command = new MySqlCommand("SELECT * FROM Tarif WHERE `idTarif` = @ID OR`Tarif_Name`= @Name OR `Tarif_Price`= @Price;", db.GetConnection());
-                command.Parameters.Add("@Name", MySqlDbType.VarChar).Value = tBName.Text;
-                command.Parameters.Add("@Price", MySqlDbType.VarChar).Value = tBPrice.Text;
-                command.Parameters.Add("@ID", MySqlDbType.VarChar).Value = tBID.Text;
-
-                adapter.SelectCommand = command;
-                adapter.Fill(table);
-
-                dGVTarif.DataSource = table;
-
-                dGVTarif.Columns[0].HeaderText = "код_Тарифа";
-                dGVTarif.Columns[1].HeaderText = "Название_Тарифа";
-                dGVTarif.Columns[2].HeaderText = "Прайс_Тарифа";
-            }
-            else
-                MessageBox.Show("Введите данные для поиска!");
+           
         }
 
         private void labelClose_Click(object sender, EventArgs e)
@@ -251,6 +282,26 @@ namespace Kursovaya_Gazz
         private void panel2_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            DataBase db = new DataBase();
+
+            DataTable table = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand command = new MySqlCommand("SELECT * FROM Tarif WHERE CONCAT(`idTarif`, `Tarif_Name`, `Tarif_Price`)like'%" + textBoxSearch.Text + "%';", db.GetConnection());
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            dGVTarif.DataSource = table;
+
+            dGVTarif.Columns[0].HeaderText = "код_Тарифа";
+            dGVTarif.Columns[1].HeaderText = "Название_Тарифа";
+            dGVTarif.Columns[2].HeaderText = "Прайс_Тарифа";
         }
     }
     }

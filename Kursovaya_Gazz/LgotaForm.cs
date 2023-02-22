@@ -36,6 +36,60 @@ namespace Kursovaya_Gazz
             dGVLgota.Columns[1].HeaderText = "Название_Льготы";
             dGVLgota.Columns[2].HeaderText = "Коэффициент_Льготы";
 
+            tBID.Text = "ID";                //подсказка
+            tBID.ForeColor = Color.Purple;
+
+            tBName.Text = "Название";                //подсказка
+            tBName.ForeColor = Color.Purple;
+
+            tBKoeff.Text = "Коэффициент";                //подсказка
+            tBKoeff.ForeColor = Color.Purple;
+
+        }
+
+        private void tbID_Enter(object sender, EventArgs e)//происходит когда элемент стает активным
+        {
+            tBID.Text = null;
+            tBID.ForeColor = Color.Black;
+        }
+
+        private void tbName_Enter(object sender, EventArgs e)//происходит когда элемент стает активным
+        {
+            tBName.Text = null;
+            tBName.ForeColor = Color.Black;
+        }
+
+        private void tBKoeff_Enter(object sender, EventArgs e)//происходит когда элемент стает активным
+        {
+            tBKoeff.Text = null;
+            tBKoeff.ForeColor = Color.Black;
+        }
+
+        private void tbID_Leave(object sender, EventArgs e) // происходит когда элемент перестаёт быть активным
+        {
+            if (tBID.Text == "")
+            {
+                tBID.Text = "ID";
+                tBID.ForeColor = Color.Purple;
+            }
+        }
+
+        private void tbName_Leave(object sender, EventArgs e) //происходит когда элемент перестаёт быть активным
+        {
+            if (tBName.Text == "")
+            {
+                tBName.Text = "Название";
+                tBName.ForeColor = Color.Purple;
+            }
+        }
+
+        private void tBKoeff_Leave(object sender, EventArgs e) //происходит когда элемент перестаёт быть активным
+        {
+            if (tBKoeff.Text == "")
+            {
+                tBKoeff.Text = "Коэффициент";
+                tBKoeff.ForeColor = Color.Purple;
+            }
         }
         public Boolean isDataExists()
         {
@@ -195,30 +249,27 @@ namespace Kursovaya_Gazz
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (tBID.Text != "" || tBName.Text != "" || tBKoeff.Text != "")
-            {
-                DataBase db = new DataBase();
+            
+        }
 
-                DataTable table = new DataTable();
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            DataBase db = new DataBase();
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable table = new DataTable();
 
-                MySqlCommand command = new MySqlCommand("SELECT * FROM Lgota WHERE `idLgota` = @ID OR`Lgota_Name`= @Name OR `Lgota_Koefficent`= @Koeff;", db.GetConnection());
-                command.Parameters.Add("@Name", MySqlDbType.VarChar).Value = tBName.Text;
-                command.Parameters.Add("@Koeff", MySqlDbType.VarChar).Value = tBKoeff.Text;
-                command.Parameters.Add("@ID", MySqlDbType.VarChar).Value = tBID.Text;
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-                adapter.SelectCommand = command;
-                adapter.Fill(table);
+            MySqlCommand command = new MySqlCommand("SELECT * FROM Lgota WHERE CONCAT(`idLgota`, `Lgota_Name`, `Lgota_Koefficent`)like'%" + textBoxSearch.Text + "%';", db.GetConnection());
 
-                dGVLgota.DataSource = table;
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
 
-                dGVLgota.Columns[0].HeaderText = "код_Льготы";
-                dGVLgota.Columns[1].HeaderText = "Название_Льготы";
-                dGVLgota.Columns[2].HeaderText = "Коэффициент_Льготы";
-            }
-            else
-                MessageBox.Show("Введите данные для поиска!");
+            dGVLgota.DataSource = table;
+
+            dGVLgota.Columns[0].HeaderText = "код_Льготы";
+            dGVLgota.Columns[1].HeaderText = "Название_Льготы";
+            dGVLgota.Columns[2].HeaderText = "Коэффициент_Льготы";
         }
 
         private void labelClose_Click(object sender, EventArgs e)

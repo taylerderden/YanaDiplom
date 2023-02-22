@@ -36,12 +36,12 @@
             this.tSBtnPokazanie = new System.Windows.Forms.ToolStripButton();
             this.tSBtnDolg = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnCalc = new System.Windows.Forms.ToolStripButton();
+            this.tSBtnPodtv = new System.Windows.Forms.ToolStripButton();
             this.btnExit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelColla = new System.Windows.Forms.Label();
             this.labelOpen = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
-            this.tSBtnPodtv = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -144,13 +144,26 @@
             this.toolStripBtnCalc.Text = "Расчёт";
             this.toolStripBtnCalc.Click += new System.EventHandler(this.toolStripBtnCalc_Click);
             // 
+            // tSBtnPodtv
+            // 
+            this.tSBtnPodtv.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tSBtnPodtv.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold);
+            this.tSBtnPodtv.ForeColor = System.Drawing.Color.Black;
+            this.tSBtnPodtv.Image = ((System.Drawing.Image)(resources.GetObject("tSBtnPodtv.Image")));
+            this.tSBtnPodtv.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSBtnPodtv.Name = "tSBtnPodtv";
+            this.tSBtnPodtv.Size = new System.Drawing.Size(178, 52);
+            this.tSBtnPodtv.Text = "Верификация";
+            this.tSBtnPodtv.ToolTipText = "Верификация";
+            this.tSBtnPodtv.Click += new System.EventHandler(this.tSBtnPodtv_Click);
+            // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnExit.ForeColor = System.Drawing.Color.Transparent;
-            this.btnExit.Location = new System.Drawing.Point(995, 415);
+            this.btnExit.Location = new System.Drawing.Point(1009, 415);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(84, 32);
             this.btnExit.TabIndex = 3;
@@ -213,19 +226,6 @@
             this.labelClose.TabIndex = 49;
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
-            // 
-            // tSBtnPodtv
-            // 
-            this.tSBtnPodtv.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tSBtnPodtv.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold);
-            this.tSBtnPodtv.ForeColor = System.Drawing.Color.Black;
-            this.tSBtnPodtv.Image = ((System.Drawing.Image)(resources.GetObject("tSBtnPodtv.Image")));
-            this.tSBtnPodtv.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tSBtnPodtv.Name = "tSBtnPodtv";
-            this.tSBtnPodtv.Size = new System.Drawing.Size(178, 52);
-            this.tSBtnPodtv.Text = "Верификация";
-            this.tSBtnPodtv.ToolTipText = "Верификация";
-            this.tSBtnPodtv.Click += new System.EventHandler(this.tSBtnPodtv_Click);
             // 
             // MainForm
             // 

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Kursovaya_Gazz
 {
@@ -37,7 +38,62 @@ namespace Kursovaya_Gazz
             dGVDolg.Columns[1].HeaderText = "Сумма_Долга";
             dGVDolg.Columns[2].HeaderText = "код_Абонента";
 
+            tBID.Text = "ID";                //подсказка
+            tBID.ForeColor = Color.Purple;
+
+            tBSumma.Text = "Сумма долга";                //подсказка
+            tBSumma.ForeColor = Color.Purple;
+
+            tBidAb.Text = "ID Абонента";                //подсказка
+            tBidAb.ForeColor = Color.Purple;
+
         }
+
+        private void tbID_Enter(object sender, EventArgs e)//происходит когда элемент стает активным
+        {
+            tBID.Text = null;
+            tBID.ForeColor = Color.Black;
+        }
+
+        private void tbSumma_Enter(object sender, EventArgs e)//происходит когда элемент стает активным
+        {
+            tBSumma.Text = null;
+            tBSumma.ForeColor = Color.Black;
+        }
+
+        private void tbidAb_Enter(object sender, EventArgs e)//происходит когда элемент стает активным
+        {
+            tBidAb.Text = null;
+            tBidAb.ForeColor = Color.Black;
+        }
+
+        private void tbID_Leave(object sender, EventArgs e) //происходит когда элемент перестаёт быть активным
+        {
+            if (tBID.Text == "")
+            {
+                tBID.Text = "ID";
+                tBID.ForeColor = Color.Purple;
+            }
+        }
+
+        private void tbSumma_Leave(object sender, EventArgs e) //происходит когда элемент перестаёт быть активным
+        {
+            if (tBSumma.Text == "")
+            {
+                tBSumma.Text = "Сумма долга";
+                tBSumma.ForeColor = Color.Purple;
+            }
+        }
+
+        private void tbidAb_Leave(object sender, EventArgs e) //происходит когда элемент перестаёт быть активным
+        {
+            if (tBidAb.Text == "")
+            {
+                tBidAb.Text = "ID Абонента";
+                tBidAb.ForeColor = Color.Purple;
+            }
+        }
+
 
         public Boolean isDataExists()
         {
@@ -195,30 +251,28 @@ namespace Kursovaya_Gazz
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (tBID.Text != "" || tBSumma.Text != "" || tBidAb.Text != "")
-            {
-                DataBase db = new DataBase();
+            
+            
+        }
 
-                DataTable table = new DataTable();
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            DataBase db = new DataBase();
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable table = new DataTable();
 
-                MySqlCommand command = new MySqlCommand("SELECT * FROM Dolg WHERE `idDolg` = @ID OR`Dolg_Summa`= @Summa OR `Abonent_idAbonent`= @idAb;", db.GetConnection());
-                command.Parameters.Add("@Summa", MySqlDbType.VarChar).Value = tBSumma.Text;
-                command.Parameters.Add("@idAb", MySqlDbType.VarChar).Value = tBidAb.Text;
-                command.Parameters.Add("@ID", MySqlDbType.VarChar).Value = tBID.Text;
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-                adapter.SelectCommand = command;
-                adapter.Fill(table);
+            MySqlCommand command = new MySqlCommand("SELECT * FROM Dolg WHERE CONCAT(`idDolg`, `Dolg_Summa`, `Abonent_idAbonent`)like'%" + textBoxSearch.Text + "%';", db.GetConnection());
 
-                dGVDolg.DataSource = table;
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
 
-                dGVDolg.Columns[0].HeaderText = "код_Долга";
-                dGVDolg.Columns[1].HeaderText = "Сумма_Долга";
-                dGVDolg.Columns[2].HeaderText = "код_Абонента";
-            }
-            else
-                MessageBox.Show("Введите данные для поиска!");
+            dGVDolg.DataSource = table;
+
+            dGVDolg.Columns[0].HeaderText = "код_Долга";
+            dGVDolg.Columns[1].HeaderText = "Сумма_Долга";
+            dGVDolg.Columns[2].HeaderText = "код_Абонента";
         }
 
         private void labelClose_Click(object sender, EventArgs e)
@@ -251,5 +305,6 @@ namespace Kursovaya_Gazz
         {
             lastPoint = new Point(e.X, e.Y);
         }
+
     }
 }

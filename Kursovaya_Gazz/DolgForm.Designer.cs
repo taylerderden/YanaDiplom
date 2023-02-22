@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             this.dGVDolg = new System.Windows.Forms.DataGridView();
-            this.labelidAb = new System.Windows.Forms.Label();
-            this.labelSumma = new System.Windows.Forms.Label();
-            this.labelId = new System.Windows.Forms.Label();
             this.tBID = new System.Windows.Forms.TextBox();
             this.tBSumma = new System.Windows.Forms.TextBox();
             this.tBidAb = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnUpd = new System.Windows.Forms.Button();
             this.btnIns = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelUpdate = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
             this.labelColla = new System.Windows.Forms.Label();
             this.labelOpen = new System.Windows.Forms.Label();
@@ -54,80 +53,45 @@
             this.dGVDolg.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dGVDolg.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dGVDolg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGVDolg.Location = new System.Drawing.Point(12, 188);
+            this.dGVDolg.Location = new System.Drawing.Point(30, 109);
             this.dGVDolg.Name = "dGVDolg";
             this.dGVDolg.RowHeadersWidth = 51;
             this.dGVDolg.RowTemplate.Height = 24;
             this.dGVDolg.Size = new System.Drawing.Size(677, 371);
             this.dGVDolg.TabIndex = 0;
             // 
-            // labelidAb
-            // 
-            this.labelidAb.AutoSize = true;
-            this.labelidAb.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold);
-            this.labelidAb.Location = new System.Drawing.Point(457, 65);
-            this.labelidAb.Name = "labelidAb";
-            this.labelidAb.Size = new System.Drawing.Size(127, 24);
-            this.labelidAb.TabIndex = 23;
-            this.labelidAb.Text = "ID Абонента";
-            // 
-            // labelSumma
-            // 
-            this.labelSumma.AutoSize = true;
-            this.labelSumma.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold);
-            this.labelSumma.Location = new System.Drawing.Point(248, 65);
-            this.labelSumma.Name = "labelSumma";
-            this.labelSumma.Size = new System.Drawing.Size(126, 24);
-            this.labelSumma.TabIndex = 22;
-            this.labelSumma.Text = "Сумма долга";
-            // 
-            // labelId
-            // 
-            this.labelId.AutoSize = true;
-            this.labelId.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold);
-            this.labelId.Location = new System.Drawing.Point(46, 65);
-            this.labelId.Name = "labelId";
-            this.labelId.Size = new System.Drawing.Size(32, 24);
-            this.labelId.TabIndex = 21;
-            this.labelId.Text = "ID";
-            // 
             // tBID
             // 
-            this.tBID.Location = new System.Drawing.Point(46, 110);
+            this.tBID.Location = new System.Drawing.Point(744, 175);
             this.tBID.Multiline = true;
             this.tBID.Name = "tBID";
-            this.tBID.Size = new System.Drawing.Size(162, 34);
+            this.tBID.Size = new System.Drawing.Size(220, 34);
             this.tBID.TabIndex = 20;
+            this.tBID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tBID.Enter += new System.EventHandler(this.tbID_Enter);
+            this.tBID.Leave += new System.EventHandler(this.tbID_Leave);
             // 
             // tBSumma
             // 
-            this.tBSumma.Location = new System.Drawing.Point(252, 110);
+            this.tBSumma.Location = new System.Drawing.Point(744, 215);
             this.tBSumma.Multiline = true;
             this.tBSumma.Name = "tBSumma";
-            this.tBSumma.Size = new System.Drawing.Size(162, 34);
+            this.tBSumma.Size = new System.Drawing.Size(220, 34);
             this.tBSumma.TabIndex = 19;
+            this.tBSumma.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tBSumma.Enter += new System.EventHandler(this.tbSumma_Enter);
+            this.tBSumma.Leave += new System.EventHandler(this.tbSumma_Leave);
             // 
             // tBidAb
             // 
-            this.tBidAb.Location = new System.Drawing.Point(461, 108);
+            this.tBidAb.Location = new System.Drawing.Point(744, 255);
             this.tBidAb.Multiline = true;
             this.tBidAb.Name = "tBidAb";
-            this.tBidAb.Size = new System.Drawing.Size(162, 36);
+            this.tBidAb.Size = new System.Drawing.Size(220, 36);
             this.tBidAb.TabIndex = 18;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(772, 525);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(162, 33);
-            this.btnSearch.TabIndex = 27;
-            this.btnSearch.Text = "Найти";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.tBidAb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tBidAb.Enter += new System.EventHandler(this.tbidAb_Enter);
+            this.tBidAb.Leave += new System.EventHandler(this.tbidAb_Leave);
             // 
             // btnDel
             // 
@@ -135,7 +99,7 @@
             this.btnDel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDel.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
-            this.btnDel.Location = new System.Drawing.Point(772, 472);
+            this.btnDel.Location = new System.Drawing.Point(772, 402);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(162, 34);
             this.btnDel.TabIndex = 26;
@@ -149,7 +113,7 @@
             this.btnUpd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpd.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnUpd.ForeColor = System.Drawing.Color.White;
-            this.btnUpd.Location = new System.Drawing.Point(772, 419);
+            this.btnUpd.Location = new System.Drawing.Point(772, 360);
             this.btnUpd.Name = "btnUpd";
             this.btnUpd.Size = new System.Drawing.Size(162, 36);
             this.btnUpd.TabIndex = 25;
@@ -163,7 +127,7 @@
             this.btnIns.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIns.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnIns.ForeColor = System.Drawing.Color.White;
-            this.btnIns.Location = new System.Drawing.Point(772, 362);
+            this.btnIns.Location = new System.Drawing.Point(772, 318);
             this.btnIns.Name = "btnIns";
             this.btnIns.Size = new System.Drawing.Size(162, 36);
             this.btnIns.TabIndex = 24;
@@ -174,6 +138,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.labelUpdate);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.textBoxSearch);
             this.panel2.Controls.Add(this.labelName);
             this.panel2.Controls.Add(this.labelColla);
             this.panel2.Controls.Add(this.labelOpen);
@@ -181,10 +148,42 @@
             this.panel2.Location = new System.Drawing.Point(-3, -1);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1002, 35);
+            this.panel2.Size = new System.Drawing.Size(1002, 38);
             this.panel2.TabIndex = 57;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
+            // 
+            // labelUpdate
+            // 
+            this.labelUpdate.AutoSize = true;
+            this.labelUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUpdate.ForeColor = System.Drawing.Color.Black;
+            this.labelUpdate.Location = new System.Drawing.Point(126, 3);
+            this.labelUpdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelUpdate.Name = "labelUpdate";
+            this.labelUpdate.Size = new System.Drawing.Size(36, 32);
+            this.labelUpdate.TabIndex = 59;
+            this.labelUpdate.Text = "🗘";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(407, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 23);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "🔍";
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(169, 6);
+            this.textBoxSearch.Multiline = true;
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(219, 27);
+            this.textBoxSearch.TabIndex = 57;
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             // 
             // labelName
             // 
@@ -246,13 +245,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(999, 571);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnUpd);
             this.Controls.Add(this.btnIns);
-            this.Controls.Add(this.labelidAb);
-            this.Controls.Add(this.labelSumma);
-            this.Controls.Add(this.labelId);
             this.Controls.Add(this.tBID);
             this.Controls.Add(this.tBSumma);
             this.Controls.Add(this.tBidAb);
@@ -263,6 +258,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DolgForm";
             this.Load += new System.EventHandler(this.DolgForm_Load);
+            this.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             ((System.ComponentModel.ISupportInitialize)(this.dGVDolg)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -274,13 +270,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dGVDolg;
-        private System.Windows.Forms.Label labelidAb;
-        private System.Windows.Forms.Label labelSumma;
-        private System.Windows.Forms.Label labelId;
         private System.Windows.Forms.TextBox tBID;
         private System.Windows.Forms.TextBox tBSumma;
         private System.Windows.Forms.TextBox tBidAb;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnUpd;
         private System.Windows.Forms.Button btnIns;
@@ -289,5 +281,8 @@
         private System.Windows.Forms.Label labelOpen;
         private System.Windows.Forms.Label labelClose;
         private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelUpdate;
     }
 }

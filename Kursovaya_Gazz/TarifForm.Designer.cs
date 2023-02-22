@@ -35,15 +35,14 @@
             this.btnIns = new System.Windows.Forms.Button();
             this.btnUpd = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.labelId = new System.Windows.Forms.Label();
-            this.labelName = new System.Windows.Forms.Label();
-            this.labelPrice = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labelColla = new System.Windows.Forms.Label();
             this.labelOpen = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
+            this.labelUpdate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dGVTarif)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -54,36 +53,45 @@
             this.dGVTarif.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dGVTarif.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dGVTarif.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGVTarif.Location = new System.Drawing.Point(12, 196);
+            this.dGVTarif.Location = new System.Drawing.Point(17, 116);
             this.dGVTarif.Name = "dGVTarif";
             this.dGVTarif.RowHeadersWidth = 51;
             this.dGVTarif.RowTemplate.Height = 24;
-            this.dGVTarif.Size = new System.Drawing.Size(779, 362);
+            this.dGVTarif.Size = new System.Drawing.Size(724, 362);
             this.dGVTarif.TabIndex = 0;
             // 
             // tBPrice
             // 
-            this.tBPrice.Location = new System.Drawing.Point(445, 130);
+            this.tBPrice.Location = new System.Drawing.Point(772, 258);
             this.tBPrice.Multiline = true;
             this.tBPrice.Name = "tBPrice";
-            this.tBPrice.Size = new System.Drawing.Size(161, 34);
+            this.tBPrice.Size = new System.Drawing.Size(195, 34);
             this.tBPrice.TabIndex = 1;
+            this.tBPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tBPrice.Enter += new System.EventHandler(this.tbPrice_Enter);
+            this.tBPrice.Leave += new System.EventHandler(this.tbPrice_Leave);
             // 
             // tBName
             // 
-            this.tBName.Location = new System.Drawing.Point(234, 130);
+            this.tBName.Location = new System.Drawing.Point(772, 218);
             this.tBName.Multiline = true;
             this.tBName.Name = "tBName";
-            this.tBName.Size = new System.Drawing.Size(162, 34);
+            this.tBName.Size = new System.Drawing.Size(195, 34);
             this.tBName.TabIndex = 2;
+            this.tBName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tBName.Enter += new System.EventHandler(this.tbName_Enter);
+            this.tBName.Leave += new System.EventHandler(this.tbName_Leave);
             // 
             // tBID
             // 
-            this.tBID.Location = new System.Drawing.Point(33, 130);
+            this.tBID.Location = new System.Drawing.Point(772, 178);
             this.tBID.Multiline = true;
             this.tBID.Name = "tBID";
-            this.tBID.Size = new System.Drawing.Size(162, 34);
+            this.tBID.Size = new System.Drawing.Size(195, 34);
             this.tBID.TabIndex = 3;
+            this.tBID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tBID.Enter += new System.EventHandler(this.tbID_Enter);
+            this.tBID.Leave += new System.EventHandler(this.tbID_Leave);
             // 
             // btnIns
             // 
@@ -91,7 +99,7 @@
             this.btnIns.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIns.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnIns.ForeColor = System.Drawing.Color.White;
-            this.btnIns.Location = new System.Drawing.Point(820, 353);
+            this.btnIns.Location = new System.Drawing.Point(792, 310);
             this.btnIns.Name = "btnIns";
             this.btnIns.Size = new System.Drawing.Size(162, 36);
             this.btnIns.TabIndex = 4;
@@ -105,7 +113,7 @@
             this.btnUpd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpd.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnUpd.ForeColor = System.Drawing.Color.White;
-            this.btnUpd.Location = new System.Drawing.Point(820, 410);
+            this.btnUpd.Location = new System.Drawing.Point(792, 352);
             this.btnUpd.Name = "btnUpd";
             this.btnUpd.Size = new System.Drawing.Size(162, 36);
             this.btnUpd.TabIndex = 5;
@@ -119,7 +127,7 @@
             this.btnDel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDel.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnDel.ForeColor = System.Drawing.Color.White;
-            this.btnDel.Location = new System.Drawing.Point(820, 463);
+            this.btnDel.Location = new System.Drawing.Point(792, 394);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(162, 34);
             this.btnDel.TabIndex = 6;
@@ -127,53 +135,12 @@
             this.btnDel.UseVisualStyleBackColor = false;
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(820, 516);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(162, 33);
-            this.btnSearch.TabIndex = 7;
-            this.btnSearch.Text = "Найти";
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // labelId
-            // 
-            this.labelId.AutoSize = true;
-            this.labelId.Font = new System.Drawing.Font("Palatino Linotype", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelId.Location = new System.Drawing.Point(28, 84);
-            this.labelId.Name = "labelId";
-            this.labelId.Size = new System.Drawing.Size(39, 29);
-            this.labelId.TabIndex = 8;
-            this.labelId.Text = "ID";
-            // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.Font = new System.Drawing.Font("Palatino Linotype", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelName.Location = new System.Drawing.Point(229, 84);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(117, 29);
-            this.labelName.TabIndex = 9;
-            this.labelName.Text = "Название";
-            // 
-            // labelPrice
-            // 
-            this.labelPrice.AutoSize = true;
-            this.labelPrice.Font = new System.Drawing.Font("Palatino Linotype", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelPrice.Location = new System.Drawing.Point(440, 84);
-            this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(136, 29);
-            this.labelPrice.TabIndex = 10;
-            this.labelPrice.Text = "Стоимость";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.labelUpdate);
+            this.panel2.Controls.Add(this.textBoxSearch);
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.labelColla);
             this.panel2.Controls.Add(this.labelOpen);
@@ -181,10 +148,29 @@
             this.panel2.Location = new System.Drawing.Point(-1, -2);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1003, 36);
+            this.panel2.Size = new System.Drawing.Size(1003, 42);
             this.panel2.TabIndex = 56;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(186, 7);
+            this.textBoxSearch.Multiline = true;
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(219, 27);
+            this.textBoxSearch.TabIndex = 58;
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(411, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 23);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "🔍";
             // 
             // label1
             // 
@@ -238,6 +224,19 @@
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
             // 
+            // labelUpdate
+            // 
+            this.labelUpdate.AutoSize = true;
+            this.labelUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUpdate.ForeColor = System.Drawing.Color.Black;
+            this.labelUpdate.Location = new System.Drawing.Point(143, 5);
+            this.labelUpdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelUpdate.Name = "labelUpdate";
+            this.labelUpdate.Size = new System.Drawing.Size(36, 32);
+            this.labelUpdate.TabIndex = 60;
+            this.labelUpdate.Text = "🗘";
+            // 
             // TarifForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -246,10 +245,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1003, 572);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.labelPrice);
-            this.Controls.Add(this.labelName);
-            this.Controls.Add(this.labelId);
-            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnUpd);
             this.Controls.Add(this.btnIns);
@@ -280,14 +275,13 @@
         private System.Windows.Forms.Button btnIns;
         private System.Windows.Forms.Button btnUpd;
         private System.Windows.Forms.Button btnDel;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Label labelId;
-        private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labelColla;
         private System.Windows.Forms.Label labelOpen;
         private System.Windows.Forms.Label labelClose;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Label labelUpdate;
     }
 }

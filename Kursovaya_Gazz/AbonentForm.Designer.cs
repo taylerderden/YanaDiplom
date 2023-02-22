@@ -51,7 +51,7 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1284, 469);
+            this.dataGridView1.Size = new System.Drawing.Size(1288, 469);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -72,7 +72,7 @@
             this.panel2.Location = new System.Drawing.Point(-2, -1);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1286, 43);
+            this.panel2.Size = new System.Drawing.Size(1290, 43);
             this.panel2.TabIndex = 55;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
@@ -114,7 +114,7 @@
             this.labelUpdate.Location = new System.Drawing.Point(155, 5);
             this.labelUpdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelUpdate.Name = "labelUpdate";
-            this.labelUpdate.Size = new System.Drawing.Size(37, 32);
+            this.labelUpdate.Size = new System.Drawing.Size(36, 32);
             this.labelUpdate.TabIndex = 52;
             this.labelUpdate.Text = "🗘";
             this.labelUpdate.MouseClick += new System.Windows.Forms.MouseEventHandler(this.labelUpdate_MouseClick);
@@ -156,7 +156,7 @@
             this.labelClose.Location = new System.Drawing.Point(1248, 11);
             this.labelClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(25, 24);
+            this.labelClose.Size = new System.Drawing.Size(23, 22);
             this.labelClose.TabIndex = 49;
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);

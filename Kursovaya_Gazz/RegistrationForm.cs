@@ -42,6 +42,8 @@ namespace Kursovaya_Gazz
                 return false;
         }
         String Lgota, Tarif;
+
+
         private void btnCreateAbonent_Click(object sender, EventArgs e)
         {
             if (tbFIO.Text == "") //проверка заполненности

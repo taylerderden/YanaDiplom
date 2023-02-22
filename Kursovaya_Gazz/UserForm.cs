@@ -24,13 +24,12 @@ namespace Kursovaya_Gazz
         private void button1_Click(object sender, EventArgs e)
         {
             DataBase db = new DataBase();
-            MySqlCommand command = new MySqlCommand("INSERT INTO `Pokazanie` (`Pokazanie_Previous`,`Pokazanie_Current`, `Pokazanie_Data`, `Pokazanie_SchetchikNomer`, `Abonent_idAbonent`, `Pokazanie_Calc`) VALUES(@PP, @PC, @PD, @PSN, @AA, (`Pokazanie_Current`-`Pokazanie_Previous`)); ", db.GetConnection());
+            MySqlCommand command = new MySqlCommand("INSERT INTO `Pokazanie` (`Pokazanie_Previous`,`Pokazanie_Current`, `Pokazanie_Data`, `Pokazanie_SchetchikNomer`, `Pokazanie_Calc`) VALUES(@PP, @PC, @PD, @PSN, (`Pokazanie_Current`-`Pokazanie_Previous`)); ", db.GetConnection());
 
-            command.Parameters.Add("@PP", MySqlDbType.VarChar).Value = tBPrevious.Text;
+            command.Parameters.Add("@PP", MySqlDbType.VarChar).Value = labPrevious.Text;
             command.Parameters.Add("@PC", MySqlDbType.VarChar).Value = tBCurrent.Text;
-            command.Parameters.Add("@PD", MySqlDbType.VarChar).Value = tbDate.Text;
-            command.Parameters.Add("@PSN", MySqlDbType.VarChar).Value = tBSchetchik.Text;
-            command.Parameters.Add("@AA", MySqlDbType.VarChar).Value = tBid.Text;
+            command.Parameters.Add("@PD", MySqlDbType.VarChar).Value = labDate.Text;
+            command.Parameters.Add("@PSN", MySqlDbType.VarChar).Value = labSchetchik.Text;
 
             db.openConnection();
             if (command.ExecuteNonQuery() == 1)
@@ -69,7 +68,7 @@ namespace Kursovaya_Gazz
         {
             //tBid.Text = Global.GlobalVar;
 
-            tbDate.Text = Convert.ToString(GetNetworkTime().ToShortDateString());
+            labDate.Text = Convert.ToString(GetNetworkTime().ToShortDateString());
 
             DataBase db = new DataBase();
             DataTable tablePP = new DataTable();
@@ -84,7 +83,7 @@ namespace Kursovaya_Gazz
             db.openConnection();
             if (tablePP.Rows.Count > 0) //поиск записей
             {
-                tBPrevious.Text = commandPP.ExecuteScalar().ToString();
+                labPrevious.Text = commandPP.ExecuteScalar().ToString();
             }
             db.closeConnection();
 
@@ -100,7 +99,7 @@ namespace Kursovaya_Gazz
             db.openConnection();
             if (tableS.Rows.Count > 0) //поиск записей
             {
-                tBSchetchik.Text = commandS.ExecuteScalar().ToString();
+                labSchetchik.Text = commandS.ExecuteScalar().ToString();
             }
             db.closeConnection();
         }
@@ -143,6 +142,6 @@ namespace Kursovaya_Gazz
             lastPoint = new Point(e.X, e.Y);
         }
 
-        
+
     }
 }
