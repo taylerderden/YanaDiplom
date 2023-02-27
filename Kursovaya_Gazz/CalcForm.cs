@@ -9,7 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Word = Microsoft.Office.Interop.Word;
+using Microsoft.Reporting.WinForms;
+using QRCoder;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace Kursovaya_Gazz
 {
@@ -107,7 +110,12 @@ namespace Kursovaya_Gazz
                         textBoxSDolgom.Text = Convert.ToString(res);
                     }
                     else
-                        MessageBox.Show("Данные по долгу не найдены!"); //иначе ошибка                                             
+                    {
+                        textBoxDlg.Text = "0";
+                        textBoxSDolgom.Text = textBoxBezDolga.Text;
+                        MessageBox.Show("Данные по долгу не найдены!"); //иначе ошибка
+                    }    
+                                                                     
                 }
                 else
                     MessageBox.Show("Выбранная дата показаний не найдена, введите корректную дату!"); //иначе ошибка                              
@@ -148,54 +156,57 @@ namespace Kursovaya_Gazz
         {
             lastPoint = new Point(e.X, e.Y);
         }
-
-        private readonly string TemplateFileName = @"C:\Users\1\Desktop\primer.docx";
+     
         private void btnWord_Click(object sender, EventArgs e)
         {
-            var FIO = textBoxFIO.Text;
-            var Date = textBoxDate.Text;
-            var BezD = textBoxBezDolga.Text;
-            var Dlg = textBoxDlg.Text;
-            var Sdlg = textBoxSDolgom.Text;
+            
+           /*ST00012|Name= ЗЛОБИН ДАНИИЛ СЕРГЕЕВИЧ|
+              PersonalAcc=40817810795010005796|
+              BankName=Газпромбанк|
+              BIC=046577903|
+              CorrespAcc=30101810200000000903|
+              KPP=000001001|
+              PayeelNN=666001947022|
+              Purpose=За газ|Sum=1                               
+            */           
 
-            var wordApp = new Word.Application();
-            wordApp.Visible = false;
+            ReportParameterCollection reportParameters = new ReportParameterCollection();
+            reportParameters.Add(new ReportParameter("pFIO", textBoxFIO.Text));
+            reportParameters.Add(new ReportParameter("pDatePokazanie", textBoxDate.Text));
+            reportParameters.Add(new ReportParameter("pBezDolga", textBoxBezDolga.Text));
+            reportParameters.Add(new ReportParameter("pDolg", textBoxDlg.Text));
+            reportParameters.Add(new ReportParameter("pItogo", textBoxSDolgom.Text));
+            reportParameters.Add(new ReportParameter("pItogo", textBoxSDolgom.Text));            
 
-            try
+            KvitokForm kvitokForm = new KvitokForm();
+            double itogo = Convert.ToDouble(textBoxSDolgom.Text) * 100;
+            string qr = $"ST00012|Name= РОГОЖНИКОВА ЯНА ОЛЕГОВНА|PersonalAcc = 40817810795010005796 |BankName = Газпромбанк |BIC = 046577903 |CorrespAcc = 30101810200000000903 |KPP = 000001001 |PayeelNN = 666001947022 |Purpose = За газ | Sum = {itogo}";
+            QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
+            QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(qr, QRCodeGenerator.ECCLevel.Q);
+            QRCode qRCode = new QRCode(qRCodeData);
+            Bitmap bmp = qRCode.GetGraphic(50);
+            using (MemoryStream ms = new MemoryStream())
             {
-                /*
-                 *  ST00012|Name= ЗЛОБИН ДАНИИЛ СЕРГЕЕВИЧ|
-                    PersonalAcc=40817810795010005796|
-                    BankName=Газпромбанк|
-                    BIC=046577903|
-                    CorrespAcc=30101810200000000903|
-                    KPP=000001001|
-                    PayeelNN=666001947022|
-                    Purpose=За газ|Sum=1
-                 */
-                var wordDocument = wordApp.Documents.Open(TemplateFileName);
-                ReplaceWordStub("{FIO}", FIO, wordDocument);
-                ReplaceWordStub("{Date}", Date, wordDocument);
-                ReplaceWordStub("{BezD}", BezD, wordDocument);
-                ReplaceWordStub("{Dlg}", Dlg, wordDocument);
-                ReplaceWordStub("{Sdlg}", Sdlg, wordDocument);
-                
-                wordDocument.SaveAs(@"C:\Users\1\Desktop\kvitok.docx");
-                wordApp.Visible = true;
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка экспорта в Word!");
-            }
-        }
+                bmp.Save(ms, ImageFormat.Bmp);
+                DataQR dataQR = new DataQR();
+                DataQR.QRCodeRow qRCodeRow = dataQR.QRCode.NewQRCodeRow();
+                qRCodeRow.Image = ms.ToArray();
+                dataQR.QRCode.AddQRCodeRow(qRCodeRow);
 
-        private void ReplaceWordStub(string stubToReplace, string text, Word.Document wordDocument)
-        {
-            var range = wordDocument.Content;
-            range.Find.ClearFormatting();
-            range.Find.Execute(FindText: stubToReplace, ReplaceWith: text);
-        }
+                ReportDataSource reportDataSource = new ReportDataSource();
+                reportDataSource.Name = "DataQR";
+                reportDataSource.Value = dataQR.QRCode;
 
+                kvitokForm.reportViewer1.LocalReport.DataSources.Clear();
+                kvitokForm.reportViewer1.LocalReport.DataSources.Add(reportDataSource);
+                kvitokForm.reportViewer1.RefreshReport();
+            }
+
+            kvitokForm.Show();
+            kvitokForm.reportViewer1.LocalReport.SetParameters(reportParameters);
+            kvitokForm.reportViewer1.RefreshReport();
+
+        }
         private void CalcForm_Load(object sender, EventArgs e)
         {
             dateTimePicker1.Value.ToShortDateString();

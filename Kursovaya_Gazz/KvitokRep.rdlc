@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataQR">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>83ca83db-0237-4c95-8513-906ca80e6853</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataQR">
+      <Query>
+        <DataSourceName>DataQR</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Image">
+          <DataField>Image</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>DataQR</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\1\source\repos\Kursovaya_GazzNew\Kursovaya_Gazz\DataQR.xsd</rd:SchemaPath>
+        <rd:TableName>QRCode</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -21,7 +52,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox3</rd:DefaultName>
             <Top>0.31017cm</Top>
-            <Left>0.43603cm</Left>
+            <Left>1.07103cm</Left>
             <Height>0.6cm</Height>
             <Width>1.103cm</Width>
             <Style>
@@ -50,7 +81,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox4</rd:DefaultName>
             <Top>0.31017cm</Top>
-            <Left>9.2202cm</Left>
+            <Left>8.25831cm</Left>
             <Height>0.6cm</Height>
             <Width>2.98683cm</Width>
             <ZIndex>1</ZIndex>
@@ -80,7 +111,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox5</rd:DefaultName>
             <Top>1.19917cm</Top>
-            <Left>0.43603cm</Left>
+            <Left>1.07103cm</Left>
             <Height>0.6cm</Height>
             <Width>3.135cm</Width>
             <ZIndex>2</ZIndex>
@@ -110,7 +141,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox6</rd:DefaultName>
             <Top>1.97556cm</Top>
-            <Left>0.43603cm</Left>
+            <Left>1.07103cm</Left>
             <Height>0.6cm</Height>
             <Width>3.135cm</Width>
             <ZIndex>3</ZIndex>
@@ -140,7 +171,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
             <Top>2.75194cm</Top>
-            <Left>0.43603cm</Left>
+            <Left>1.07103cm</Left>
             <Height>0.6cm</Height>
             <Width>3.135cm</Width>
             <ZIndex>4</ZIndex>
@@ -161,7 +192,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>[@pBezDolga]</Value>
+                    <Value>=Parameters!pBezDolga.Value</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -170,7 +201,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox8</rd:DefaultName>
             <Top>1.19917cm</Top>
-            <Left>3.74742cm</Left>
+            <Left>4.38242cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>5</ZIndex>
@@ -191,7 +222,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>[@pDolg]</Value>
+                    <Value>=Parameters!pDolg.Value</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -199,8 +230,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox9</rd:DefaultName>
-            <Top>1.94028cm</Top>
-            <Left>3.74742cm</Left>
+            <Top>1.97555cm</Top>
+            <Left>4.38242cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>6</ZIndex>
@@ -221,7 +252,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>[@pItogo]</Value>
+                    <Value>=Parameters!pItogo.Value</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -230,7 +261,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox10</rd:DefaultName>
             <Top>2.75194cm</Top>
-            <Left>3.74742cm</Left>
+            <Left>4.38242cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>7</ZIndex>
@@ -251,7 +282,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>[@pDatePokazanie]</Value>
+                    <Value>=Parameters!pDatePokazanie.Value</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -260,7 +291,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox11</rd:DefaultName>
             <Top>0.31017cm</Top>
-            <Left>12.38342cm</Left>
+            <Left>11.42153cm</Left>
             <Height>0.6cm</Height>
             <Width>3.87583cm</Width>
             <ZIndex>8</ZIndex>
@@ -281,7 +312,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>[@pFIO]</Value>
+                    <Value>=Parameters!pFIO.Value</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
@@ -290,7 +321,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox12</rd:DefaultName>
             <Top>0.31017cm</Top>
-            <Left>1.71542cm</Left>
+            <Left>2.35042cm</Left>
             <Height>0.6cm</Height>
             <Width>4.532cm</Width>
             <ZIndex>9</ZIndex>
@@ -304,8 +335,101 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Line Name="Line2">
+            <Left>1.07103cm</Left>
+            <Height>0cm</Height>
+            <Width>14.22633cm</Width>
+            <ZIndex>10</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Image Name="QRcode">
+            <Source>Database</Source>
+            <Value>=First(Fields!Image.Value, "DataQR")</Value>
+            <MIMEType>image/bmp</MIMEType>
+            <Sizing>Fit</Sizing>
+            <Top>2.92833cm</Top>
+            <Left>8.25831cm</Left>
+            <Height>6.17389cm</Height>
+            <Width>7.03905cm</Width>
+            <ZIndex>11</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Textbox Name="Textbox13">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>QR для оплаты:</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox13</rd:DefaultName>
+            <Top>1.97556cm</Top>
+            <Left>8.25831cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.43133cm</Width>
+            <ZIndex>12</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line3">
+            <Top>1.08656cm</Top>
+            <Left>1.07103cm</Left>
+            <Height>0cm</Height>
+            <Width>14.22633cm</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Line Name="Line4">
+            <Top>3.52833cm</Top>
+            <Left>1.07103cm</Left>
+            <Height>0cm</Height>
+            <Width>5.81139cm</Width>
+            <ZIndex>14</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Line Name="Line6">
+            <Top>2.75194cm</Top>
+            <Left>8.25831cm</Left>
+            <Height>0cm</Height>
+            <Width>7.03905cm</Width>
+            <ZIndex>15</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
         </ReportItems>
-        <Height>2in</Height>
+        <Height>3.65299in</Height>
         <Style />
       </Body>
       <Width>6.65128in</Width>
@@ -423,6 +547,18 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
+            <Line Name="Line1">
+              <Top>1.05833cm</Top>
+              <Left>1.07103cm</Left>
+              <Height>0cm</Height>
+              <Width>14.22633cm</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
           </ReportItems>
           <Style>
             <Border>
@@ -430,6 +566,28 @@
             </Border>
           </Style>
         </PageHeader>
+        <PageFooter>
+          <Height>2.54cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Line Name="Line5">
+              <Left>1.07103cm</Left>
+              <Height>0cm</Height>
+              <Width>14.22633cm</Width>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>
@@ -446,7 +604,7 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="pDatePokaznie">
+    <ReportParameter Name="pDatePokazanie">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -476,7 +634,7 @@
         <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>pDatePokaznie</ParameterName>
+          <ParameterName>pDatePokazanie</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>2</ColumnIndex>

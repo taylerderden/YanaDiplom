@@ -16,5 +16,10 @@ namespace Kursovaya_Gazz
         {
             InitializeComponent();
         }
+
+        private void KvitokForm_Load(object sender, EventArgs e)
+        {
+            this.reportViewer1.RefreshReport();
+        }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnWord = new System.Windows.Forms.Button();
+            this.btnReport = new System.Windows.Forms.Button();
             this.textBoxDate = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -55,7 +55,7 @@
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
-            this.panel1.Controls.Add(this.btnWord);
+            this.panel1.Controls.Add(this.btnReport);
             this.panel1.Controls.Add(this.textBoxDate);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.panel2);
@@ -74,21 +74,21 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 450);
+            this.panel1.Size = new System.Drawing.Size(800, 482);
             this.panel1.TabIndex = 30;
             // 
-            // btnWord
+            // btnReport
             // 
-            this.btnWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
-            this.btnWord.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnWord.ForeColor = System.Drawing.Color.White;
-            this.btnWord.Location = new System.Drawing.Point(300, 401);
-            this.btnWord.Name = "btnWord";
-            this.btnWord.Size = new System.Drawing.Size(191, 37);
-            this.btnWord.TabIndex = 66;
-            this.btnWord.Text = "Создать квитанцию";
-            this.btnWord.UseVisualStyleBackColor = false;
-            this.btnWord.Click += new System.EventHandler(this.btnWord_Click);
+            this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.btnReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReport.ForeColor = System.Drawing.Color.White;
+            this.btnReport.Location = new System.Drawing.Point(300, 401);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(191, 37);
+            this.btnReport.TabIndex = 66;
+            this.btnReport.Text = "Создать квитанцию";
+            this.btnReport.UseVisualStyleBackColor = false;
+            this.btnReport.Click += new System.EventHandler(this.btnWord_Click);
             // 
             // textBoxDate
             // 
@@ -171,7 +171,7 @@
             this.labelClose.Location = new System.Drawing.Point(772, 12);
             this.labelClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(25, 24);
+            this.labelClose.Size = new System.Drawing.Size(23, 22);
             this.labelClose.TabIndex = 49;
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
@@ -280,7 +280,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 482);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CalcForm";
@@ -314,6 +314,6 @@
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox textBoxDate;
-        private System.Windows.Forms.Button btnWord;
+        private System.Windows.Forms.Button btnReport;
     }
 }
