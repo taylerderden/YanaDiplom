@@ -36,13 +36,13 @@
             this.btnUpd = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelUpdate = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labelColla = new System.Windows.Forms.Label();
             this.labelOpen = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
-            this.labelUpdate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dGVTarif)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -153,6 +153,20 @@
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             // 
+            // labelUpdate
+            // 
+            this.labelUpdate.AutoSize = true;
+            this.labelUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelUpdate.ForeColor = System.Drawing.Color.Black;
+            this.labelUpdate.Location = new System.Drawing.Point(143, 5);
+            this.labelUpdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelUpdate.Name = "labelUpdate";
+            this.labelUpdate.Size = new System.Drawing.Size(37, 32);
+            this.labelUpdate.TabIndex = 60;
+            this.labelUpdate.Text = "🗘";
+            this.labelUpdate.Click += new System.EventHandler(this.labelUpdate_Click);
+            // 
             // textBoxSearch
             // 
             this.textBoxSearch.Location = new System.Drawing.Point(186, 7);
@@ -219,23 +233,10 @@
             this.labelClose.Location = new System.Drawing.Point(976, 10);
             this.labelClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(23, 22);
+            this.labelClose.Size = new System.Drawing.Size(25, 24);
             this.labelClose.TabIndex = 49;
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
-            // 
-            // labelUpdate
-            // 
-            this.labelUpdate.AutoSize = true;
-            this.labelUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelUpdate.ForeColor = System.Drawing.Color.Black;
-            this.labelUpdate.Location = new System.Drawing.Point(143, 5);
-            this.labelUpdate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelUpdate.Name = "labelUpdate";
-            this.labelUpdate.Size = new System.Drawing.Size(36, 32);
-            this.labelUpdate.TabIndex = 60;
-            this.labelUpdate.Text = "🗘";
             // 
             // TarifForm
             // 

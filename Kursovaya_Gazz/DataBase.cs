@@ -12,7 +12,7 @@ namespace Kursovaya_Gazz
 {
     class DataBase
     {
-        MySqlConnection connection = new MySqlConnection("Server=cfif31.ru;User ID=ISPr23-35_RogozhnikovaYO;Password=ISPr23-35_RogozhnikovaYO;Character Set=utf8; Port=3306;" 
+        MySqlConnection connection = new MySqlConnection("Server=cfif31.ru;User ID=ISPr23-35_RogozhnikovaYO;Password=ISPr23-35_RogozhnikovaYO; Port=3306;" 
             + " DataBase=ISPr23-35_RogozhnikovaYO_uchet_gaza");
 
         public void openConnection() // открытие подключения к БД

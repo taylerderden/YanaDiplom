@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnWord = new System.Windows.Forms.Button();
+            this.textBoxDate = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelName = new System.Windows.Forms.Label();
@@ -53,6 +55,8 @@
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
+            this.panel1.Controls.Add(this.btnWord);
+            this.panel1.Controls.Add(this.textBoxDate);
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label5);
@@ -73,6 +77,27 @@
             this.panel1.Size = new System.Drawing.Size(800, 450);
             this.panel1.TabIndex = 30;
             // 
+            // btnWord
+            // 
+            this.btnWord.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.btnWord.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnWord.ForeColor = System.Drawing.Color.White;
+            this.btnWord.Location = new System.Drawing.Point(300, 401);
+            this.btnWord.Name = "btnWord";
+            this.btnWord.Size = new System.Drawing.Size(191, 37);
+            this.btnWord.TabIndex = 66;
+            this.btnWord.Text = "Создать квитанцию";
+            this.btnWord.UseVisualStyleBackColor = false;
+            this.btnWord.Click += new System.EventHandler(this.btnWord_Click);
+            // 
+            // textBoxDate
+            // 
+            this.textBoxDate.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxDate.Location = new System.Drawing.Point(514, 182);
+            this.textBoxDate.Name = "textBoxDate";
+            this.textBoxDate.Size = new System.Drawing.Size(200, 34);
+            this.textBoxDate.TabIndex = 65;
+            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CustomFormat = "dd.MM.yyyy";
@@ -82,6 +107,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 34);
             this.dateTimePicker1.TabIndex = 64;
+            this.dateTimePicker1.Value = new System.DateTime(2023, 2, 25, 16, 47, 20, 0);
             // 
             // panel2
             // 
@@ -145,7 +171,7 @@
             this.labelClose.Location = new System.Drawing.Point(772, 12);
             this.labelClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(23, 22);
+            this.labelClose.Size = new System.Drawing.Size(25, 24);
             this.labelClose.TabIndex = 49;
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
@@ -154,7 +180,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(304, 242);
+            this.label5.Location = new System.Drawing.Point(322, 242);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(139, 27);
             this.label5.TabIndex = 62;
@@ -162,6 +188,7 @@
             // 
             // textBoxDlg
             // 
+            this.textBoxDlg.Enabled = false;
             this.textBoxDlg.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxDlg.Location = new System.Drawing.Point(309, 286);
             this.textBoxDlg.Multiline = true;
@@ -174,9 +201,9 @@
             this.btnCalc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.btnCalc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCalc.ForeColor = System.Drawing.Color.White;
-            this.btnCalc.Location = new System.Drawing.Point(334, 341);
+            this.btnCalc.Location = new System.Drawing.Point(309, 336);
             this.btnCalc.Name = "btnCalc";
-            this.btnCalc.Size = new System.Drawing.Size(109, 37);
+            this.btnCalc.Size = new System.Drawing.Size(168, 37);
             this.btnCalc.TabIndex = 56;
             this.btnCalc.Text = "Расчет";
             this.btnCalc.UseVisualStyleBackColor = false;
@@ -196,7 +223,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(509, 242);
+            this.label3.Location = new System.Drawing.Point(539, 242);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(102, 27);
             this.label3.TabIndex = 53;
@@ -224,6 +251,7 @@
             // 
             // textBoxSDolgom
             // 
+            this.textBoxSDolgom.Enabled = false;
             this.textBoxSDolgom.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxSDolgom.Location = new System.Drawing.Point(514, 286);
             this.textBoxSDolgom.Name = "textBoxSDolgom";
@@ -232,6 +260,7 @@
             // 
             // textBoxBezDolga
             // 
+            this.textBoxBezDolga.Enabled = false;
             this.textBoxBezDolga.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxBezDolga.Location = new System.Drawing.Point(116, 286);
             this.textBoxBezDolga.Multiline = true;
@@ -257,6 +286,7 @@
             this.Name = "CalcForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CalcForm";
+            this.Load += new System.EventHandler(this.CalcForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -283,5 +313,7 @@
         private System.Windows.Forms.Label labelClose;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox textBoxDate;
+        private System.Windows.Forms.Button btnWord;
     }
 }

@@ -303,6 +303,25 @@ namespace Kursovaya_Gazz
             dGVTarif.Columns[1].HeaderText = "Название_Тарифа";
             dGVTarif.Columns[2].HeaderText = "Прайс_Тарифа";
         }
+
+        private void labelUpdate_Click(object sender, EventArgs e)
+        {
+            DataBase db = new DataBase();
+            DataTable table = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand command = new MySqlCommand("SELECT * FROM Tarif", db.GetConnection());
+
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            dGVTarif.DataSource = table;
+
+            dGVTarif.Columns[0].HeaderText = "код_Тарифа";
+            dGVTarif.Columns[1].HeaderText = "Название_Тарифа";
+            dGVTarif.Columns[2].HeaderText = "Прайс_Тарифа";
+        }
     }
     }
 
