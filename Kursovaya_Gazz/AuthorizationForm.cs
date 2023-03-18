@@ -137,11 +137,6 @@ namespace Kursovaya_Gazz
             this.Close();
         }
 
-        private void labelOpen_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void labelColla_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;

@@ -10,6 +10,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Kursovaya_Gazz
@@ -23,21 +24,48 @@ namespace Kursovaya_Gazz
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataBase db = new DataBase();
-            MySqlCommand command = new MySqlCommand("INSERT INTO `Pokazanie` (`Pokazanie_Previous`,`Pokazanie_Current`, `Pokazanie_Data`, `Pokazanie_SchetchikNomer`, `Pokazanie_Calc`) VALUES(@PP, @PC, @PD, @PSN, (`Pokazanie_Current`-`Pokazanie_Previous`)); ", db.GetConnection());
-
-            command.Parameters.Add("@PP", MySqlDbType.VarChar).Value = labPrevious.Text;
-            command.Parameters.Add("@PC", MySqlDbType.VarChar).Value = tBCurrent.Text;
-            command.Parameters.Add("@PD", MySqlDbType.VarChar).Value = labDate.Text;
-            command.Parameters.Add("@PSN", MySqlDbType.VarChar).Value = labSchetchik.Text;
-
-            db.openConnection();
-            if (command.ExecuteNonQuery() == 1)
-                MessageBox.Show("Данные добавлены!");
+            if (tBCurrent.Text == "" || tBCurrent.Text == null)
+            {
+                MessageBox.Show("Введите показания!");               
+            }
             else
-                MessageBox.Show("Ошибка!");
-            
-            db.closeConnection();           
+            {
+                DataBase db = new DataBase();
+                DataTable tablePok = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+                MySqlCommand commandPok = new MySqlCommand("SELECT * FROM Pokazanie WHERE Abonent_idAbonent = @ID AND Pokazanie_Current = @PC OR Pokazanie_Previous = @PC", db.GetConnection());
+                commandPok.Parameters.Add("@ID", MySqlDbType.VarChar).Value = Global.GlobalVar;
+                commandPok.Parameters.Add("@PC", MySqlDbType.VarChar).Value = tBCurrent.Text;
+
+                adapter.SelectCommand = commandPok;
+                adapter.Fill(tablePok);
+
+                db.openConnection();
+
+                if (tablePok.Rows.Count > 0) //поиск записей
+                {
+                    MessageBox.Show("Такие показания уже внесены!");
+                }
+                else
+                {
+                    MySqlCommand command = new MySqlCommand("INSERT INTO `Pokazanie` (`Pokazanie_Previous`,`Pokazanie_Current`, `Pokazanie_Data`, `Pokazanie_SchetchikNomer`, `Abonent_idAbonent`, `Pokazanie_Calc`) VALUES(@PP, @PC, @PD, @PSN,@ID, (`Pokazanie_Current`-`Pokazanie_Previous`)); ", db.GetConnection());
+
+                    command.Parameters.Add("@PP", MySqlDbType.VarChar).Value = labPrevious.Text;
+                    command.Parameters.Add("@PC", MySqlDbType.VarChar).Value = tBCurrent.Text;
+                    command.Parameters.Add("@PD", MySqlDbType.VarChar).Value = labDate.Text;
+                    command.Parameters.Add("@PSN", MySqlDbType.VarChar).Value = labSchetchik.Text;
+                    command.Parameters.Add("@ID", MySqlDbType.VarChar).Value = Global.GlobalVar;
+
+                    if (command.ExecuteNonQuery() == 1)
+                        MessageBox.Show("Данные добавлены!");
+                    else
+                        MessageBox.Show("Ошибка!");
+                }
+                      
+
+                db.closeConnection();
+            }
         }
         public static DateTime GetNetworkTime()  //получение времени из сети
         {
@@ -116,11 +144,6 @@ namespace Kursovaya_Gazz
             Application.Exit();
         }
 
-        private void labelOpen_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void labelColla_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -142,6 +165,14 @@ namespace Kursovaya_Gazz
             lastPoint = new Point(e.X, e.Y);
         }
 
+        private void tBCurrent_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
 
+            if (!Char.IsDigit(number) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

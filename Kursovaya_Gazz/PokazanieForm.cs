@@ -170,7 +170,11 @@ namespace Kursovaya_Gazz
 
         private void btnUpd_Click(object sender, EventArgs e)
         {
-            if (tBIDp.Text != "" && tBPrev.Text != "" && tBCur.Text != "" && tBData.Text != "" && tBSchN.Text != "" && tBidAb.Text != "" && tBCalc.Text != "")
+            if (tBIDp.Text == "" || tBIDp.Text == "Код показаний" && tBPrev.Text == "" || tBPrev.Text == "Предыдущие показания" && tBCur.Text == "" || tBCur.Text == "Текущие показания" && tBData.Text == "" || tBData.Text == "Дата показаний" && tBSchN.Text == "" || tBSchN.Text == "Номер счётчика" && tBidAb.Text == "" || tBidAb.Text == "Код абонента" && tBCalc.Text == "" || tBCalc.Text == "Расчёт")
+            {
+                MessageBox.Show("Введите данные для обновления!");
+            }
+            else
             {
                 DataBase db = new DataBase();
 
@@ -210,14 +214,16 @@ namespace Kursovaya_Gazz
                     MessageBox.Show("Ошибка!");
 
                 db.closeConnection();
-            }
-            else
-                MessageBox.Show("Введите данные для обновления!");
+            }    
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if (tBIDp.Text != "" && tBPrev.Text != "" && tBCur.Text != "" && tBData.Text != "" && tBSchN.Text != "" && tBidAb.Text != "" && tBCalc.Text != "")
+            if (tBIDp.Text == "" || tBIDp.Text == "Код показаний")
+            {
+                MessageBox.Show("Введите ID показаний для удаления!");
+            }
+            else
             {
                 try
                 {
@@ -260,40 +266,7 @@ namespace Kursovaya_Gazz
                     MessageBox.Show(exep.Message, "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
-                MessageBox.Show("Введите данные для удаления!");
-        }
-
-
-        private void labelClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void labelOpen_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelColla_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        Point lastPoint;
-
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Left += e.X - lastPoint.X;
-                this.Top += e.Y - lastPoint.Y;
-            }
-        }
-
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            lastPoint = new Point(e.X, e.Y);
+                
         }
 
         private void tBID_TextChanged(object sender, EventArgs e)
@@ -318,6 +291,26 @@ namespace Kursovaya_Gazz
             dGVPokazanie.Columns[4].HeaderText = "Номер_счётчика";
             dGVPokazanie.Columns[5].HeaderText = "код_Абонента";
             dGVPokazanie.Columns[6].HeaderText = "Расчёт";
+        }
+
+        private void tBidAb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+
+            if (!Char.IsDigit(number) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tBIDp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+
+            if (!Char.IsDigit(number) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -38,7 +38,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelColla = new System.Windows.Forms.Label();
-            this.labelOpen = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
             this.labDate = new System.Windows.Forms.Label();
             this.labPrevious = new System.Windows.Forms.Label();
@@ -54,6 +53,7 @@
             this.tBCurrent.Name = "tBCurrent";
             this.tBCurrent.Size = new System.Drawing.Size(234, 44);
             this.tBCurrent.TabIndex = 2;
+            this.tBCurrent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tBCurrent_KeyPress);
             // 
             // button1
             // 
@@ -139,7 +139,6 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.labelColla);
-            this.panel2.Controls.Add(this.labelOpen);
             this.panel2.Controls.Add(this.labelClose);
             this.panel2.Location = new System.Drawing.Point(-1, -2);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
@@ -156,27 +155,13 @@
             this.labelColla.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelColla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelColla.ForeColor = System.Drawing.Color.Black;
-            this.labelColla.Location = new System.Drawing.Point(703, 7);
+            this.labelColla.Location = new System.Drawing.Point(739, 8);
             this.labelColla.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelColla.Name = "labelColla";
             this.labelColla.Size = new System.Drawing.Size(25, 20);
             this.labelColla.TabIndex = 51;
             this.labelColla.Text = "➖";
             this.labelColla.Click += new System.EventHandler(this.labelColla_Click);
-            // 
-            // labelOpen
-            // 
-            this.labelOpen.AutoSize = true;
-            this.labelOpen.BackColor = System.Drawing.Color.White;
-            this.labelOpen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelOpen.ForeColor = System.Drawing.Color.Black;
-            this.labelOpen.Location = new System.Drawing.Point(736, 3);
-            this.labelOpen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelOpen.Name = "labelOpen";
-            this.labelOpen.Size = new System.Drawing.Size(28, 25);
-            this.labelOpen.TabIndex = 50;
-            this.labelOpen.Text = "⧉";
             // 
             // labelClose
             // 
@@ -262,7 +247,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labelColla;
-        private System.Windows.Forms.Label labelOpen;
         private System.Windows.Forms.Label labelClose;
         private System.Windows.Forms.Label labDate;
         private System.Windows.Forms.Label labPrevious;

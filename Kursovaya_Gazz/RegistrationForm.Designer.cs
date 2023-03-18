@@ -45,11 +45,15 @@ namespace Kursovaya_Gazz
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelColla = new System.Windows.Forms.Label();
+            this.labelClose = new System.Windows.Forms.Label();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbSchet
             // 
-            this.tbSchet.Location = new System.Drawing.Point(358, 141);
+            this.tbSchet.Location = new System.Drawing.Point(361, 200);
             this.tbSchet.Margin = new System.Windows.Forms.Padding(4);
             this.tbSchet.MaxLength = 12;
             this.tbSchet.Name = "tbSchet";
@@ -59,7 +63,7 @@ namespace Kursovaya_Gazz
             // labelSchet
             // 
             this.labelSchet.AutoSize = true;
-            this.labelSchet.Location = new System.Drawing.Point(354, 107);
+            this.labelSchet.Location = new System.Drawing.Point(357, 166);
             this.labelSchet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSchet.Name = "labelSchet";
             this.labelSchet.Size = new System.Drawing.Size(188, 23);
@@ -69,7 +73,7 @@ namespace Kursovaya_Gazz
             // labelFIO
             // 
             this.labelFIO.AutoSize = true;
-            this.labelFIO.Location = new System.Drawing.Point(13, 80);
+            this.labelFIO.Location = new System.Drawing.Point(16, 139);
             this.labelFIO.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFIO.Name = "labelFIO";
             this.labelFIO.Size = new System.Drawing.Size(123, 23);
@@ -78,7 +82,7 @@ namespace Kursovaya_Gazz
             // 
             // tbFIO
             // 
-            this.tbFIO.Location = new System.Drawing.Point(18, 114);
+            this.tbFIO.Location = new System.Drawing.Point(21, 173);
             this.tbFIO.Margin = new System.Windows.Forms.Padding(4);
             this.tbFIO.Name = "tbFIO";
             this.tbFIO.Size = new System.Drawing.Size(256, 30);
@@ -87,7 +91,7 @@ namespace Kursovaya_Gazz
             // labelAdress
             // 
             this.labelAdress.AutoSize = true;
-            this.labelAdress.Location = new System.Drawing.Point(13, 150);
+            this.labelAdress.Location = new System.Drawing.Point(16, 209);
             this.labelAdress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAdress.Name = "labelAdress";
             this.labelAdress.Size = new System.Drawing.Size(58, 23);
@@ -96,7 +100,7 @@ namespace Kursovaya_Gazz
             // 
             // tbAdress
             // 
-            this.tbAdress.Location = new System.Drawing.Point(18, 178);
+            this.tbAdress.Location = new System.Drawing.Point(21, 237);
             this.tbAdress.Margin = new System.Windows.Forms.Padding(4);
             this.tbAdress.Name = "tbAdress";
             this.tbAdress.Size = new System.Drawing.Size(256, 30);
@@ -105,7 +109,7 @@ namespace Kursovaya_Gazz
             // labelSq
             // 
             this.labelSq.AutoSize = true;
-            this.labelSq.Location = new System.Drawing.Point(13, 221);
+            this.labelSq.Location = new System.Drawing.Point(16, 280);
             this.labelSq.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSq.Name = "labelSq";
             this.labelSq.Size = new System.Drawing.Size(251, 23);
@@ -114,7 +118,7 @@ namespace Kursovaya_Gazz
             // 
             // tbSquare
             // 
-            this.tbSquare.Location = new System.Drawing.Point(18, 250);
+            this.tbSquare.Location = new System.Drawing.Point(21, 309);
             this.tbSquare.Margin = new System.Windows.Forms.Padding(4);
             this.tbSquare.Name = "tbSquare";
             this.tbSquare.Size = new System.Drawing.Size(256, 30);
@@ -123,7 +127,7 @@ namespace Kursovaya_Gazz
             // labelPeople
             // 
             this.labelPeople.AutoSize = true;
-            this.labelPeople.Location = new System.Drawing.Point(13, 293);
+            this.labelPeople.Location = new System.Drawing.Point(16, 352);
             this.labelPeople.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPeople.Name = "labelPeople";
             this.labelPeople.Size = new System.Drawing.Size(226, 23);
@@ -132,7 +136,7 @@ namespace Kursovaya_Gazz
             // 
             // tbPeople
             // 
-            this.tbPeople.Location = new System.Drawing.Point(18, 320);
+            this.tbPeople.Location = new System.Drawing.Point(21, 379);
             this.tbPeople.Margin = new System.Windows.Forms.Padding(4);
             this.tbPeople.MaxLength = 2;
             this.tbPeople.Name = "tbPeople";
@@ -148,7 +152,7 @@ namespace Kursovaya_Gazz
             this.btnCreateAbonent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateAbonent.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCreateAbonent.ForeColor = System.Drawing.Color.White;
-            this.btnCreateAbonent.Location = new System.Drawing.Point(180, 385);
+            this.btnCreateAbonent.Location = new System.Drawing.Point(183, 444);
             this.btnCreateAbonent.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateAbonent.Name = "btnCreateAbonent";
             this.btnCreateAbonent.Size = new System.Drawing.Size(258, 49);
@@ -159,12 +163,13 @@ namespace Kursovaya_Gazz
             // 
             // cbTarif
             // 
+            this.cbTarif.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTarif.FormattingEnabled = true;
             this.cbTarif.Items.AddRange(new object[] {
             "Экономичный",
             "Стандартный",
             "Неограниченный"});
-            this.cbTarif.Location = new System.Drawing.Point(358, 205);
+            this.cbTarif.Location = new System.Drawing.Point(361, 264);
             this.cbTarif.Margin = new System.Windows.Forms.Padding(4);
             this.cbTarif.Name = "cbTarif";
             this.cbTarif.Size = new System.Drawing.Size(256, 31);
@@ -172,6 +177,7 @@ namespace Kursovaya_Gazz
             // 
             // cbLgota
             // 
+            this.cbLgota.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLgota.FormattingEnabled = true;
             this.cbLgota.Items.AddRange(new object[] {
             "Ветераны войны",
@@ -179,7 +185,7 @@ namespace Kursovaya_Gazz
             "Пенсионеры",
             "Безработные",
             "Без льгот"});
-            this.cbLgota.Location = new System.Drawing.Point(358, 277);
+            this.cbLgota.Location = new System.Drawing.Point(361, 336);
             this.cbLgota.Margin = new System.Windows.Forms.Padding(4);
             this.cbLgota.Name = "cbLgota";
             this.cbLgota.Size = new System.Drawing.Size(256, 31);
@@ -188,7 +194,7 @@ namespace Kursovaya_Gazz
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(353, 177);
+            this.label1.Location = new System.Drawing.Point(356, 236);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 23);
@@ -198,7 +204,7 @@ namespace Kursovaya_Gazz
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(353, 248);
+            this.label2.Location = new System.Drawing.Point(356, 307);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 23);
@@ -210,19 +216,63 @@ namespace Kursovaya_Gazz
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(62)))), ((int)(((byte)(71)))));
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(-5, -3);
+            this.label3.Location = new System.Drawing.Point(-6, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(644, 67);
             this.label3.TabIndex = 15;
             this.label3.Text = "Регистрация";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.labelColla);
+            this.panel2.Controls.Add(this.labelClose);
+            this.panel2.Location = new System.Drawing.Point(-1, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(643, 29);
+            this.panel2.TabIndex = 51;
+            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
+            this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
+            // 
+            // labelColla
+            // 
+            this.labelColla.AutoSize = true;
+            this.labelColla.BackColor = System.Drawing.Color.White;
+            this.labelColla.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelColla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelColla.ForeColor = System.Drawing.Color.Black;
+            this.labelColla.Location = new System.Drawing.Point(583, 2);
+            this.labelColla.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelColla.Name = "labelColla";
+            this.labelColla.Size = new System.Drawing.Size(25, 20);
+            this.labelColla.TabIndex = 51;
+            this.labelColla.Text = "➖";
+            this.labelColla.Click += new System.EventHandler(this.labelColla_Click);
+            // 
+            // labelClose
+            // 
+            this.labelClose.AutoSize = true;
+            this.labelClose.BackColor = System.Drawing.Color.White;
+            this.labelClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelClose.ForeColor = System.Drawing.Color.Black;
+            this.labelClose.Location = new System.Drawing.Point(616, 0);
+            this.labelClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelClose.Name = "labelClose";
+            this.labelClose.Size = new System.Drawing.Size(23, 22);
+            this.labelClose.TabIndex = 49;
+            this.labelClose.Text = "X";
+            this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
-            this.ClientSize = new System.Drawing.Size(638, 448);
+            this.ClientSize = new System.Drawing.Size(639, 505);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -240,10 +290,13 @@ namespace Kursovaya_Gazz
             this.Controls.Add(this.labelSchet);
             this.Controls.Add(this.tbSchet);
             this.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegistrationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegistrationForm";
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,5 +320,8 @@ namespace Kursovaya_Gazz
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label labelColla;
+        private System.Windows.Forms.Label labelClose;
     }
 }

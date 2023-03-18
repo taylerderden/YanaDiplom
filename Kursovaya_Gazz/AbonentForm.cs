@@ -248,6 +248,17 @@ namespace Kursovaya_Gazz
                 }
             }
 
+            if (dataGridView1.CurrentCell.ColumnIndex == 5)         //на месте _5_ ставим индекс колонки который валидируем
+            {
+                TextBox textBox = e.Control as TextBox;
+                if (textBox != null)
+                {
+                    textBox.KeyPress += new KeyPressEventHandler(Column_KeyPress2);
+
+                    textBox.MaxLength = 2;
+                }
+            }
+
             if (dataGridView1.CurrentCell.ColumnIndex == 6)         //на месте _6_ ставим индекс колонки который валидируем
             {
                 TextBox textBox = e.Control as TextBox;
@@ -283,45 +294,26 @@ namespace Kursovaya_Gazz
             if ((e.KeyChar <= 48 || e.KeyChar >= 52) && e.KeyChar != 8)
             {
                 e.Handled = true;
-            }
+            }           
         }
 
-        private void labelUpdate_MouseClick(object sender, MouseEventArgs e)
+        private void Column_KeyPress2(object sender, KeyPressEventArgs e)        //метод на проверку можно ли в ячейку писать цифру(0-9)
+        {
+            char number = e.KeyChar;
+
+            if (!Char.IsDigit(number) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+            private void labelUpdate_MouseClick(object sender, MouseEventArgs e)
         {
             ReloadData();
         }
 
-        private void labelClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        
 
-        private void labelOpen_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelColla_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        Point lastPoint;
-
-        private void panel2_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Left += e.X - lastPoint.X;
-                this.Top += e.Y - lastPoint.Y;
-            }
-        }
-
-        private void panel2_MouseDown(object sender, MouseEventArgs e)
-        {
-            lastPoint = new Point(e.X, e.Y);
-
-        }
+        
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {

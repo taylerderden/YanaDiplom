@@ -94,7 +94,6 @@ namespace Kursovaya_Gazz
             }
         }
 
-
         public Boolean isDataExists()
         {
             DataBase db = new DataBase();
@@ -120,9 +119,12 @@ namespace Kursovaya_Gazz
 
         private void btnIns_Click(object sender, EventArgs e)
         {
-            if (tBSumma.Text != "" && tBidAb.Text != "")
+            if (tBSumma.Text == "" || tBSumma.Text == "Сумма долга" && tBidAb.Text == "" || tBidAb.Text == "ID Абонента")
             {
-
+                MessageBox.Show("Введите данные!");
+            }
+            else
+            {
                 if (isDataExists())
                 {
                     return;
@@ -158,15 +160,16 @@ namespace Kursovaya_Gazz
                     MessageBox.Show("Ошибка!");
 
                 db.closeConnection();
-
             }
-            else
-                MessageBox.Show("Введите данные!");
         }
 
         private void btnUpd_Click(object sender, EventArgs e)
         {
-            if (tBID.Text != "" && tBSumma.Text != "" && tBidAb.Text != "")
+            if (tBID.Text == "" || tBID.Text == "ID" || tBID.Text == null && tBSumma.Text == "" || tBSumma.Text == "Сумма долга" && tBidAb.Text == "" || tBidAb.Text == "ID Абонента")
+            {
+                MessageBox.Show("Введите данные для обновления!");
+            }
+            else
             {
                 DataBase db = new DataBase();
 
@@ -199,14 +202,16 @@ namespace Kursovaya_Gazz
                     MessageBox.Show("Ошибка!");
 
                 db.closeConnection();
-            }
-            else
-                MessageBox.Show("Введите данные для обновления!");
+            }                
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if (tBID.Text != "" || tBSumma.Text != "" || tBidAb.Text != "")
+            if (tBID.Text == "" || tBID.Text == "ID")
+            {
+                MessageBox.Show("Введите данные для удаления!");
+            }
+            else
             {
                 try
                 {
@@ -245,8 +250,7 @@ namespace Kursovaya_Gazz
                     MessageBox.Show(exep.Message, "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
-                MessageBox.Show("Введите данные для удаления!");
+                
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -275,36 +279,24 @@ namespace Kursovaya_Gazz
             dGVDolg.Columns[2].HeaderText = "код_Абонента";
         }
 
-        private void labelClose_Click(object sender, EventArgs e)
+        private void tBID_KeyPress(object sender, KeyPressEventArgs e)
         {
-            this.Close();
-        }
+            char number = e.KeyChar;
 
-        private void labelOpen_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelColla_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        Point lastPoint;
-
-        private void panel2_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
+            if (!Char.IsDigit(number) && e.KeyChar != 8)
             {
-                this.Left += e.X - lastPoint.X;
-                this.Top += e.Y - lastPoint.Y;
+                e.Handled = true;
             }
         }
 
-        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        private void tBidAb_KeyPress(object sender, KeyPressEventArgs e)
         {
-            lastPoint = new Point(e.X, e.Y);
-        }
+            char number = e.KeyChar;
 
+            if (!Char.IsDigit(number) && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

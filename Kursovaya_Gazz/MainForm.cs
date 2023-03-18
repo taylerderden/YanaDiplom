@@ -23,59 +23,47 @@ namespace Kursovaya_Gazz
             InitializeComponent();
         }
 
-        AbonentForm abonentForm = new AbonentForm();
-        TarifForm tarifForm = new TarifForm();
-        LgotaForm lgotaForm = new LgotaForm();
-        PokazanieForm pokazanieForm = new PokazanieForm();
-        DolgForm dolgForm = new DolgForm();
-        AuthorizationForm fForm = new AuthorizationForm();
-        CalcForm calcForm = new CalcForm();
+        public void LoadForm(object Form)
+        {
+            if (this.mainPanel.Controls.Count > 0)
+                this.mainPanel.Controls.RemoveAt(0);
+            Form f = Form as Form;
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+            this.mainPanel.Controls.Add(f);
+            this.mainPanel.Tag = f;
+            f.Show();
+        }
 
+        AuthorizationForm autForm = new AuthorizationForm();
         private void tSBtnAbonent_Click(object sender, EventArgs e)
         {
-            AbonentForm abonentForm = new AbonentForm();
-            abonentForm.Show();
+            LoadForm(new AbonentForm());
         }
 
         private void tSBtnTarif_Click(object sender, EventArgs e)
         {
-            TarifForm tarifForm = new TarifForm();
-            tarifForm.Show();
+            LoadForm(new TarifForm());
         }
 
         private void tSBtnLgota_Click(object sender, EventArgs e)
         {
-            LgotaForm lgotaForm = new LgotaForm();
-            lgotaForm.Show();
+            LoadForm(new LgotaForm());
         }
 
         private void tSBtnPokazanie_Click(object sender, EventArgs e)
         {
-            PokazanieForm pokazanieForm = new PokazanieForm();
-            pokazanieForm.Show();
+            LoadForm(new PokazanieForm());
         }
 
         private void tSBtnDolg_Click(object sender, EventArgs e)
         {
-            DolgForm dolgForm = new DolgForm();
-            dolgForm.Show();
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            abonentForm.Hide();
-            tarifForm.Hide();
-            lgotaForm.Hide();
-            pokazanieForm.Hide();
-            dolgForm.Hide();
-            fForm.Show();
+            LoadForm(new DolgForm());
         }
             
         private void toolStripBtnCalc_Click(object sender, EventArgs e)
         {
-            CalcForm calcForm = new CalcForm();
-            calcForm.Show();
+            LoadForm(new CalcForm());
         }
 
         Point lastPoint;
@@ -101,7 +89,12 @@ namespace Kursovaya_Gazz
 
         private void labelOpen_Click(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.None;
 
+            labelOpen.Visible = false;
+            labelNormal.Visible = true;
         }
 
         private void labelColla_Click(object sender, EventArgs e)
@@ -111,8 +104,20 @@ namespace Kursovaya_Gazz
 
         private void tSBtnPodtv_Click(object sender, EventArgs e)
         {
-            VerifForm verifForm = new VerifForm();
-            verifForm.Show();
+            LoadForm(new VerifForm());
+        }
+
+        private void tsBtnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            autForm.Show();
+        }
+
+        private void labelNormal_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            labelOpen.Visible = true;
+            labelNormal.Visible = false;
         }
     }
 }

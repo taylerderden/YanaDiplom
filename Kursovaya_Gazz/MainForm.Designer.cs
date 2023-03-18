@@ -37,17 +37,21 @@
             this.tSBtnDolg = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnCalc = new System.Windows.Forms.ToolStripButton();
             this.tSBtnPodtv = new System.Windows.Forms.ToolStripButton();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.tsBtnExit = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelNormal = new System.Windows.Forms.Label();
             this.labelColla = new System.Windows.Forms.Label();
             this.labelOpen = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
+            this.toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.toolStrip1.AutoSize = false;
             this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
@@ -59,10 +63,11 @@
             this.tSBtnPokazanie,
             this.tSBtnDolg,
             this.toolStripBtnCalc,
-            this.tSBtnPodtv});
+            this.tSBtnPodtv,
+            this.tsBtnExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 29);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1105, 55);
+            this.toolStrip1.Size = new System.Drawing.Size(1395, 55);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -148,7 +153,7 @@
             // 
             this.tSBtnPodtv.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tSBtnPodtv.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold);
-            this.tSBtnPodtv.ForeColor = System.Drawing.Color.Black;
+            this.tSBtnPodtv.ForeColor = System.Drawing.Color.White;
             this.tSBtnPodtv.Image = ((System.Drawing.Image)(resources.GetObject("tSBtnPodtv.Image")));
             this.tSBtnPodtv.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tSBtnPodtv.Name = "tSBtnPodtv";
@@ -157,42 +162,60 @@
             this.tSBtnPodtv.ToolTipText = "Верификация";
             this.tSBtnPodtv.Click += new System.EventHandler(this.tSBtnPodtv_Click);
             // 
-            // btnExit
+            // tsBtnExit
             // 
-            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
-            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnExit.ForeColor = System.Drawing.Color.Transparent;
-            this.btnExit.Location = new System.Drawing.Point(1009, 415);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(84, 32);
-            this.btnExit.TabIndex = 3;
-            this.btnExit.Text = "Выход";
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.tsBtnExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsBtnExit.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold);
+            this.tsBtnExit.ForeColor = System.Drawing.Color.White;
+            this.tsBtnExit.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnExit.Image")));
+            this.tsBtnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnExit.Name = "tsBtnExit";
+            this.tsBtnExit.Size = new System.Drawing.Size(91, 52);
+            this.tsBtnExit.Text = "Выход";
+            this.tsBtnExit.Click += new System.EventHandler(this.tsBtnExit_Click);
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.labelNormal);
             this.panel2.Controls.Add(this.labelColla);
             this.panel2.Controls.Add(this.labelOpen);
             this.panel2.Controls.Add(this.labelClose);
-            this.panel2.Location = new System.Drawing.Point(0, -4);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1105, 36);
+            this.panel2.Size = new System.Drawing.Size(1395, 32);
             this.panel2.TabIndex = 50;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             this.panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseMove);
             // 
+            // labelNormal
+            // 
+            this.labelNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelNormal.AutoSize = true;
+            this.labelNormal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelNormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelNormal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelNormal.Location = new System.Drawing.Point(1323, 4);
+            this.labelNormal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNormal.Name = "labelNormal";
+            this.labelNormal.Size = new System.Drawing.Size(28, 25);
+            this.labelNormal.TabIndex = 52;
+            this.labelNormal.Text = "▭";
+            this.labelNormal.Visible = false;
+            this.labelNormal.Click += new System.EventHandler(this.labelNormal_Click);
+            // 
             // labelColla
             // 
+            this.labelColla.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelColla.AutoSize = true;
             this.labelColla.BackColor = System.Drawing.Color.White;
             this.labelColla.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelColla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelColla.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelColla.Location = new System.Drawing.Point(1010, 13);
+            this.labelColla.Location = new System.Drawing.Point(1290, 8);
             this.labelColla.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelColla.Name = "labelColla";
             this.labelColla.Size = new System.Drawing.Size(25, 20);
@@ -202,30 +225,43 @@
             // 
             // labelOpen
             // 
+            this.labelOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelOpen.AutoSize = true;
             this.labelOpen.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelOpen.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelOpen.Location = new System.Drawing.Point(1043, 8);
+            this.labelOpen.Location = new System.Drawing.Point(1323, 4);
             this.labelOpen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelOpen.Name = "labelOpen";
             this.labelOpen.Size = new System.Drawing.Size(28, 25);
             this.labelOpen.TabIndex = 50;
             this.labelOpen.Text = "⧉";
+            this.labelOpen.Click += new System.EventHandler(this.labelOpen_Click);
             // 
             // labelClose
             // 
+            this.labelClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelClose.AutoSize = true;
             this.labelClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelClose.Location = new System.Drawing.Point(1079, 11);
+            this.labelClose.Location = new System.Drawing.Point(1359, 7);
             this.labelClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelClose.Name = "labelClose";
             this.labelClose.Size = new System.Drawing.Size(23, 22);
             this.labelClose.TabIndex = 49;
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
+            // 
+            // mainPanel
+            // 
+            this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainPanel.Location = new System.Drawing.Point(0, 81);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1395, 586);
+            this.mainPanel.TabIndex = 51;
             // 
             // MainForm
             // 
@@ -234,11 +270,12 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
-            this.ClientSize = new System.Drawing.Size(1105, 450);
+            this.ClientSize = new System.Drawing.Size(1395, 668);
+            this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MinimumSize = new System.Drawing.Size(1242, 645);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
@@ -257,12 +294,14 @@
         private System.Windows.Forms.ToolStripButton tSBtnLgota;
         private System.Windows.Forms.ToolStripButton tSBtnPokazanie;
         private System.Windows.Forms.ToolStripButton tSBtnDolg;
-        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.ToolStripButton toolStripBtnCalc;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labelColla;
         private System.Windows.Forms.Label labelOpen;
         private System.Windows.Forms.Label labelClose;
         private System.Windows.Forms.ToolStripButton tSBtnPodtv;
+        private System.Windows.Forms.ToolStripButton tsBtnExit;
+        private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.Label labelNormal;
     }
 }

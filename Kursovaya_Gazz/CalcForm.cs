@@ -22,6 +22,8 @@ namespace Kursovaya_Gazz
         {
             InitializeComponent();
         }
+
+        String Adress;
         private void btnCalc_Click(object sender, EventArgs e)
         {
             textBoxBezDolga.Text = null;
@@ -53,6 +55,36 @@ namespace Kursovaya_Gazz
                 Tarif = commandT.ExecuteScalar().ToString();  // извлекаем 
                 Lgota = commandL.ExecuteScalar().ToString();
                 Abonent = commandA.ExecuteScalar().ToString();
+
+                //лиц счет
+                MySqlCommand commandSch = new MySqlCommand("SELECT `Abonent_Schet` FROM `Abonent` WHERE `Abonent_FIO` = @AF;", db.GetConnection());
+                commandSch.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
+                DataTable tableSch = new DataTable();
+
+                adapter.SelectCommand = commandSch;
+                adapter.Fill(tableSch);
+
+                if (tableSch.Rows.Count > 0) //поиск записей по счету
+                {
+                    tBSchet.Text = commandSch.ExecuteScalar().ToString();
+                }
+                else
+                    MessageBox.Show("Данные по счету не найдены!");
+
+                //адрес
+                MySqlCommand commandAdr = new MySqlCommand("SELECT `Abonent_Adress` FROM `Abonent` WHERE `Abonent_FIO` = @AF;", db.GetConnection());
+                commandAdr.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
+                DataTable tableAdr = new DataTable();
+
+                adapter.SelectCommand = commandAdr;
+                adapter.Fill(tableAdr);
+
+                if (tableAdr.Rows.Count > 0) //поиск записей по адресу
+                {
+                    Adress = commandAdr.ExecuteScalar().ToString();
+                }
+                else
+                    MessageBox.Show("Данные по адресу не найдены!");
 
                 //поиск даты показаний
                 DataTable tableD = new DataTable();
@@ -121,46 +153,14 @@ namespace Kursovaya_Gazz
                     MessageBox.Show("Выбранная дата показаний не найдена, введите корректную дату!"); //иначе ошибка                              
             }
             else
-                MessageBox.Show("Клиент не найден!"); //иначе ошибка
+                MessageBox.Show("Введите данные действующего клиента!"); //иначе ошибка
 
             db.closeConnection();
-        }
-
-        private void labelClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void labelOpen_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelColla_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        Point lastPoint;
-
-        private void panel2_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Left += e.X - lastPoint.X;
-                this.Top += e.Y - lastPoint.Y;
-            }
-        }
-
-        private void panel2_MouseDown(object sender, MouseEventArgs e)
-        {
-            lastPoint = new Point(e.X, e.Y);
         }
      
         private void btnWord_Click(object sender, EventArgs e)
         {
-            
-           /*ST00012|Name= ЗЛОБИН ДАНИИЛ СЕРГЕЕВИЧ|
+            /*ST00012|Name= ФИО|
               PersonalAcc=40817810795010005796|
               BankName=Газпромбанк|
               BIC=046577903|
@@ -168,48 +168,55 @@ namespace Kursovaya_Gazz
               KPP=000001001|
               PayeelNN=666001947022|
               Purpose=За газ|Sum=1                               
-            */           
-
-            ReportParameterCollection reportParameters = new ReportParameterCollection();
-            reportParameters.Add(new ReportParameter("pFIO", textBoxFIO.Text));
-            reportParameters.Add(new ReportParameter("pDatePokazanie", textBoxDate.Text));
-            reportParameters.Add(new ReportParameter("pBezDolga", textBoxBezDolga.Text));
-            reportParameters.Add(new ReportParameter("pDolg", textBoxDlg.Text));
-            reportParameters.Add(new ReportParameter("pItogo", textBoxSDolgom.Text));
-            reportParameters.Add(new ReportParameter("pItogo", textBoxSDolgom.Text));            
-
-            KvitokForm kvitokForm = new KvitokForm();
-            double itogo = Convert.ToDouble(textBoxSDolgom.Text) * 100;
-            string qr = $"ST00012|Name= РОГОЖНИКОВА ЯНА ОЛЕГОВНА|PersonalAcc = 40817810795010005796 |BankName = Газпромбанк |BIC = 046577903 |CorrespAcc = 30101810200000000903 |KPP = 000001001 |PayeelNN = 666001947022 |Purpose = За газ | Sum = {itogo}";
-            QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
-            QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(qr, QRCodeGenerator.ECCLevel.Q);
-            QRCode qRCode = new QRCode(qRCodeData);
-            Bitmap bmp = qRCode.GetGraphic(50);
-            using (MemoryStream ms = new MemoryStream())
+            */
+            if (textBoxFIO.Text == ""  || textBoxDate.Text == "" || textBoxBezDolga.Text == ""
+                || textBoxDlg.Text == "" || textBoxSDolgom.Text == "" || tBSchet.Text == "")
             {
-                bmp.Save(ms, ImageFormat.Bmp);
-                DataQR dataQR = new DataQR();
-                DataQR.QRCodeRow qRCodeRow = dataQR.QRCode.NewQRCodeRow();
-                qRCodeRow.Image = ms.ToArray();
-                dataQR.QRCode.AddQRCodeRow(qRCodeRow);
-
-                ReportDataSource reportDataSource = new ReportDataSource();
-                reportDataSource.Name = "DataQR";
-                reportDataSource.Value = dataQR.QRCode;
-
-                kvitokForm.reportViewer1.LocalReport.DataSources.Clear();
-                kvitokForm.reportViewer1.LocalReport.DataSources.Add(reportDataSource);
-                kvitokForm.reportViewer1.RefreshReport();
+                MessageBox.Show("Введите данные действующего клиента!");
             }
+            else
+            {
+                ReportParameterCollection reportParameters = new ReportParameterCollection();
+                reportParameters.Add(new ReportParameter("pFIO", textBoxFIO.Text));
+                reportParameters.Add(new ReportParameter("pDatePokazanie", textBoxDate.Text));
+                reportParameters.Add(new ReportParameter("pBezDolga", textBoxBezDolga.Text));
+                reportParameters.Add(new ReportParameter("pDolg", textBoxDlg.Text));
+                reportParameters.Add(new ReportParameter("pItogo", textBoxSDolgom.Text));
+                reportParameters.Add(new ReportParameter("pSchet", tBSchet.Text));
+                reportParameters.Add(new ReportParameter("pAdress", Adress));
 
-            kvitokForm.Show();
-            kvitokForm.reportViewer1.LocalReport.SetParameters(reportParameters);
-            kvitokForm.reportViewer1.RefreshReport();
+                KvitokForm kvitokForm = new KvitokForm();
+                double itogo = Convert.ToDouble(textBoxSDolgom.Text) * 100;
+                string qr = $"ST00012|Name= РОГОЖНИКОВА ЯНА ОЛЕГОВНА|PersonalAcc = 40817810795010005796 |BankName = Газпромбанк |BIC = 046577903 |CorrespAcc = 30101810200000000903 |KPP = 000001001 |PayeelNN = 666001947022 |Purpose = За газ | Sum = {itogo}";
+                QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
+                QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(qr, QRCodeGenerator.ECCLevel.Q);
+                QRCode qRCode = new QRCode(qRCodeData);
+                Bitmap bmp = qRCode.GetGraphic(50);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    bmp.Save(ms, ImageFormat.Bmp);
+                    DataQR dataQR = new DataQR();
+                    DataQR.QRCodeRow qRCodeRow = dataQR.QRCode.NewQRCodeRow();
+                    qRCodeRow.Image = ms.ToArray();
+                    dataQR.QRCode.AddQRCodeRow(qRCodeRow);
 
+                    ReportDataSource reportDataSource = new ReportDataSource();
+                    reportDataSource.Name = "DataQR";
+                    reportDataSource.Value = dataQR.QRCode;
+
+                    kvitokForm.reportViewer1.LocalReport.DataSources.Clear();
+                    kvitokForm.reportViewer1.LocalReport.DataSources.Add(reportDataSource);
+                    kvitokForm.reportViewer1.RefreshReport();
+                }
+
+                kvitokForm.Show();
+                kvitokForm.reportViewer1.LocalReport.SetParameters(reportParameters);
+                kvitokForm.reportViewer1.RefreshReport();
+            }          
         }
         private void CalcForm_Load(object sender, EventArgs e)
         {
-            dateTimePicker1.Value.ToShortDateString();
+            
         }
     }
     

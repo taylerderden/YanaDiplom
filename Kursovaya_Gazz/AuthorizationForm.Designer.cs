@@ -43,7 +43,6 @@
             this.labelPass = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelColla = new System.Windows.Forms.Label();
-            this.labelOpen = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
             this.labelRegistration = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -191,7 +190,6 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.labelColla);
-            this.panel2.Controls.Add(this.labelOpen);
             this.panel2.Controls.Add(this.labelClose);
             this.panel2.Location = new System.Drawing.Point(-5, -2);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
@@ -208,26 +206,13 @@
             this.labelColla.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelColla.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelColla.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelColla.Location = new System.Drawing.Point(652, 9);
+            this.labelColla.Location = new System.Drawing.Point(688, 10);
             this.labelColla.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelColla.Name = "labelColla";
             this.labelColla.Size = new System.Drawing.Size(25, 20);
             this.labelColla.TabIndex = 51;
             this.labelColla.Text = "➖";
             this.labelColla.Click += new System.EventHandler(this.labelColla_Click);
-            // 
-            // labelOpen
-            // 
-            this.labelOpen.AutoSize = true;
-            this.labelOpen.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelOpen.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.labelOpen.Location = new System.Drawing.Point(685, 5);
-            this.labelOpen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelOpen.Name = "labelOpen";
-            this.labelOpen.Size = new System.Drawing.Size(28, 25);
-            this.labelOpen.TabIndex = 50;
-            this.labelOpen.Text = "⧉";
             // 
             // labelClose
             // 
@@ -309,7 +294,6 @@
         private System.Windows.Forms.Label labelPass;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labelColla;
-        private System.Windows.Forms.Label labelOpen;
         private System.Windows.Forms.Label labelClose;
         private System.Windows.Forms.Label labelRegistration;
     }
