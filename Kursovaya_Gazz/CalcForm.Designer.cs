@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelName = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tBSchet = new System.Windows.Forms.TextBox();
             this.btnReport = new System.Windows.Forms.Button();
             this.textBoxDate = new System.Windows.Forms.TextBox();
-            this.labelName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxDlg = new System.Windows.Forms.TextBox();
             this.btnCalc = new System.Windows.Forms.Button();
@@ -74,6 +74,16 @@
             this.panel1.Size = new System.Drawing.Size(800, 482);
             this.panel1.TabIndex = 30;
             // 
+            // labelName
+            // 
+            this.labelName.AutoSize = true;
+            this.labelName.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelName.Location = new System.Drawing.Point(12, 9);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(80, 27);
+            this.labelName.TabIndex = 52;
+            this.labelName.Text = "Расчёт";
+            // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -88,7 +98,6 @@
             // tBSchet
             // 
             this.tBSchet.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tBSchet.Enabled = false;
             this.tBSchet.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tBSchet.Location = new System.Drawing.Point(309, 133);
             this.tBSchet.Name = "tBSchet";
@@ -118,16 +127,6 @@
             this.textBoxDate.Name = "textBoxDate";
             this.textBoxDate.Size = new System.Drawing.Size(168, 34);
             this.textBoxDate.TabIndex = 65;
-            // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelName.Location = new System.Drawing.Point(12, 9);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(80, 27);
-            this.labelName.TabIndex = 52;
-            this.labelName.Text = "Расчёт";
             // 
             // label5
             // 
@@ -233,6 +232,7 @@
             // textBoxFIO
             // 
             this.textBoxFIO.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxFIO.Enabled = false;
             this.textBoxFIO.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxFIO.Location = new System.Drawing.Point(116, 133);
             this.textBoxFIO.Name = "textBoxFIO";

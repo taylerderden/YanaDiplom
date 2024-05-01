@@ -45,6 +45,7 @@
             this.labelColla = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
             this.labelRegistration = new System.Windows.Forms.Label();
+            this.labelMissPass = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -97,7 +98,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.label1.Location = new System.Drawing.Point(246, 175);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 18);
+            this.label1.Size = new System.Drawing.Size(51, 19);
             this.label1.TabIndex = 3;
             this.label1.Text = "Логин";
             // 
@@ -108,7 +109,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.label2.Location = new System.Drawing.Point(246, 256);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 18);
+            this.label2.Size = new System.Drawing.Size(58, 19);
             this.label2.TabIndex = 4;
             this.label2.Text = "Пароль";
             // 
@@ -223,7 +224,7 @@
             this.labelClose.Location = new System.Drawing.Point(721, 8);
             this.labelClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(23, 22);
+            this.labelClose.Size = new System.Drawing.Size(25, 24);
             this.labelClose.TabIndex = 49;
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
@@ -236,10 +237,23 @@
             this.labelRegistration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.labelRegistration.Location = new System.Drawing.Point(326, 387);
             this.labelRegistration.Name = "labelRegistration";
-            this.labelRegistration.Size = new System.Drawing.Size(101, 18);
+            this.labelRegistration.Size = new System.Drawing.Size(111, 19);
             this.labelRegistration.TabIndex = 49;
             this.labelRegistration.Text = "Нет аккаунта?";
             this.labelRegistration.Click += new System.EventHandler(this.labelRegistration_Click);
+            // 
+            // labelMissPass
+            // 
+            this.labelMissPass.AutoSize = true;
+            this.labelMissPass.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelMissPass.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelMissPass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.labelMissPass.Location = new System.Drawing.Point(410, 327);
+            this.labelMissPass.Name = "labelMissPass";
+            this.labelMissPass.Size = new System.Drawing.Size(123, 19);
+            this.labelMissPass.TabIndex = 50;
+            this.labelMissPass.Text = "Забыли пароль?";
+            this.labelMissPass.Click += new System.EventHandler(this.labelMissPass_Click);
             // 
             // AuthorizationForm
             // 
@@ -248,6 +262,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(752, 414);
+            this.Controls.Add(this.labelMissPass);
             this.Controls.Add(this.labelRegistration);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
@@ -296,6 +311,7 @@
         private System.Windows.Forms.Label labelColla;
         private System.Windows.Forms.Label labelClose;
         private System.Windows.Forms.Label labelRegistration;
+        private System.Windows.Forms.Label labelMissPass;
     }
 }
 

@@ -48,6 +48,7 @@ namespace Kursovaya_Gazz
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelColla = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +60,7 @@ namespace Kursovaya_Gazz
             this.tbSchet.Name = "tbSchet";
             this.tbSchet.Size = new System.Drawing.Size(256, 30);
             this.tbSchet.TabIndex = 0;
+            this.tbSchet.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSchet_KeyPress);
             // 
             // labelSchet
             // 
@@ -123,6 +125,7 @@ namespace Kursovaya_Gazz
             this.tbSquare.Name = "tbSquare";
             this.tbSquare.Size = new System.Drawing.Size(256, 30);
             this.tbSquare.TabIndex = 6;
+            this.tbSquare.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSquare_KeyPress);
             // 
             // labelPeople
             // 
@@ -142,6 +145,7 @@ namespace Kursovaya_Gazz
             this.tbPeople.Name = "tbPeople";
             this.tbPeople.Size = new System.Drawing.Size(256, 30);
             this.tbPeople.TabIndex = 8;
+            this.tbPeople.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPeople_KeyPress);
             // 
             // btnCreateAbonent
             // 
@@ -261,10 +265,28 @@ namespace Kursovaya_Gazz
             this.labelClose.Location = new System.Drawing.Point(616, 0);
             this.labelClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(23, 22);
+            this.labelClose.Size = new System.Drawing.Size(25, 24);
             this.labelClose.TabIndex = 49;
             this.labelClose.Text = "X";
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(13, 444);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(52, 49);
+            this.btnBack.TabIndex = 52;
+            this.btnBack.Text = "<-";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // RegistrationForm
             // 
@@ -272,6 +294,7 @@ namespace Kursovaya_Gazz
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(639, 505);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -323,5 +346,6 @@ namespace Kursovaya_Gazz
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labelColla;
         private System.Windows.Forms.Label labelClose;
+        private System.Windows.Forms.Button btnBack;
     }
 }

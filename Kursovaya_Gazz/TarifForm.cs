@@ -91,7 +91,7 @@ namespace Kursovaya_Gazz
                 tBPrice.ForeColor = Color.Purple;
             }
         }
-
+        
         private void btnIns_Click(object sender, EventArgs e)
         {
             if (tBName.Text == "" || tBName.Text == "Название" && tBPrice.Text == "" || tBPrice.Text == "Стоимость")

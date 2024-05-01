@@ -36,14 +36,14 @@ namespace Kursovaya_Gazz
 
             String Tarif, Lgota, Abonent;            
 
-            MySqlCommand commandT = new MySqlCommand("SELECT `Tarif_idTarif` FROM `Abonent` WHERE `Abonent_FIO` = @AF;", db.GetConnection());
-            commandT.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
+            MySqlCommand commandT = new MySqlCommand("SELECT `Tarif_idTarif` FROM `Abonent` WHERE `Abonent_Schet` = @AS;", db.GetConnection());
+            commandT.Parameters.Add("@AS", MySqlDbType.VarChar).Value = tBSchet.Text;
 
-            MySqlCommand commandL = new MySqlCommand("SELECT `Lgota_idLgota` FROM `Abonent` WHERE `Abonent_FIO` = @AF;", db.GetConnection());
-            commandL.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
+            MySqlCommand commandL = new MySqlCommand("SELECT `Lgota_idLgota` FROM `Abonent` WHERE `Abonent_Schet` = @AS;", db.GetConnection());
+            commandL.Parameters.Add("@AS", MySqlDbType.VarChar).Value = tBSchet.Text;
 
-            MySqlCommand commandA = new MySqlCommand("SELECT `idAbonent` FROM `Abonent` WHERE `Abonent_FIO` = @AF;", db.GetConnection());
-            commandA.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
+            MySqlCommand commandA = new MySqlCommand("SELECT `idAbonent` FROM `Abonent` WHERE `Abonent_Schet` = @AS;", db.GetConnection());
+            commandA.Parameters.Add("@AS", MySqlDbType.VarChar).Value = tBSchet.Text;
 
             adapter.SelectCommand = commandT;
             adapter.Fill(table);
@@ -57,8 +57,8 @@ namespace Kursovaya_Gazz
                 Abonent = commandA.ExecuteScalar().ToString();
 
                 //лиц счет
-                MySqlCommand commandSch = new MySqlCommand("SELECT `Abonent_Schet` FROM `Abonent` WHERE `Abonent_FIO` = @AF;", db.GetConnection());
-                commandSch.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
+                MySqlCommand commandSch = new MySqlCommand("SELECT `Abonent_FIO` FROM `Abonent` WHERE `Abonent_Schet` = @AS;", db.GetConnection());
+                commandSch.Parameters.Add("@AS", MySqlDbType.VarChar).Value = tBSchet.Text;
                 DataTable tableSch = new DataTable();
 
                 adapter.SelectCommand = commandSch;
@@ -66,14 +66,14 @@ namespace Kursovaya_Gazz
 
                 if (tableSch.Rows.Count > 0) //поиск записей по счету
                 {
-                    tBSchet.Text = commandSch.ExecuteScalar().ToString();
+                    textBoxFIO.Text = commandSch.ExecuteScalar().ToString();
                 }
                 else
                     MessageBox.Show("Данные по счету не найдены!");
 
                 //адрес
-                MySqlCommand commandAdr = new MySqlCommand("SELECT `Abonent_Adress` FROM `Abonent` WHERE `Abonent_FIO` = @AF;", db.GetConnection());
-                commandAdr.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
+                MySqlCommand commandAdr = new MySqlCommand("SELECT `Abonent_Adress` FROM `Abonent` WHERE `Abonent_Schet` = @AS;", db.GetConnection());
+                commandAdr.Parameters.Add("@AS", MySqlDbType.VarChar).Value = tBSchet.Text;
                 DataTable tableAdr = new DataTable();
 
                 adapter.SelectCommand = commandAdr;
@@ -104,10 +104,11 @@ namespace Kursovaya_Gazz
 
                 //расчет оплаты
                 DataTable tablePL = new DataTable();
-                MySqlCommand commandPL = new MySqlCommand("SELECT (`Pokazanie_Calc` * `Tarif_Price`) * `Lgota_Koefficent` AS `Platezh` FROM `Pokazanie`, `Tarif`, `Lgota`, `Abonent`" +
-                    " WHERE `Abonent_FIO` = @AF and `idTarif` = @Tid and `idLgota` = @Lid and `Abonent_idAbonent` = @Aid and `Pokazanie_Data` = @PD;", db.GetConnection());
+                MySqlCommand commandPL = 
+                    new MySqlCommand("SELECT (`Pokazanie_Calc` * `Tarif_Price`) * `Lgota_Koefficent` AS `Platezh` FROM `Pokazanie`, `Tarif`, `Lgota`, `Abonent`" +
+                    " WHERE `Abonent_Schet` = @AS and `idTarif` = @Tid and `idLgota` = @Lid and `Abonent_idAbonent` = @Aid and `Pokazanie_Data` = @PD;", db.GetConnection());
 
-                commandPL.Parameters.Add("@AF", MySqlDbType.VarChar).Value = textBoxFIO.Text;
+                commandPL.Parameters.Add("@AS", MySqlDbType.VarChar).Value = tBSchet.Text;
                 commandPL.Parameters.Add("@PD", MySqlDbType.VarChar).Value = textBoxDate.Text;
                 commandPL.Parameters.Add("@Tid", MySqlDbType.VarChar).Value = Tarif;
                 commandPL.Parameters.Add("@Lid", MySqlDbType.VarChar).Value = Lgota;

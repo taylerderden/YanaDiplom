@@ -58,11 +58,12 @@ namespace Kursovaya_Gazz
 
             if (table.Rows.Count == 0) //если не обнаружено совпадений то ниже запрос
             {
-                MySqlCommand command = new MySqlCommand("INSERT INTO `Authorization` (`Authorization_Login`, `Authorization_Password`, `Abonent_idAbonent`) VALUES (@uL, @uP, @ID);", db.GetConnection());
+                MySqlCommand command = new MySqlCommand("INSERT INTO `Authorization` (`Authorization_Login`, `Authorization_Password`, `Abonent_idAbonent`, `Authorization_Email`) VALUES (@uL, @uP, @ID, @AE);", db.GetConnection());
 
                 command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
                 command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
                 command.Parameters.Add("@ID", MySqlDbType.VarChar).Value = Global.GlobalVar;
+                command.Parameters.Add("@AE", MySqlDbType.VarChar).Value = textBoxEmail.Text;
 
                 db.openConnection();
 

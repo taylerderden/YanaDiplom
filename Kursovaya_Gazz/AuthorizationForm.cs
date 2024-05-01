@@ -161,8 +161,14 @@ namespace Kursovaya_Gazz
         private void labelRegistration_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RegistrationForm rForm = new RegistrationForm(); //
+            RegistrationForm rForm = new RegistrationForm(); 
             rForm.Show();
+        }
+
+        private void labelMissPass_Click(object sender, EventArgs e)
+        {
+            MissPassForm missPassForm = new MissPassForm();
+            missPassForm.Show();
         }
     }
 }

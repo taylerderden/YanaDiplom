@@ -72,111 +72,119 @@ namespace Kursovaya_Gazz
                 return;
             }
 
-            if (cbLgota.Text != "")
+            try
             {
-                DataBase db0 = new DataBase();
 
-                DataTable tableL = new DataTable();
-
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-
-                MySqlCommand command0 = new MySqlCommand("SELECT `idLgota` FROM `Lgota` WHERE `Lgota_Name` = @L", db0.GetConnection());
-                command0.Parameters.Add("@L", MySqlDbType.VarChar).Value = cbLgota.Text;
-
-                adapter.SelectCommand = command0;
-                adapter.Fill(tableL);
-
-                db0.openConnection();
-                if (tableL.Rows.Count > 0)
+                if (cbLgota.Text != "")
                 {
-                    Lgota = command0.ExecuteScalar().ToString();   // извлекаем id
-                }
-                else
-                    MessageBox.Show("Ошибка выбора льготы!");
-                db0.closeConnection();
-            }
-            else
-                MessageBox.Show("Выберите льготу!");
+                    DataBase db0 = new DataBase();
 
-            if (cbTarif.Text != "")
-            {
-                DataBase db0 = new DataBase();
+                    DataTable tableL = new DataTable();
 
-                DataTable tableT = new DataTable();
+                    MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                    MySqlCommand command0 = new MySqlCommand("SELECT `idLgota` FROM `Lgota` WHERE `Lgota_Name` = @L", db0.GetConnection());
+                    command0.Parameters.Add("@L", MySqlDbType.VarChar).Value = cbLgota.Text;
 
-                MySqlCommand command0 = new MySqlCommand("SELECT `idTarif` FROM `Tarif` WHERE `Tarif_Name` = @T", db0.GetConnection());
-                command0.Parameters.Add("@T", MySqlDbType.VarChar).Value = cbTarif.Text;
+                    adapter.SelectCommand = command0;
+                    adapter.Fill(tableL);
 
-                adapter.SelectCommand = command0;
-                adapter.Fill(tableT);
-
-                db0.openConnection();
-                if (tableT.Rows.Count > 0)
-                {
-                    Tarif = command0.ExecuteScalar().ToString();   // извлекаем id
-                }
-                else
-                    MessageBox.Show("Ошибка выбора тарифа!");
-                db0.closeConnection();
-            }
-            else
-                MessageBox.Show("Выберите тариф!");
-
-            if (isUserExists()) //проверка занятости данных
-            {
-                return;
-            }
-
-            if (cbLgota.Text != "" && cbTarif.Text != "")
-            {
-                DataBase db = new DataBase();
-                MySqlCommand command = new MySqlCommand("INSERT INTO `Abonent` (`Abonent_Schet`, `Abonent_FIO`, `Abonent_Adress`, `Abonent_Square`, `Abonent_People`, `Tarif_idTarif`, `Lgota_idLgota`)" +
-                    " VALUES (@Sch, @FIO, @A, @Sq, @P, @T, @L);", db.GetConnection());
-
-                command.Parameters.Add("@Sch", MySqlDbType.VarChar).Value = tbSchet.Text;
-                command.Parameters.Add("@FIO", MySqlDbType.VarChar).Value = tbFIO.Text;
-                command.Parameters.Add("@A", MySqlDbType.VarChar).Value = tbAdress.Text;
-                command.Parameters.Add("@Sq", MySqlDbType.VarChar).Value = tbSquare.Text;
-                command.Parameters.Add("@P", MySqlDbType.VarChar).Value = tbPeople.Text;
-                command.Parameters.Add("@T", MySqlDbType.VarChar).Value = Tarif;
-                command.Parameters.Add("@L", MySqlDbType.VarChar).Value = Lgota;
-
-                db.openConnection();
-
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    MessageBox.Show("Данные успешно внесены");
-
-                    DataTable tableID = new DataTable();
-                    MySqlDataAdapter adapterID = new MySqlDataAdapter();
-
-                    MySqlCommand commandID = new MySqlCommand("SELECT `idAbonent` FROM `Abonent` WHERE `Abonent_Schet` = @Sch", db.GetConnection()); //
-                    commandID.Parameters.Add("@Sch", MySqlDbType.VarChar).Value = tbSchet.Text;
-
-                    adapterID.SelectCommand = commandID;
-                    adapterID.Fill(tableID);
-
-                    if (tableID.Rows.Count > 0) //поиск записей
+                    db0.openConnection();
+                    if (tableL.Rows.Count > 0)
                     {
-                        string id = commandID.ExecuteScalar().ToString();   // извлекаем id
-                        Global.GlobalVar = id;
+                        Lgota = command0.ExecuteScalar().ToString();   // извлекаем id
                     }
                     else
-                        MessageBox.Show("Ошибка ID!"); //иначе ошибка
-
-                    this.Hide();
-                    LogPassForm lpForm = new LogPassForm(); //если успешна то открытие формы для админа
-                    lpForm.Show();
+                        MessageBox.Show("Ошибка выбора льготы!");
+                    db0.closeConnection();
                 }
                 else
-                    MessageBox.Show("Ошибка внесения данных!");
+                    MessageBox.Show("Выберите льготу!");
 
-                db.closeConnection();
+                if (cbTarif.Text != "")
+                {
+                    DataBase db0 = new DataBase();
+
+                    DataTable tableT = new DataTable();
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+                    MySqlCommand command0 = new MySqlCommand("SELECT `idTarif` FROM `Tarif` WHERE `Tarif_Name` = @T", db0.GetConnection());
+                    command0.Parameters.Add("@T", MySqlDbType.VarChar).Value = cbTarif.Text;
+
+                    adapter.SelectCommand = command0;
+                    adapter.Fill(tableT);
+
+                    db0.openConnection();
+                    if (tableT.Rows.Count > 0)
+                    {
+                        Tarif = command0.ExecuteScalar().ToString();   // извлекаем id
+                    }
+                    else
+                        MessageBox.Show("Ошибка выбора тарифа!");
+                    db0.closeConnection();
+                }
+                else
+                    MessageBox.Show("Выберите тариф!");
+
+                if (isUserExists()) //проверка занятости данных
+                {
+                    return;
+                }
+
+                if (cbLgota.Text != "" && cbTarif.Text != "")
+                {
+                    DataBase db = new DataBase();
+                    MySqlCommand command = new MySqlCommand("INSERT INTO `Abonent` (`Abonent_Schet`, `Abonent_FIO`, `Abonent_Adress`, `Abonent_Square`, `Abonent_People`, `Tarif_idTarif`, `Lgota_idLgota`)" +
+                        " VALUES (@Sch, @FIO, @A, @Sq, @P, @T, @L);", db.GetConnection());
+
+                    command.Parameters.Add("@Sch", MySqlDbType.VarChar).Value = tbSchet.Text;
+                    command.Parameters.Add("@FIO", MySqlDbType.VarChar).Value = tbFIO.Text;
+                    command.Parameters.Add("@A", MySqlDbType.VarChar).Value = tbAdress.Text;
+                    command.Parameters.Add("@Sq", MySqlDbType.VarChar).Value = tbSquare.Text;
+                    command.Parameters.Add("@P", MySqlDbType.VarChar).Value = tbPeople.Text;
+                    command.Parameters.Add("@T", MySqlDbType.VarChar).Value = Tarif;
+                    command.Parameters.Add("@L", MySqlDbType.VarChar).Value = Lgota;
+
+                    db.openConnection();
+
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Данные успешно внесены");
+
+                        DataTable tableID = new DataTable();
+                        MySqlDataAdapter adapterID = new MySqlDataAdapter();
+
+                        MySqlCommand commandID = new MySqlCommand("SELECT `idAbonent` FROM `Abonent` WHERE `Abonent_Schet` = @Sch", db.GetConnection()); //
+                        commandID.Parameters.Add("@Sch", MySqlDbType.VarChar).Value = tbSchet.Text;
+
+                        adapterID.SelectCommand = commandID;
+                        adapterID.Fill(tableID);
+
+                        if (tableID.Rows.Count > 0) //поиск записей
+                        {
+                            string id = commandID.ExecuteScalar().ToString();   // извлекаем id
+                            Global.GlobalVar = id;
+                        }
+                        else
+                            MessageBox.Show("Ошибка ID!"); //иначе ошибка
+
+                        this.Hide();
+                        LogPassForm lpForm = new LogPassForm(); //если успешна то открытие формы для админа
+                        lpForm.Show();
+                    }
+                    else
+                        MessageBox.Show("Ошибка внесения данных!");
+
+                    db.closeConnection();
+                }
+                else
+                    MessageBox.Show("Заполните поля!");
             }
-            else
-                MessageBox.Show("Заполните поля!");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Вы ввели некорректные данные!");
+            }
         }
         private void labelClose_Click(object sender, EventArgs e)
         {
@@ -197,6 +205,34 @@ namespace Kursovaya_Gazz
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
             }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            AuthorizationForm authorizationForm = new AuthorizationForm(); //возвращение на форму авторизации
+            authorizationForm.Show();
+        }
+
+        private void tbSchet_KeyPress(object sender, KeyPressEventArgs e) // только цифры и можно стирать в тбоксе счет
+        {
+            if (Char.IsNumber(e.KeyChar) | e.KeyChar == '\b') return;
+            else
+                e.Handled = true;
+        }
+
+        private void tbSquare_KeyPress(object sender, KeyPressEventArgs e) // только цифры и точка, также можно стирать в тбоксе площадь
+        {
+            if (Char.IsNumber(e.KeyChar) | (e.KeyChar == Convert.ToChar(".")) | e.KeyChar == '\b') return;
+            else
+                e.Handled = true;
+        }
+
+        private void tbPeople_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar) | e.KeyChar == '\b') return;
+            else
+                e.Handled = true;
         }
 
         private void panel2_MouseDown(object sender, MouseEventArgs e)
