@@ -247,7 +247,7 @@ namespace Kursovaya_Gazz
                     email = command.ExecuteScalar().ToString();
                 }
                 else
-                    MessageBox.Show("У абонента нет почты!");
+                    MessageBox.Show("У клиента нет почты!");
                 db.closeConnection();
 
 

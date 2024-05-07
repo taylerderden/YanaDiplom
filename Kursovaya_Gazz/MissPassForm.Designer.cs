@@ -40,6 +40,7 @@ namespace Kursovaya_Gazz
             this.labelKod = new System.Windows.Forms.Label();
             this.textBoxKod = new System.Windows.Forms.TextBox();
             this.labelYes = new System.Windows.Forms.Label();
+            this.labelClose = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelEmail
@@ -154,12 +155,24 @@ namespace Kursovaya_Gazz
             this.labelYes.TabIndex = 17;
             this.labelYes.Text = "-";
             // 
+            // labelClose
+            // 
+            this.labelClose.AutoSize = true;
+            this.labelClose.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelClose.Location = new System.Drawing.Point(295, 6);
+            this.labelClose.Name = "labelClose";
+            this.labelClose.Size = new System.Drawing.Size(22, 27);
+            this.labelClose.TabIndex = 18;
+            this.labelClose.Text = "x";
+            this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
+            // 
             // MissPassForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(320, 435);
+            this.Controls.Add(this.labelClose);
             this.Controls.Add(this.labelYes);
             this.Controls.Add(this.labelKod);
             this.Controls.Add(this.textBoxKod);
@@ -172,6 +185,7 @@ namespace Kursovaya_Gazz
             this.Controls.Add(this.tbNewPass);
             this.Controls.Add(this.tbNewPass2);
             this.Font = new System.Drawing.Font("Palatino Linotype", 9F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MissPassForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -194,5 +208,6 @@ namespace Kursovaya_Gazz
         private System.Windows.Forms.Label labelKod;
         private System.Windows.Forms.TextBox textBoxKod;
         private System.Windows.Forms.Label labelYes;
+        private System.Windows.Forms.Label labelClose;
     }
 }

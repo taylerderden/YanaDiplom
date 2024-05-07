@@ -103,5 +103,10 @@ namespace Kursovaya_Gazz
                 db.closeConnection();
             }
         }
+
+        private void labelClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
