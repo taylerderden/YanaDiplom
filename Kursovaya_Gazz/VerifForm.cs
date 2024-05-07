@@ -49,7 +49,7 @@ namespace Kursovaya_Gazz
                 {
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
 
-                    dataGridView1[6, i] = linkCell;
+                    dataGridView1[7, i] = linkCell;
                 }
 
             }
@@ -74,7 +74,7 @@ namespace Kursovaya_Gazz
                 {
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
 
-                    dataGridView1[6, i] = linkCell;
+                    dataGridView1[7, i] = linkCell;
                 }
 
             }
@@ -94,15 +94,16 @@ namespace Kursovaya_Gazz
             dataGridView1.Columns[3].HeaderText = "Категория";
             dataGridView1.Columns[4].HeaderText = "код_Абонента";
             dataGridView1.Columns[5].HeaderText = "Верификация";
+            dataGridView1.Columns[6].HeaderText = "Почта";
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (e.ColumnIndex == 6)
+                if (e.ColumnIndex == 7)
                 {
-                    string task = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    string task = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
 
                     if (task == "Delete")
                     {
@@ -135,6 +136,7 @@ namespace Kursovaya_Gazz
                         row["Authorization_Category"] = dataGridView1.Rows[rowIndex].Cells["Authorization_Category"].Value;
                         row["Abonent_idAbonent"] = dataGridView1.Rows[rowIndex].Cells["Abonent_idAbonent"].Value;
                         row["Authorization_Verify"] = dataGridView1.Rows[rowIndex].Cells["Authorization_Verify"].Value;
+                        row["Authorization_Email"] = dataGridView1.Rows[rowIndex].Cells["Authorization_Verify"].Value;
 
                         dataSet.Tables["Authorization"].Rows.Add(row);
 
@@ -142,7 +144,7 @@ namespace Kursovaya_Gazz
 
                         dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
 
-                        dataGridView1.Rows[e.RowIndex].Cells[6].Value = "Delete";
+                        dataGridView1.Rows[e.RowIndex].Cells[7].Value = "Delete";
 
                         adapter.Update(dataSet, "Authorization");
 
@@ -158,10 +160,11 @@ namespace Kursovaya_Gazz
                         dataSet.Tables["Authorization"].Rows[r]["Authorization_Category"] = dataGridView1.Rows[r].Cells["Authorization_Category"].Value;
                         dataSet.Tables["Authorization"].Rows[r]["Abonent_idAbonent"] = dataGridView1.Rows[r].Cells["Abonent_idAbonent"].Value;
                         dataSet.Tables["Authorization"].Rows[r]["Authorization_Verify"] = dataGridView1.Rows[r].Cells["Authorization_Verify"].Value;
+                        dataSet.Tables["Authorization"].Rows[r]["Authorization_Email"] = dataGridView1.Rows[r].Cells["Authorization_Email"].Value;
 
                         adapter.Update(dataSet, "Authorization");
 
-                        dataGridView1.Rows[e.RowIndex].Cells[6].Value = "Delete";
+                        dataGridView1.Rows[e.RowIndex].Cells[7].Value = "Delete";
                     }
 
                     ReloadData();
@@ -188,7 +191,7 @@ namespace Kursovaya_Gazz
 
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
 
-                    dataGridView1[6, lastRow] = linkCell;
+                    dataGridView1[7, lastRow] = linkCell;
 
                     row.Cells["Действия"].Value = "Insert";
 
@@ -212,7 +215,7 @@ namespace Kursovaya_Gazz
 
                     DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
 
-                    dataGridView1[6, rowIndex] = linkCell;
+                    dataGridView1[7, rowIndex] = linkCell;
 
                     editingRow.Cells["Действия"].Value = "Update";
                 }
@@ -220,6 +223,29 @@ namespace Kursovaya_Gazz
             catch (Exception exep)
             {
                 MessageBox.Show(exep.Message, "Failed!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Column_KeyPress(object sender, KeyPressEventArgs e)        //метод чтоб можно было писать только +
+        {
+            if (e.KeyChar != '+' && e.KeyChar != 8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(Column_KeyPress);
+
+            if (dataGridView1.CurrentCell.ColumnIndex == 5)         //на месте _5_ ставим индекс колонки который валидируем
+            {
+                TextBox textBox = e.Control as TextBox;
+                if (textBox != null)
+                {
+                    textBox.KeyPress += new KeyPressEventHandler(Column_KeyPress);
+                    textBox.MaxLength = 1;
+                }
             }
         }
     }

@@ -175,7 +175,7 @@ namespace Kursovaya_Gazz
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MissPassForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MissPassForm";
+            this.Text = "Восстановление";
             this.ResumeLayout(false);
             this.PerformLayout();
 

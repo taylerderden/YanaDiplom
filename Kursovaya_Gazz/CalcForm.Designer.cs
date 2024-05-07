@@ -44,6 +44,7 @@
             this.textBoxSDolgom = new System.Windows.Forms.TextBox();
             this.textBoxBezDolga = new System.Windows.Forms.TextBox();
             this.textBoxFIO = new System.Windows.Forms.TextBox();
+            this.buttonSendMail = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(225)))), ((int)(((byte)(199)))));
+            this.panel1.Controls.Add(this.buttonSendMail);
             this.panel1.Controls.Add(this.labelName);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.tBSchet);
@@ -110,7 +112,7 @@
             this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
             this.btnReport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReport.ForeColor = System.Drawing.Color.White;
-            this.btnReport.Location = new System.Drawing.Point(300, 401);
+            this.btnReport.Location = new System.Drawing.Point(300, 390);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(191, 37);
             this.btnReport.TabIndex = 66;
@@ -239,6 +241,21 @@
             this.textBoxFIO.Size = new System.Drawing.Size(164, 34);
             this.textBoxFIO.TabIndex = 47;
             // 
+            // buttonSendMail
+            // 
+            this.buttonSendMail.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonSendMail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(95)))), ((int)(((byte)(150)))));
+            this.buttonSendMail.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSendMail.ForeColor = System.Drawing.Color.White;
+            this.buttonSendMail.Location = new System.Drawing.Point(300, 442);
+            this.buttonSendMail.Name = "buttonSendMail";
+            this.buttonSendMail.Size = new System.Drawing.Size(191, 37);
+            this.buttonSendMail.TabIndex = 69;
+            this.buttonSendMail.Text = "Отправить";
+            this.buttonSendMail.UseVisualStyleBackColor = false;
+            this.buttonSendMail.Visible = false;
+            this.buttonSendMail.Click += new System.EventHandler(this.buttonSendMail_Click);
+            // 
             // CalcForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -273,5 +290,6 @@
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tBSchet;
+        private System.Windows.Forms.Button buttonSendMail;
     }
 }

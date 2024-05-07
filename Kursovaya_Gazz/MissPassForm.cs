@@ -11,6 +11,7 @@ using System.Net;
 using System.Net.Mail;
 using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace Kursovaya_Gazz
 {
@@ -48,7 +49,7 @@ namespace Kursovaya_Gazz
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка отправки данных!");
+                MessageBox.Show("Почты не найдено!");
             }
         }
 

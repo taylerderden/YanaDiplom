@@ -13,6 +13,8 @@ using Microsoft.Reporting.WinForms;
 using QRCoder;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Net.Mail;
+using System.Net;
 
 namespace Kursovaya_Gazz
 {
@@ -213,11 +215,73 @@ namespace Kursovaya_Gazz
                 kvitokForm.Show();
                 kvitokForm.reportViewer1.LocalReport.SetParameters(reportParameters);
                 kvitokForm.reportViewer1.RefreshReport();
+
+                buttonSendMail.Visible = true;
             }          
         }
         private void CalcForm_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void buttonSendMail_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string email = "";
+                DataBase db = new DataBase();
+                DataTable table = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+                MySqlCommand command = new MySqlCommand("SELECT `Authorization_Email` FROM `Authorization` JOIN `Abonent` " +
+                    "ON `Abonent_idAbonent` = `idAbonent`" +
+                    "WHERE `Abonent_Schet` = @AS", db.GetConnection());
+                command.Parameters.Add("@AS", MySqlDbType.VarChar).Value = tBSchet.Text;
+
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+
+                db.openConnection();
+                if (table.Rows.Count > 0) //поиск записей по счету
+                {
+                    email = command.ExecuteScalar().ToString();
+                }
+                else
+                    MessageBox.Show("У абонента нет почты!");
+                db.closeConnection();
+
+
+                MailAddress fromAddress = new MailAddress("danizlobin_2004@mail.ru", "Gaz"); // почта и имя от кого отправить yana.rogozhnikova.04@mail.ru
+                MailAddress toAddress = new MailAddress(email); // почта и имя кому отправить
+                MailMessage message = new MailMessage(fromAddress, toAddress);
+                message.Subject = "Квитанция на оплату газа";
+                message.Body = "Оплатите газ!";
+
+                OpenFileDialog openFile = new OpenFileDialog { };
+                Stream fileStream = null;
+                string fileName = "";
+                if (openFile.ShowDialog() == DialogResult.OK && (fileStream = openFile.OpenFile()) != null)
+                {
+                    fileName = openFile.FileName;
+                }
+
+                message.Attachments.Add(new Attachment(fileName));
+
+                SmtpClient smtpClient = new SmtpClient();
+                smtpClient.Host = "smtp.mail.ru";
+                smtpClient.Port = 587;
+                smtpClient.EnableSsl = true;
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new NetworkCredential("danizlobin_2004@mail.ru", "T2WArS0RkFAGQ1V9StC7"); // логин пароль от почты с которой отправить
+
+                smtpClient.Send(message);
+                MessageBox.Show("Квитанция отправлена");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка отправки данных! У клиента нет почты!");
+            }
         }
     }
     
