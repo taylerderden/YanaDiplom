@@ -190,7 +190,7 @@ namespace Kursovaya_Gazz
 
                 KvitokForm kvitokForm = new KvitokForm();
                 double itogo = Convert.ToDouble(textBoxSDolgom.Text) * 100;
-                string qr = $"ST00012|Name= РОГОЖНИКОВА ЯНА ОЛЕГОВНА|PersonalAcc = 40817810795010005796 |BankName = Газпромбанк |BIC = 046577903 |CorrespAcc = 30101810200000000903 |KPP = 000001001 |PayeelNN = 666001947022 |Purpose = За газ | Sum = {itogo}";
+                string qr = $"ST00012|Name= РОГОЖНИКОВА ЯНА ОЛЕГОВНА|PersonalAcc = 40817810254403983282 |BankName = ПОВОЛЖСКИЙ БАНК ПАО СБЕРБАНК |BIC = 043601607 |CorrespAcc = 30101810200000000607 |KPP = 631602006 |PayeelNN = 7707083893 |Purpose = За газ | Sum = {itogo}";
                 QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
                 QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(qr, QRCodeGenerator.ECCLevel.Q);
                 QRCode qRCode = new QRCode(qRCodeData);
@@ -245,42 +245,49 @@ namespace Kursovaya_Gazz
                 if (table.Rows.Count > 0) //поиск записей по счету
                 {
                     email = command.ExecuteScalar().ToString();
+                    db.closeConnection();
+                    if (email == "")
+                    {
+
+                        MessageBox.Show("У клиента нет почты!");
+                    }
+                    else
+                    {
+                        MailAddress fromAddress = new MailAddress("yana.rogozhnikova.04@mail.ru", "Gaz"); // почта и имя от кого отправить yana.rogozhnikova.04@mail.ru
+                        MailAddress toAddress = new MailAddress(email); // почта и имя кому отправить
+                        MailMessage message = new MailMessage(fromAddress, toAddress);
+                        message.Subject = "Квитанция на оплату газа";
+                        message.Body = "Оплатите газ!";
+
+                        OpenFileDialog openFile = new OpenFileDialog { };
+                        Stream fileStream = null;
+                        string fileName = "";
+                        if (openFile.ShowDialog() == DialogResult.OK && (fileStream = openFile.OpenFile()) != null)
+                        {
+                            fileName = openFile.FileName;
+                        }
+
+                        message.Attachments.Add(new Attachment(fileName));
+
+                        SmtpClient smtpClient = new SmtpClient();
+                        smtpClient.Host = "smtp.mail.ru";
+                        smtpClient.Port = 587;
+                        smtpClient.EnableSsl = true;
+                        smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                        smtpClient.UseDefaultCredentials = false;
+                        smtpClient.Credentials = new NetworkCredential("yana.rogozhnikova.04@mail.ru", "aaF1xQy2muhZGpunfgap"); // логин пароль от почты с которой отправить
+
+                        smtpClient.Send(message);
+                        MessageBox.Show("Квитанция отправлена");
+                    }
                 }
                 else
-                    MessageBox.Show("У клиента нет почты!");
-                db.closeConnection();
-
-
-                MailAddress fromAddress = new MailAddress("danizlobin_2004@mail.ru", "Gaz"); // почта и имя от кого отправить yana.rogozhnikova.04@mail.ru
-                MailAddress toAddress = new MailAddress(email); // почта и имя кому отправить
-                MailMessage message = new MailMessage(fromAddress, toAddress);
-                message.Subject = "Квитанция на оплату газа";
-                message.Body = "Оплатите газ!";
-
-                OpenFileDialog openFile = new OpenFileDialog { };
-                Stream fileStream = null;
-                string fileName = "";
-                if (openFile.ShowDialog() == DialogResult.OK && (fileStream = openFile.OpenFile()) != null)
-                {
-                    fileName = openFile.FileName;
-                }
-
-                message.Attachments.Add(new Attachment(fileName));
-
-                SmtpClient smtpClient = new SmtpClient();
-                smtpClient.Host = "smtp.mail.ru";
-                smtpClient.Port = 587;
-                smtpClient.EnableSsl = true;
-                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtpClient.UseDefaultCredentials = false;
-                smtpClient.Credentials = new NetworkCredential("danizlobin_2004@mail.ru", "T2WArS0RkFAGQ1V9StC7"); // логин пароль от почты с которой отправить
-
-                smtpClient.Send(message);
-                MessageBox.Show("Квитанция отправлена");
+                    MessageBox.Show("Не найдены данные клиента!");
+                    
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка отправки данных! У клиента нет почты!");
+                MessageBox.Show("Ошибка отправки данных!");
             }
         }
     }
