@@ -95,6 +95,7 @@ namespace Kursovaya_Gazz
 
             labelOpen.Visible = false;
             labelNormal.Visible = true;
+            //tsBtnExit.Margin = new Padding(800, 1, 0, 2);
         }
 
         private void labelColla_Click(object sender, EventArgs e)
